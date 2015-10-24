@@ -1,4 +1,5 @@
 Školní projekt - informační systém pro půjčovnu pracovních strojů.
+Tento soubor slouží jako WIKI našeho projektu.
 
 # Adresáře
  * src/main/java/cz/mufi/PA165/RentalConstructionMachinery/
@@ -12,3 +13,11 @@
  
  *doc/
  obsahuje dokumentaci aplikace (use-case a ERD diagram)
+
+ # Popis projektu
+ Systém představuje software pro rezervaci pracovních strojů.
+ Systém obsahuje čtyři entity.
+ * Customer - zákazník naší půjčovny.
+ * Machine - stroj k vypůjčení.
+ * Revision - revize stroje, slabá entita závislá na Machine.
+ * Rent - výpůjčka stroje zákazníkovi, slabá entina závislá na Customer a Machine.
