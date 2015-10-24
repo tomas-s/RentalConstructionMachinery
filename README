@@ -1,0 +1,14 @@
+Školní projekt - informační systém pro půjčovnu pracovních strojů.
+
+# Adresáře
+ * src/main/java/cz/mufi/PA165/RentalConstructionMachinery/
+ obsahuje java kódy aplikace
+ 
+ * src/main/resources/
+ obsahuje configuraci aplikace
+ 
+ * src/test/java/cz/mufi/PA165/RentalConstructionMachinery/
+ obsahuje testovací třídy
+ 
+ *doc/
+ obsahuje dokumentaci aplikace (use-case a ERD diagram)
