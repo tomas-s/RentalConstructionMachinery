@@ -2,6 +2,11 @@ package cz.mufi.PA165.RentalConstructionMachinery.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "RENT")
 public class Rent {
 
     private Long id;

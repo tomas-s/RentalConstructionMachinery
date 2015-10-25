@@ -2,15 +2,50 @@ package cz.mufi.PA165.RentalConstructionMachinery.domain;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
 
+/**
+ * 
+ * @author zdenek
+ *
+ */
+@Entity
+@Table(name = "CUSTOMER")
 public class Customer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
+    @Column(nullable = false)
     private String firstName;
+
+    @NotNull
+    @Column(nullable = false)
     private String lastName;
+
+    @NotNull
+    @Column(nullable = false, unique = true)
     private String phoneNumber;
+
+    @NotNull
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private CustomerType customerType;
+
+    @OneToMany(mappedBy = "CUSTOMER")
     private List<Rent> rentHistory;
 
     /*

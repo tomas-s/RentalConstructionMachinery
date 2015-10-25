@@ -1,8 +1,21 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dao;
 
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-@Repository
-public class CustomerDao {
+import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
 
+/**
+ * 
+ * @author zdenek
+ *
+ */
+public interface CustomerDao {
+
+    void create(Customer customer);
+
+    void delete(Customer customer);
+
+    void update(Customer customer);
+
+    List<Customer> findAll();
 }

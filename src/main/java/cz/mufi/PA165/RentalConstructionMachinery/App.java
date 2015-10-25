@@ -8,11 +8,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  */
 public class App {
+
     public static void main(String[] args) {
         System.out.println("Hello World!");
-
-        // ApplicationContext context = new FileSystemXmlApplicationContext
-        // ("C:/Users/ZARA/workspace/HelloSpring/src/Beans.xml");
 
         ApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "applicationContext-main.xml" });
         System.out.println(context);
