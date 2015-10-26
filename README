@@ -14,10 +14,20 @@ Tento soubor slouží jako WIKI našeho projektu.
  *doc/
  obsahuje dokumentaci aplikace (use-case a ERD diagram)
 
- # Popis projektu
+# Popis projektu
  Systém představuje software pro rezervaci pracovních strojů.
  Systém obsahuje čtyři entity.
  * Customer - zákazník naší půjčovny.
  * Machine - stroj k vypůjčení.
  * Revision - revize stroje, slabá entita závislá na Machine.
  * Rent - výpůjčka stroje zákazníkovi, slabá entina závislá na Customer a Machine.
+ 
+# Rozdělení práce
+ 1 entita + dao + test = 1 člen týmu
+ * Zdeněk - Customer 
+ * Tomáš  - Revision
+ * Matěj  -
+ * Jakub  -
+ 
+# HOW TO
+ * Maven + Spring + Hibernate + JPA + derby : http://www.adrianwalker.org/2010/08/maven-spring-jpa-skeleton-project.html

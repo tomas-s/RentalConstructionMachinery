@@ -20,6 +20,7 @@ public class CustomerDaoImpl implements CustomerDao {
     public void create(Customer customer) {
         // TODO Auto-generated method stub
 
+        System.out.println("CREATE");
     }
 
     public void delete(Customer customer) {
