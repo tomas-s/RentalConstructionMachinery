@@ -10,10 +10,6 @@
 
 	<!-- enable autowire -->
 	<context:annotation-config />
-	
-	<!--  AspectJ -->
-	<!-- <context:load-time-weaver/> -->
-    <!-- <context:load-time-weaver aspectj-weaving="on" /> -->
 
 	<import resource="applicationContext-dao.xml"/>
 	<import resource="applicationContext-service.xml"/>

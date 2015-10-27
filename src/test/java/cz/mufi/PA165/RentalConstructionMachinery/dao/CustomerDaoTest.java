@@ -1,7 +1,6 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,10 +23,8 @@ public class CustomerDaoTest {
     @Autowired
     private CustomerDao customerDao;
 
-    @PersistenceContext
-    private EntityManager em;
-
     @Test
+    @Transactional
     public void testTest() {
         System.out.println("dao: " + customerDao);
 

@@ -24,6 +24,8 @@
     <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.dao"/>
     
     <jdbc:embedded-database id="dataSource" type="DERBY"/>
+    
+    <jpa:repositories base-package="cz.mufi.PA165.RentalConstructionMachinery.dao" />
 
 <!-- TOTO dela to same jako ten jdbc:comp..  -->
 <!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
@@ -37,8 +39,11 @@
   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
       <property name="dataSource" ref="dataSource" />
       <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
+      <property name="loadTimeWeaver">
+            <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+        </property>
    </bean>
-   
+      
    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
       <property name="entityManagerFactory" ref="entityManagerFactory" />
    </bean>
