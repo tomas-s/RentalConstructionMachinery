@@ -23,26 +23,26 @@
     <!-- enable component scanning for dao classes -->
     <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.dao"/>
     
-<!--      <jdbc:embedded-database id="embeddedDatasource" type="DERBY"/> -->
+    <jdbc:embedded-database id="dataSource" type="DERBY"/>
 
-
-    
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-    <property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
-    <property name="url"  value="jdbc:derby:target/database/message;create=true" />
-  </bean>
-  
+<!-- TOTO dela to same jako ten jdbc:comp..  -->
+<!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!--     <property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" /> -->
+<!--     <property name="url"  value="jdbc:derby:target/database/message;create=true" /> -->
+<!--   </bean> -->  
   
   <!-- Create default configuration for Hibernate -->
   <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
-
   
-  
- 
-<!--   <bean id="entityManagerFactory" -->
-<!--     class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> -->
-<!--     <property name="dataSource" ref="dataSource"></property> -->
-<!--   </bean> -->
+  <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+      <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
+   </bean>
+   
+   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+      <property name="entityManagerFactory" ref="entityManagerFactory" />
+   </bean>
+   <tx:annotation-driven />
   
 <!--    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"> -->
 <!--     <property name="entityManagerFactory" ref="entityManagerFactory" /> -->

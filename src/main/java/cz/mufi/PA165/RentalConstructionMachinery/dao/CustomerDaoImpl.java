@@ -2,6 +2,9 @@ package cz.mufi.PA165.RentalConstructionMachinery.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.stereotype.Repository;
 
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
@@ -14,8 +17,8 @@ import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
 @Repository
 public class CustomerDaoImpl implements CustomerDao {
 
-    // @PersistenceContext
-    // private EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
     public void create(Customer customer) {
         // TODO Auto-generated method stub
