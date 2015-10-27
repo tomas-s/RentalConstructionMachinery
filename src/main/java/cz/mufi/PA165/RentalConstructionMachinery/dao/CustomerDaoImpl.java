@@ -24,6 +24,14 @@ public class CustomerDaoImpl implements CustomerDao {
         // TODO Auto-generated method stub
 
         System.out.println("CREATE");
+
+        // em.getTransaction().begin();
+        em.persist(customer);
+        // em.getTransaction().commit();
+
+        System.out.println("CREATE DONE");
+
+        System.out.println(em);
     }
 
     public void delete(Customer customer) {
@@ -36,8 +44,11 @@ public class CustomerDaoImpl implements CustomerDao {
 
     }
 
+    public Customer findById(Long id) {
+        return em.find(Customer.class, id);
+    }
+
     public List<Customer> findAll() {
-        // TODO Auto-generated method stub
         return null;
     }
 }

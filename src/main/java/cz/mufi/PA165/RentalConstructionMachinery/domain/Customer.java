@@ -1,7 +1,5 @@
 package cz.mufi.PA165.RentalConstructionMachinery.domain;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,7 +7,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -45,8 +42,8 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private CustomerType customerType;
 
-    @OneToMany(mappedBy = "CUSTOMER")
-    private List<Rent> rentHistory;
+    // @OneToMany(mappedBy = "CUSTOMER")
+    // private List<Rent> rentHistory;
 
     /*
      * Generated
@@ -92,11 +89,11 @@ public class Customer {
         this.customerType = customerType;
     }
 
-    public List<Rent> getRentHistory() {
-        return rentHistory;
-    }
-
-    public void setRentHistory(List<Rent> rentHistory) {
-        this.rentHistory = rentHistory;
-    }
+    // public List<Rent> getRentHistory() {
+    // return rentHistory;
+    // }
+    //
+    // public void setRentHistory(List<Rent> rentHistory) {
+    // this.rentHistory = rentHistory;
+    // }
 }

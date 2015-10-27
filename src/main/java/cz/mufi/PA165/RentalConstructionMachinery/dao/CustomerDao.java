@@ -17,5 +17,7 @@ public interface CustomerDao {
 
     void update(Customer customer);
 
+    Customer findById(Long id);
+
     List<Customer> findAll();
 }
