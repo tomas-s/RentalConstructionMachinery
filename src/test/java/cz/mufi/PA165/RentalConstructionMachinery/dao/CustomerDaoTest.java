@@ -22,6 +22,7 @@ import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/applicationContext-main.xml" })
+@Transactional
 public class CustomerDaoTest {
 
     @Autowired
@@ -31,7 +32,6 @@ public class CustomerDaoTest {
     private EntityManager em;
 
     @Test
-    @Transactional
     public void testCreate() {
 
         Customer created = new Customer();
@@ -42,19 +42,63 @@ public class CustomerDaoTest {
 
         customerDao.create(created);
 
-        em.flush();
-        em.clear();
+        // em.flush();
+        // em.clear();
 
         Customer found = customerDao.findById(created.getId());
 
-        System.out.println("created: " + created);
-        System.out.println("found: " + found);
+        // System.out.println("created: " + created);
+        // System.out.println("found: " + found);
 
         Assert.assertEquals(created, found);
     }
 
+    @Test
+    public void testUpdate() {
+
+        Customer created = new Customer();
+        created.setFirstName("A");
+        created.setLastName("B");
+        created.setCustomerType(CustomerType.LEGAL);
+        created.setPhoneNumber("666");
+
+        customerDao.create(created);
+
+        // em.flush();
+        // em.clear();
+
+        created.setFirstName("D");
+
+        customerDao.update(created);
+
+        Customer found = customerDao.findById(created.getId());
+
+        Assert.assertEquals(found.getFirstName(), "D");
+    }
+
+    @Test
+    public void testDelete() {
+
+        Customer created = new Customer();
+        created.setFirstName("A");
+        created.setLastName("B");
+        created.setCustomerType(CustomerType.LEGAL);
+        created.setPhoneNumber("666");
+
+        customerDao.create(created);
+
+        Customer found = customerDao.findById(created.getId());
+
+        Assert.assertEquals(created, found);
+
+        customerDao.delete(created);
+
+        found = customerDao.findById(created.getId());
+        Assert.assertNull(found);
+        Assert.assertTrue(customerDao.findAll().isEmpty());
+    }
+
     @Test(expected = Exception.class)
-    @Transactional
     public void testNullPhoneNumber() {
 
         Customer created = new Customer();
@@ -66,7 +110,6 @@ public class CustomerDaoTest {
     }
 
     @Test(expected = PersistenceException.class)
-    @Transactional
     public void testUniquePhoneNumber() {
 
         Customer created1 = new Customer();
