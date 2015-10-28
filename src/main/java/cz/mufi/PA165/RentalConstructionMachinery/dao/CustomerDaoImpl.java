@@ -15,7 +15,7 @@ import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
  *
  */
 @Repository
-public class CustomerDaoImpl implements CustomerDao {
+public class CustomerDaoImpl extends DaoGenericImpl<Customer> implements CustomerDao {
 
     @PersistenceContext
     private EntityManager em;

@@ -1,7 +1,12 @@
 /target/
+<<<<<<< HEAD
 /bin/
 /.settings/
 /.classpath
 /.directory
 /.gitignore
 /.project
+=======
+.idea/
+*.iml
+>>>>>>> 9f625cd70fbed6fd3456c7d4701367458208ec24
