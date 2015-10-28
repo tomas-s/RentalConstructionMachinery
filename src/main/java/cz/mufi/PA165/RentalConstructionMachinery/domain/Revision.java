@@ -5,6 +5,7 @@ package cz.mufi.PA165.RentalConstructionMachinery.domain;
  * @author Tomas
  *
  */
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -18,7 +19,8 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "REVISION")
-public class Revision {
+//tereticky by tu malo byt implement serializable len somto nechcel spustat ked mi nesli testy
+public class Revision{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +30,6 @@ public class Revision {
     @Column(nullable = false)
     private Date revisionDate;
 
-    @NotNull
     @ManyToOne(optional = false)
     private Machine machine;
 
@@ -64,5 +65,45 @@ public class Revision {
     public String toString() {
         return "Revision---> id: " + getId() + " ,date: " + getRevisionDate();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Revision revision = (Revision) obj;
+        if (revisionDate != revision.revisionDate)
+            return false;
+        if (revisionDate == null) {
+            if (revision.revisionDate != null)
+                return false;
+        } else if (!revisionDate.equals(revision.revisionDate))
+            return false;
+        if (machine != revision.machine)
+            return false;
+        if (machine == null) {
+            if (revision.machine != null)
+                return false;
+        } else if (!machine.equals(revision.machine))
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((machine == null) ? 0 : machine.hashCode());
+        result = prime * result + ((revisionDate == null) ? 0 : revisionDate.hashCode());
+        return result;
+        
+    }
+    
+    
+    
+    
 
 }
