@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Tue Oct 27 16:11:14 CET 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0150-a9da-635b-000002067268 
+on database directory /home/tomas/NetBeansProjects/project/RentalConstructionMachinery/target/database/message with class loader sun.misc.Launcher$AppClassLoader@1ba4806 
+Loaded from file:/home/tomas/.m2/repository/org/apache/derby/derby/10.10.2.0/derby-10.10.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_80-b15
+user.dir=/home/tomas/NetBeansProjects/project/RentalConstructionMachinery
+os.name=Linux
+os.arch=i386
+os.version=3.19.0-31-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

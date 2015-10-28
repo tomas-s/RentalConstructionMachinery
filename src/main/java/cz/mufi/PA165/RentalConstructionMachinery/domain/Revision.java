@@ -5,7 +5,7 @@ package cz.mufi.PA165.RentalConstructionMachinery.domain;
  * @author Tomas
  *
  */
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,7 +47,7 @@ public class Revision {
         return revisionDate;
     }
 
-    public void setRevisionDate(Date revisionDate) {
+    public void setRevisionDate(java.sql.Date revisionDate) {
         this.revisionDate = revisionDate;
     }
 
@@ -59,4 +59,10 @@ public class Revision {
     // this.machine = machine;
     // }
 
+    @Override
+    public String toString() {
+        return "Revision---> id: "+getId()+" ,date: "+getRevisionDate();
+    }
+
+    
 }

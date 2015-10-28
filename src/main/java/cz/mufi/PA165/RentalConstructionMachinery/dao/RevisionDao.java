@@ -7,14 +7,14 @@ import java.util.List;
 */
 public interface RevisionDao {
     
-    public List<Revision> getARevision();
+    public void create(Revision revision);
     
-    public void addRevision(Revision revision);
+    public void delete(Revision revision);
     
-    public void deleteRevision(Revision revision);
+    public Revision update(Revision revision);
     
-    public Revision updateRevision(Revision revision);
+    public Revision findById(Long id);
     
-    public Revision gedRevisionById(Revision revision);
+    public List<Revision> findAll();
 
 }
