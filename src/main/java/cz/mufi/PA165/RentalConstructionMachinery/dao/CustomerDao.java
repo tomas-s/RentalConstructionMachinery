@@ -9,15 +9,5 @@ import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
  * @author zdenek
  *
  */
-public interface CustomerDao {
-
-    void create(Customer customer);
-
-    void delete(Customer customer);
-
-    void update(Customer customer);
-
-    Customer findById(Long id);
-
-    List<Customer> findAll();
+public interface CustomerDao extends Dao<Customer> {
 }

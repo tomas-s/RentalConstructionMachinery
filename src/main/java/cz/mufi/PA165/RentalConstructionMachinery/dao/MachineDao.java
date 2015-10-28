@@ -1,5 +1,7 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dao;
 
-public interface MachineDao {
+import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
+
+public interface MachineDao extends Dao<Machine> {
 
 }

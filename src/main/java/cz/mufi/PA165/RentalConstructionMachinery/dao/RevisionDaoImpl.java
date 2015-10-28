@@ -10,41 +10,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class RevisionDaoImpl implements RevisionDao {
-    
-    @PersistenceContext
-    public EntityManager em;
+public class RevisionDaoImpl extends DaoGenericImpl<Revision> implements RevisionDao {
 
-    
-    public void create(Revision revision) {
-        System.out.println("CREATE");
-
-        // em.getTransaction().begin();
-        em.persist(revision);
-        // em.getTransaction().commit();
-
-        System.out.println("CREATE DONE");
-
-        //System.out.println(em);
-    }
-
-    public void delete(Revision revision) {
-        em.remove(revision);
-    }
-
-    public Revision update(Revision revision) {
-        return em.merge(revision);
-    }
-
-    public Revision findById(Long id) {
-        return em.find(Revision.class, id);
-    }
-
-    public List<Revision> findAll() {
-        return em.createQuery("SELECT a FROM Revision a", Revision.class).getResultList();
-    }
-
-  
-        
-    }
+}
 
