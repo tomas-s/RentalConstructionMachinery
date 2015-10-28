@@ -1,22 +1,21 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dao;
-import javax.transaction.Transactional;
-import java.util.Calendar;
-import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
-import org.testng.Assert;
-import org.junit.Test;
 
+import java.util.Calendar;
+
+import javax.transaction.Transactional;
+
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.Assert;
 
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
-import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Rent;
+import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
+import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
 
 /**
  *
@@ -25,7 +24,7 @@ import cz.mufi.PA165.RentalConstructionMachinery.domain.Rent;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/applicationContext-main.xml" })
-public class RentDaoTest extends AbstractTestNGSpringContextTests {
+public class RentDaoTest {
 
     @Autowired
     private RentDao rentDao;
@@ -39,8 +38,7 @@ public class RentDaoTest extends AbstractTestNGSpringContextTests {
     private Customer c;
     private Machine m;
 
-    private void prepareCustomerMachine()
-    {
+    private void prepareCustomerMachine() {
 
     }
 
@@ -59,7 +57,6 @@ public class RentDaoTest extends AbstractTestNGSpringContextTests {
         m.setMachineType(MachineType.LORRY);
 
         machineDao.create(m);
-
 
         Rent r = new Rent();
         r.setCustomer(c);
