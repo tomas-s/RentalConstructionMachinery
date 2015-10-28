@@ -10,21 +10,21 @@ public interface Dao<T> {
     /**
      * Insert {@code T} to the DB.
      * 
-     * @param customer
+     * @param entity
      */
     void create(T entity);
 
     /**
      * Update {@code T} from DB.
      * 
-     * @param customer
+     * @param entity
      */
     void update(T entity);
 
     /**
      * Delete {@code T} from DB.
      * 
-     * @param customer
+     * @param entity
      */
     void delete(T entity);
 
