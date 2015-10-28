@@ -1,33 +1,27 @@
 package cz.mufi.PA165.RentalConstructionMachinery.domain;
 
+import javax.persistence.*;
 import java.util.Date;
 
-//@Entity
-//@Table(name = "RENT")
+@Entity
+@Table(name = "RENT")
 public class Rent {
 
-    // @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
     private Machine machine;
+
+    @ManyToOne
     private Customer customer;
+
+    @Column(nullable = false)
     private Date rentSinceDate;
+
+    @Column(nullable = false)
     private Date rentTillDate;
-
-    public Integer getLengthOfRent() {
-
-        throw new UnsupportedOperationException();
-
-        // if (rentSinceDate == null || rentTillDate == null) {
-        // return null;
-        // }
-
-        // TODO: till - since = length
-    }
-
-    /*
-     * Generated
-     */
 
     public Long getId() {
         return id;
