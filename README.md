@@ -11,7 +11,7 @@ Tento soubor slouží jako WIKI našeho projektu.
  * src/test/java/cz/mufi/PA165/RentalConstructionMachinery/
  obsahuje testovací třídy
  
- *doc/
+ * doc/
  obsahuje dokumentaci aplikace (use-case a ERD diagram)
 
 # Popis projektu
@@ -23,10 +23,10 @@ Tento soubor slouží jako WIKI našeho projektu.
  * Rent - výpůjčka stroje zákazníkovi, slabá entina závislá na Customer a Machine.
  
 # Rozdělení práce
- 1 entita + dao + test = 1 člen týmu
+ * 1 entita + dao + test = 1 člen týmu
  * Zdeněk - Customer 
  * Tomáš  - Revision
- * Matěj  -
+ * Matěj  - Rent
  * Jakub  -
  
 # HOW TO
