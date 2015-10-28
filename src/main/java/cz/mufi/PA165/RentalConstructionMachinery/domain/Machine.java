@@ -4,15 +4,21 @@ import java.util.List;
 
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
 
-//@Entity
-//@Table(name = "MACHINE")
+import javax.persistence.*;
+
+@Entity
+@Table(name = "MACHINE")
 public class Machine {
 
-    // @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private List<Revision> revisionHistory;
+    //private List<Revision> revisionHistory;
+
+    @OneToMany(mappedBy = "machine")
     private List<Rent> rentHistory;
+
+    @Column
     private MachineType machineType;
 
     /*
@@ -27,13 +33,13 @@ public class Machine {
         this.id = id;
     }
 
-    public List<Revision> getRevisionHistory() {
-        return revisionHistory;
-    }
+    //public List<Revision> getRevisionHistory() {
+    //    return revisionHistory;
+    //}
 
-    public void setRevisionHistory(List<Revision> revisionHistory) {
-        this.revisionHistory = revisionHistory;
-    }
+    //public void setRevisionHistory(List<Revision> revisionHistory) {
+    //    this.revisionHistory = revisionHistory;
+    //}
 
     public List<Rent> getRentHistory() {
         return rentHistory;

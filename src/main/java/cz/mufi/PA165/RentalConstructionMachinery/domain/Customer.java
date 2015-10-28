@@ -1,16 +1,11 @@
 package cz.mufi.PA165.RentalConstructionMachinery.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
+
+import java.util.List;
 
 /**
  * 
@@ -42,8 +37,8 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private CustomerType customerType;
 
-    // @OneToMany(mappedBy = "CUSTOMER")
-    // private List<Rent> rentHistory;
+    @OneToMany(mappedBy = "customer")
+    private List<Rent> rentHistory;
 
     /*
      * Generated
