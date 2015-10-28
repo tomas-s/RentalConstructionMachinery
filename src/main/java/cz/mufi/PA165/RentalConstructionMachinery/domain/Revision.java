@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -27,9 +28,9 @@ public class Revision {
     @Column(nullable = false)
     private Date revisionDate;
 
-    // tymto som si neni isty treba sa este nato pozriet
-    // @ManyToOne(fetch=FetchType.LAZY)
-    // private Machine machine;
+    @NotNull
+    @ManyToOne(optional = false)
+    private Machine machine;
 
     /*
      * Generated
@@ -51,18 +52,17 @@ public class Revision {
         this.revisionDate = revisionDate;
     }
 
-    // public Machine getMachine() {
-    // return machine;
-    // }
-    //
-    // public void setMachine(Machine machine) {
-    // this.machine = machine;
-    // }
+    public Machine getMachine() {
+        return machine;
+    }
+
+    public void setMachine(Machine machine) {
+        this.machine = machine;
+    }
 
     @Override
     public String toString() {
-        return "Revision---> id: "+getId()+" ,date: "+getRevisionDate();
+        return "Revision---> id: " + getId() + " ,date: " + getRevisionDate();
     }
 
-    
 }
