@@ -12,13 +12,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Revision;
+import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
 import java.util.List;
 import org.junit.Assert;
-//import java.sql.Date;
-//import javax.persistence.EntityManager;
-//import javax.persistence.EntityManagerFactory;
-//import javax.persistence.PersistenceUnit;
 
 
 /**
@@ -34,24 +32,43 @@ public class RevisionDaoImplTest {
     @Autowired
     private RevisionDao revisionDao;
     
+
+    @Autowired
+    private MachineDao machineDao;
+    
+    Machine m;
+    Revision revision;
+    
    
     public RevisionDaoImplTest() {
     }
 
+    @Transactional
+    private void createEntity()
+    {
+        m = new Machine();
+        m.setMachineType(MachineType.LORRY);
+
+        machineDao.create(m);
+        
+        revision = new Revision();
+        revision.setRevisionDate(java.sql.Date.valueOf("2015-7-1"));
+        revision.setMachine(m);
+
+    }
+  
+    
     /**
      * Test of create method, of class RevisionDaoImpl.
      */
     @Test
     @Transactional
     public void testCreate() {
-        Revision revision = new Revision();
-        revision.setRevisionDate(java.sql.Date.valueOf("2015-7-1"));
-        
+    	createEntity();
+ 
         revisionDao.create(revision);
-        System.out.println("dao: " + revision);
         Revision found = revisionDao.findById(revision.getId());
         Assert.assertEquals(revision, found);
-        
     }
 
     /**
@@ -60,18 +77,15 @@ public class RevisionDaoImplTest {
     @Test
     @Transactional
     public void testDelete() {
-   
-        Revision revision1 = new Revision();
-        revision1.setRevisionDate(java.sql.Date.valueOf("2015-7-1"));
-                
-        revisionDao.create(revision1);
-        Revision found = revisionDao.findById(revision1.getId());
+    	createEntity();
 
-        Assert.assertEquals(revision1, found);
+        revisionDao.create(revision);
+        Revision found = revisionDao.findById(revision.getId());
+        Assert.assertEquals(revision, found);
       
-        revisionDao.delete(revision1);
+        revisionDao.delete(revision);
         
-        found = revisionDao.findById(revision1.getId());
+        found = revisionDao.findById(revision.getId());
         Assert.assertNull(found);
         Assert.assertTrue(revisionDao.findAll().isEmpty());
 
@@ -81,40 +95,41 @@ public class RevisionDaoImplTest {
      * Test of update method, of class RevisionDaoImpl.
      */
     @Test
+    @Transactional
     public void testUpdate() {
-        Revision revision = new Revision();
-        revision.setRevisionDate(java.sql.Date.valueOf("2015-7-1"));
-        
+    	createEntity();
+    	 
         revisionDao.create(revision);
+    	
         revision.setRevisionDate(java.sql.Date.valueOf("2000-7-1"));
         revisionDao.update(revision);
         Revision result = revisionDao.findById(revision.getId());
-        Assert.assertEquals(revision, result);
+        Assert.assertEquals(revision, result);        
     }
 
 
     /**
      * Test of findAll method, of class RevisionDaoImpl.
-     * funguje potom spravit assert 
      */
     @Test
     @Transactional
     public void testFindAll() {
+    	createEntity();
+    	
+    	Machine m1 = new Machine();
+        m1.setMachineType(MachineType.LORRY);
+
+        machineDao.create(m1);
+        
         Revision revision1 = new Revision();
         revision1.setRevisionDate(java.sql.Date.valueOf("2015-7-1"));
-        
-        Revision revision2 = new Revision();
-        revision2.setRevisionDate(java.sql.Date.valueOf("1999-1-5"));
-        
+        revision1.setMachine(m1);
+    	
+        revisionDao.create(revision);
         revisionDao.create(revision1);
-        revisionDao.create(revision2);
-        
-        
+ 
         List<Revision> list = revisionDao.findAll();
-        System.out.println("list:  "+list);
-        
-        
-        
+        Assert.assertEquals(list.size(), 2); 
     }
     
 }
