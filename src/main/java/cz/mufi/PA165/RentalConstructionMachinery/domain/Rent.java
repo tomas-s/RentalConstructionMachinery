@@ -1,7 +1,14 @@
 package cz.mufi.PA165.RentalConstructionMachinery.domain;
 
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * @author Matej Jakimov
@@ -14,10 +21,10 @@ public class Rent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional=false)
+    @ManyToOne(optional = false)
     private Machine machine;
 
-    @ManyToOne(optional=false)
+    @ManyToOne(optional = false)
     private Customer customer;
 
     @Column(nullable = false)
@@ -67,28 +74,45 @@ public class Rent {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Rent rent = (Rent) o;
-
-        if (id != null ? !id.equals(rent.id) : rent.id != null) return false;
-        if (machine != null ? !machine.equals(rent.machine) : rent.machine != null) return false;
-        if (customer != null ? !customer.equals(rent.customer) : rent.customer != null) return false;
-        if (rentSinceDate != null ? !rentSinceDate.equals(rent.rentSinceDate) : rent.rentSinceDate != null)
-            return false;
-        return !(rentTillDate != null ? !rentTillDate.equals(rent.rentTillDate) : rent.rentTillDate != null);
-
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((customer == null) ? 0 : customer.hashCode());
+        result = prime * result + ((machine == null) ? 0 : machine.hashCode());
+        result = prime * result + ((rentSinceDate == null) ? 0 : rentSinceDate.hashCode());
+        result = prime * result + ((rentTillDate == null) ? 0 : rentTillDate.hashCode());
+        return result;
     }
 
     @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (machine != null ? machine.hashCode() : 0);
-        result = 31 * result + (customer != null ? customer.hashCode() : 0);
-        result = 31 * result + (rentSinceDate != null ? rentSinceDate.hashCode() : 0);
-        result = 31 * result + (rentTillDate != null ? rentTillDate.hashCode() : 0);
-        return result;
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof Rent))
+            return false;
+        Rent other = (Rent) obj;
+        if (customer == null) {
+            if (other.getCustomer() != null)
+                return false;
+        } else if (!customer.equals(other.getCustomer()))
+            return false;
+        if (machine == null) {
+            if (other.getMachine() != null)
+                return false;
+        } else if (!machine.equals(other.getMachine()))
+            return false;
+        if (rentSinceDate == null) {
+            if (other.getRentSinceDate() != null)
+                return false;
+        } else if (!rentSinceDate.equals(other.getRentSinceDate()))
+            return false;
+        if (rentTillDate == null) {
+            if (other.getRentTillDate() != null)
+                return false;
+        } else if (!rentTillDate.equals(other.getRentTillDate()))
+            return false;
+        return true;
     }
 }

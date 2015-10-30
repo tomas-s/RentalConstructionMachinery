@@ -16,6 +16,11 @@ import javax.validation.constraints.NotNull;
 
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
 
+/**
+ * 
+ * @author zdenek
+ *
+ */
 @Entity
 @Table(name = "MACHINE")
 public class Machine {
@@ -79,4 +84,37 @@ public class Machine {
         this.machineType = machineType;
     }
 
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((machineType == null) ? 0 : machineType.hashCode());
+        result = prime * result + ((rentHistory == null) ? 0 : rentHistory.hashCode());
+        result = prime * result + ((revisionHistory == null) ? 0 : revisionHistory.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof Machine))
+            return false;
+        Machine other = (Machine) obj;
+        if (machineType != other.getMachineType())
+            return false;
+        if (rentHistory == null) {
+            if (other.getRentHistory() != null)
+                return false;
+        } else if (!rentHistory.equals(other.getRentHistory()))
+            return false;
+        if (revisionHistory == null) {
+            if (other.getRevisionHistory() != null)
+                return false;
+        } else if (!revisionHistory.equals(other.getRevisionHistory()))
+            return false;
+        return true;
+    }
 }

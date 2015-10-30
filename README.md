@@ -27,7 +27,7 @@ Tento soubor slouží jako WIKI našeho projektu.
  * Zdeněk - Customer 
  * Tomáš  - Revision
  * Matěj  - Rent
- * Jakub  -
+ * Jakub  - Neúčastní se
  
 # HOW TO
  * Maven + Spring + Hibernate + JPA + derby : http://www.adrianwalker.org/2010/08/maven-spring-jpa-skeleton-project.html

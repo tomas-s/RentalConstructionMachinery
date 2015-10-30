@@ -19,8 +19,9 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "REVISION")
-//tereticky by tu malo byt implement serializable len somto nechcel spustat ked mi nesli testy
-public class Revision{
+// tereticky by tu malo byt implement serializable len somto nechcel spustat ked
+// mi nesli testy
+public class Revision {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +33,7 @@ public class Revision{
 
     @NotNull
     @ManyToOne(optional = false)
-    @JoinColumn(name="machine_id")
+    @JoinColumn(name = "machine_id")
     private Machine machine;
 
     /*
@@ -74,22 +75,22 @@ public class Revision{
             return true;
         if (obj == null)
             return false;
-        if (getClass() != obj.getClass())
+        if (!(obj instanceof Revision))
             return false;
         Revision revision = (Revision) obj;
-        if (revisionDate != revision.revisionDate)
+        if (revisionDate != revision.getRevisionDate())
             return false;
         if (revisionDate == null) {
-            if (revision.revisionDate != null)
+            if (revision.getRevisionDate() != null)
                 return false;
-        } else if (!revisionDate.equals(revision.revisionDate))
+        } else if (!revisionDate.equals(revision.getRevisionDate()))
             return false;
-        if (machine != revision.machine)
+        if (machine != revision.getMachine())
             return false;
         if (machine == null) {
-            if (revision.machine != null)
+            if (revision.getMachine() != null)
                 return false;
-        } else if (!machine.equals(revision.machine))
+        } else if (!machine.equals(revision.getMachine()))
             return false;
         return true;
     }
@@ -101,10 +102,7 @@ public class Revision{
         result = prime * result + ((machine == null) ? 0 : machine.hashCode());
         result = prime * result + ((revisionDate == null) ? 0 : revisionDate.hashCode());
         return result;
-        
+
     }
-    
-      
 
 }
-
