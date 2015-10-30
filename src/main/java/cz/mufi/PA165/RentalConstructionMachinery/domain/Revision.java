@@ -12,13 +12,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "REVISION")
-public class Revision {
+//tereticky by tu malo byt implement serializable len somto nechcel spustat ked mi nesli testy
+public class Revision{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +32,7 @@ public class Revision {
 
     @NotNull
     @ManyToOne(optional = false)
+    @JoinColumn(name="machine_id")
     private Machine machine;
 
     /*
@@ -65,4 +68,43 @@ public class Revision {
         return "Revision---> id: " + getId() + " ,date: " + getRevisionDate();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Revision revision = (Revision) obj;
+        if (revisionDate != revision.revisionDate)
+            return false;
+        if (revisionDate == null) {
+            if (revision.revisionDate != null)
+                return false;
+        } else if (!revisionDate.equals(revision.revisionDate))
+            return false;
+        if (machine != revision.machine)
+            return false;
+        if (machine == null) {
+            if (revision.machine != null)
+                return false;
+        } else if (!machine.equals(revision.machine))
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((machine == null) ? 0 : machine.hashCode());
+        result = prime * result + ((revisionDate == null) ? 0 : revisionDate.hashCode());
+        return result;
+        
+    }
+    
+      
+
 }
+
