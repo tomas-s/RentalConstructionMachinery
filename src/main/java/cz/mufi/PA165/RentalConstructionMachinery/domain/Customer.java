@@ -122,25 +122,25 @@ public class Customer {
             return true;
         if (obj == null)
             return false;
-        if (getClass() != obj.getClass())
+        if (!(obj instanceof Customer))
             return false;
         Customer other = (Customer) obj;
-        if (customerType != other.customerType)
+        if (customerType != other.getCustomerType())
             return false;
         if (firstName == null) {
-            if (other.firstName != null)
+            if (other.getFirstName() != null)
                 return false;
-        } else if (!firstName.equals(other.firstName))
+        } else if (!firstName.equals(other.getFirstName()))
             return false;
         if (lastName == null) {
-            if (other.lastName != null)
+            if (other.getLastName() != null)
                 return false;
-        } else if (!lastName.equals(other.lastName))
+        } else if (!lastName.equals(other.getLastName()))
             return false;
         if (phoneNumber == null) {
-            if (other.phoneNumber != null)
+            if (other.getPhoneNumber() != null)
                 return false;
-        } else if (!phoneNumber.equals(other.phoneNumber))
+        } else if (!phoneNumber.equals(other.getPhoneNumber()))
             return false;
         return true;
     }
