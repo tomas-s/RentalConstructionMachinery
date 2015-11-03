@@ -2,24 +2,15 @@ package cz.mufi.PA165.RentalConstructionMachinery.dao;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.Calendar;
-import java.util.Date;
-
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-import org.testng.Assert;
+import org.junit.Assert;
 import org.junit.Test;
 import javax.persistence.PersistenceException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import javax.persistence.EntityManager;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
-
-
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Rent;
@@ -33,9 +24,8 @@ import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/applicationContext-main.xml" })
-@TestExecutionListeners(TransactionalTestExecutionListener.class)
 @Transactional
-public class RentDaoTest extends AbstractTestNGSpringContextTests {
+public class RentDaoTest { // extends AbstractTestNGSpringContextTests {
     @PersistenceContext
     private EntityManager em;
 
