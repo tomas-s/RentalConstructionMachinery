@@ -10,4 +10,9 @@ public class TestService implements InitializingBean {
         System.out.println("Service clas TestService initialized.");
     }
 
+    public boolean smazat()
+    {
+        return true;
+    }
+
 }

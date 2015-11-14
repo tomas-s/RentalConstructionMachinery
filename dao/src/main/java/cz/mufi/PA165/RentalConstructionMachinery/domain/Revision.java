@@ -52,7 +52,7 @@ public class Revision {
         return revisionDate;
     }
 
-    public void setRevisionDate(java.sql.Date revisionDate) {
+    public void setRevisionDate(Date revisionDate) {
         this.revisionDate = revisionDate;
     }
 
