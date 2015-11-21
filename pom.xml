@@ -19,6 +19,13 @@
         <hibernate.version>4.3.5.Final</hibernate.version>
     </properties>
 
+    <parent>
+        <groupId>io.spring.platform</groupId>
+        <artifactId>platform-bom</artifactId>
+        <version>1.1.4.RELEASE</version>
+        <relativePath/>
+    </parent>
+
     <modules>
         <module>dao</module>
         <module>service</module>

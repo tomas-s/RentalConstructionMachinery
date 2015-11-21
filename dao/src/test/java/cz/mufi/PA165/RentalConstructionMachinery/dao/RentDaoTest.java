@@ -1,21 +1,24 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dao;
+
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 import java.util.Calendar;
-import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
 import org.junit.Assert;
 import org.junit.Test;
-import javax.persistence.PersistenceException;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import javax.persistence.EntityManager;
+import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Rent;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
+
 
 /**
  *
@@ -23,7 +26,7 @@ import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/applicationContext-main.xml" })
+@ContextConfiguration(locations = { "/applicationContext-dao.xml" })
 @Transactional
 public class RentDaoTest { // extends AbstractTestNGSpringContextTests {
     @PersistenceContext
@@ -41,7 +44,8 @@ public class RentDaoTest { // extends AbstractTestNGSpringContextTests {
     private Customer c;
     private Machine m;
 
-    private void prepareCustomerMachine()
+    @Before
+    public void prepareCustomerMachine()
     {
 
         c = new Customer();
@@ -60,7 +64,6 @@ public class RentDaoTest { // extends AbstractTestNGSpringContextTests {
 
     @Test(expected = PersistenceException.class)
     public void testCreateWithoutCustomerMachine() {
-        prepareCustomerMachine();
 
         Rent r = new Rent();
         r.setRentSinceDate(Calendar.getInstance().getTime());
@@ -71,7 +74,6 @@ public class RentDaoTest { // extends AbstractTestNGSpringContextTests {
 
     @Test
     public void testCreate() {
-        prepareCustomerMachine();
 
         Rent r = new Rent();
         r.setCustomer(c);
@@ -89,7 +91,6 @@ public class RentDaoTest { // extends AbstractTestNGSpringContextTests {
     @Test
     public void testDelete()
     {
-        prepareCustomerMachine();
 
         Rent r = new Rent();
         r.setCustomer(c);
@@ -107,7 +108,6 @@ public class RentDaoTest { // extends AbstractTestNGSpringContextTests {
     @Test
     public void testUpdate()
     {
-        prepareCustomerMachine();
 
         Rent r = new Rent();
         r.setCustomer(c);

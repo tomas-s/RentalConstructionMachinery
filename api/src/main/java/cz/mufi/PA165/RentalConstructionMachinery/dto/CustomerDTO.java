@@ -1,6 +1,7 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dto;
 
 import javax.validation.constraints.NotNull;
+import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
 
 public class CustomerDTO {
 

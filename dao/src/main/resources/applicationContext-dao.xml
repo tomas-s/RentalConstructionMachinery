@@ -16,8 +16,8 @@
   http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
   http://www.springframework.org/schema/data/jpa 
   http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
-"> 
-
+">
+    <context:annotation-config />
     <!-- enable component scanning for dao classes -->
     <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.dao"/>
     
