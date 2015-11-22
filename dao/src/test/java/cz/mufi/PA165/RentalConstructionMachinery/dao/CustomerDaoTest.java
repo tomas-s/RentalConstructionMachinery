@@ -21,7 +21,7 @@ import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/applicationContext-main.xml" })
+@ContextConfiguration(locations = { "/applicationContext-dao.xml" })
 @Transactional
 public class CustomerDaoTest {
 

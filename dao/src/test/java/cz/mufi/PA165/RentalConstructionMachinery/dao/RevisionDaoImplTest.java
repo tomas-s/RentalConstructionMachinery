@@ -25,7 +25,7 @@ import org.junit.Assert;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/applicationContext-main.xml" })
+@ContextConfiguration(locations = { "/applicationContext-dao.xml" })
 
 public class RevisionDaoImplTest {
     
