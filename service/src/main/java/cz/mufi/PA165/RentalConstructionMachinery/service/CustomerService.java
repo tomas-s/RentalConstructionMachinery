@@ -10,4 +10,9 @@ public class CustomerService {
 
     @Autowired
     private CustomerDao customerDao;
+    
+    /*
+    navrhujem toto dorobit ked sa doriesi ulozenie do DB 
+    Tieto sluzby budu uz jednoducha uprava
+    */
 }

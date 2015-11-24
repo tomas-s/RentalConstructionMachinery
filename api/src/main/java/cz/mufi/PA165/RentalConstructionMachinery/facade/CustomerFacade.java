@@ -10,4 +10,8 @@ public interface CustomerFacade {
     void createNewCustomer(CustomerDTO customer);
 
     void deleteCustomer(CustomerDTO customer);
+    
+    void updateCustomer(CustomerDTO customer);
+    
+    void getAllCustomers();
 }
