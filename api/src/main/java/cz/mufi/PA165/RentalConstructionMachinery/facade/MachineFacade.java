@@ -20,9 +20,10 @@ public interface MachineFacade {
     /**
      * Remove a machine from our fleets.
      * 
-     * @param machine
+     * @param id
+     *            of machine to remove
      */
-    void removeMachine(MachineDTO machine);
+    void removeMachine(Long id);
 
     /**
      * Get lists of available machines in our fleets for required time period.

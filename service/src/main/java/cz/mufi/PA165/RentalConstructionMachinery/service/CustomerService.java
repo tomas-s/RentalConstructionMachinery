@@ -19,4 +19,8 @@ public class CustomerService {
     public void deleteCustomer(Customer customer) {
         customerDao.delete(customer);
     }
+
+    public Customer findCustomerById(long id) {
+        return customerDao.findById(id);
+    }
 }

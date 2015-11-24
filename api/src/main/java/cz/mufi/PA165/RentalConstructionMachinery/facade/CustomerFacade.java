@@ -19,9 +19,9 @@ public interface CustomerFacade {
      * 
      * @param customer
      */
-    void deleteCustomer(CustomerDTO customer);
-    
+    void deleteCustomer(Long id);
+
     void updateCustomer(CustomerDTO customer);
-    
+
     void getAllCustomers();
 }
