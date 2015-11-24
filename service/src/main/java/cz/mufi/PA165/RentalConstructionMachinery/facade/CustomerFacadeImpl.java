@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.service.CustomerService;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class CustomerFacadeImpl implements CustomerFacade {
@@ -18,12 +20,13 @@ public class CustomerFacadeImpl implements CustomerFacade {
     private DozerBeanMapper dozerBeanMapper;
 
     @Override
-    public void createNewCustomer(CustomerDTO customerDTO) {
-
+    public CustomerDTO createNewCustomer(CustomerDTO customerDTO) {
+        System.out.println("dostal som sa sem");
         Customer customer = dozerBeanMapper.map(customerDTO, Customer.class);
-
-        System.out.println("nakopiroval som: " + customer);
-        customerService.createCustomer(customer);
+        //System.out.println("nakopiroval som: " + customer);
+        Customer c ;
+         c = customerService.createCustomer(customer);
+         return dozerBeanMapper.map(c, CustomerDTO.class);
     }
 
     @Override
@@ -38,8 +41,13 @@ public class CustomerFacadeImpl implements CustomerFacade {
     }
 
     @Override
-    public void getAllCustomers() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public List<CustomerDTO> getAllCustomers() {
+        List<Customer> list = new ArrayList<>();
+               customerService.findAll();
+        List<CustomerDTO> customerDtoList = new ArrayList<>();
+        for(Customer customerTmp:list){
+            customerDtoList.add(dozerBeanMapper.map(customerTmp, CustomerDTO.class));
+        }
+        return customerDtoList;
     }
-
 }

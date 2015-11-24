@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import cz.mufi.PA165.RentalConstructionMachinery.dao.CustomerDao;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
+import java.util.List;
 
 @Service
 public class CustomerService {
@@ -12,8 +13,8 @@ public class CustomerService {
     @Autowired
     private CustomerDao customerDao;
 
-    public void createCustomer(Customer customer) {
-        customerDao.create(customer);
+    public Customer createCustomer(Customer customer) {
+        return customerDao.create(customer);
     }
 
     public void deleteCustomer(Customer customer) {
@@ -22,5 +23,9 @@ public class CustomerService {
 
     public Customer findCustomerById(long id) {
         return customerDao.findById(id);
+    }
+    
+    public List<Customer> findAll(){
+        return customerDao.findAll();
     }
 }

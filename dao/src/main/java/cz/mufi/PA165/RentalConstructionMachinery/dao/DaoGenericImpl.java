@@ -21,8 +21,9 @@ public abstract class DaoGenericImpl<T> implements Dao<T> {
         daoType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), DaoGenericImpl.class);
     }
 
-    public void create(T entity) {
+    public T create(T entity) {
         em.persist(entity);
+        return entity;
     }
 
     public void update(T entity) {

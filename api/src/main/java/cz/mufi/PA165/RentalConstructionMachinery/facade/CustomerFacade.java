@@ -1,6 +1,7 @@
 package cz.mufi.PA165.RentalConstructionMachinery.facade;
 
 import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
+import java.util.List;
 
 public interface CustomerFacade {
 
@@ -9,7 +10,7 @@ public interface CustomerFacade {
      * 
      * @param customer
      */
-    void createNewCustomer(CustomerDTO customer);
+    CustomerDTO createNewCustomer(CustomerDTO customer);
 
     /**
      * Delete a customer from our company.
@@ -20,5 +21,5 @@ public interface CustomerFacade {
 
     void updateCustomer(CustomerDTO customer);
 
-    void getAllCustomers();
+    List<CustomerDTO> getAllCustomers();
 }

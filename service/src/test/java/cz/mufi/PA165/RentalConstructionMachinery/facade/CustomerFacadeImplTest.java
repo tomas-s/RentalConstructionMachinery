@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.RentDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
+import org.junit.Assert;
 
 /**
  *
@@ -29,25 +30,29 @@ public class CustomerFacadeImplTest {
     private CustomerFacadeImpl customerFacadeImpl;
 
     /** Instance of fresh initialized object. */
-    private CustomerDTO customerDTO;
+    private CustomerDTO customer;
 
     @Before
     public void initCustomer() {
         RentDTO rent = new RentDTO();
-        List<RentDTO> rentHistory = new ArrayList<>();
+        List<RentDTO> rentHistory = new ArrayList<RentDTO>();
         rentHistory.add(rent);
-        customerDTO = new CustomerDTO();
-        customerDTO.setId(Long.getLong("1"));
-        customerDTO.setFirstName("Tom");
-        customerDTO.setLastName("xxx");
-        customerDTO.setPhoneNumber("555");
-        customerDTO.setCustomerType(CustomerType.NATURAL);
-        customerDTO.setRentHistory(rentHistory);
+        customer = new CustomerDTO();
+        customer.setId(Long.getLong("1"));
+        customer.setFirstName("Tom");
+        customer.setLastName("xxx");
+        customer.setPhoneNumber("555");
+        customer.setCustomerType(CustomerType.NATURAL);
+        customer.setRentHistory(rentHistory);
     }
 
     @Test
     public void testCreateNewCustomer() {
 
-        customerFacadeImpl.createNewCustomer(customerDTO);
+        CustomerDTO customer1 = new CustomerDTO();
+        customer1 = customerFacadeImpl.createNewCustomer(customer);
+        Assert.assertEquals(customer.getFirstName(),customer1.getFirstName());
+        Assert.assertEquals(customer.getLastName(),customer1.getLastName());
+        Assert.assertEquals(customer.getPhoneNumber(),customer1.getPhoneNumber());
     }
 }

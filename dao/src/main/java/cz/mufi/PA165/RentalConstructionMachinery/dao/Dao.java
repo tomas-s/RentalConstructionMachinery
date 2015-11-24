@@ -12,7 +12,7 @@ public interface Dao<T> {
      * 
      * @param entity
      */
-    void create(T entity);
+    T create(T entity);
 
     /**
      * Update {@code T} from DB.
