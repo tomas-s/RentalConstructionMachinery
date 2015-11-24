@@ -10,5 +10,16 @@
 
     <!-- enable component scanning for service classes -->
     <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.api"/>
+
+    <bean id="org.dozer.Mapper" class="org.dozer.DozerBeanMapper">
+        <!--
+        <property name="mappingFiles">
+            <list>
+                <value>dozer-global-configuration.xml</value>
+                <value>dozer-bean-mappings.xml</value>
+                <value>more-dozer-bean-mappings.xml</value>
+            </list>
+        </property>-->
+    </bean>
         
 </beans>

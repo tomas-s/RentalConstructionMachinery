@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import cz.mufi.PA165.RentalConstructionMachinery.dao.MachineDao;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MachineService {
 
     @Autowired
