@@ -13,6 +13,7 @@ import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -20,22 +21,21 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  *
  * @author tomas
  */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/mainApplicationContext.xml"})
-
 public class CustomerFacadeImplTest {
     
-    
-    public CustomerFacadeImplTest() {
+    @Autowired
+    CustomerFacadeImpl customerFacadeImpl;
+
+    @Test
+    public void createNewCustomer() {
+        
+        
+        customerFacadeImpl.createNewCustomer(initCustomer());
     }
     
-    
-   
-    @Test
-    public void testCreateNewCustomer() {
-        
-        System.out.println("createNewCustomer");
+    public CustomerDTO initCustomer(){
         RentDTO rent= new RentDTO();
         List<RentDTO> rentHistory = new ArrayList<>();
         rentHistory.add(rent);
@@ -45,14 +45,7 @@ public class CustomerFacadeImplTest {
         customerDTO.setLastName("xxx");
         customerDTO.setPhoneNumber("555");
         customerDTO.setCustomerType(CustomerType.NATURAL);
-        customerDTO.setRentHistory(rentHistory);    
-
-        CustomerFacadeImpl instance = new CustomerFacadeImpl();
-        instance.createNewCustomer(customerDTO);
-        
-        
+        customerDTO.setRentHistory(rentHistory);  
+        return customerDTO;
     }
-
- 
-    
 }
