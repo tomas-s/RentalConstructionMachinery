@@ -10,5 +10,7 @@
     <!-- enable component scanning for service classes -->
     <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.service"/>
     <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.facade"/>
+    <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.dao"/>
+    
         
 </beans>

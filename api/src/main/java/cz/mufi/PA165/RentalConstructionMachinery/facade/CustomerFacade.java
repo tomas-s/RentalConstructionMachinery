@@ -20,4 +20,8 @@ public interface CustomerFacade {
      * @param customer
      */
     void deleteCustomer(CustomerDTO customer);
+    
+    void updateCustomer(CustomerDTO customer);
+    
+    void getAllCustomers();
 }
