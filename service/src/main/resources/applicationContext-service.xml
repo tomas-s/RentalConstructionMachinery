@@ -12,5 +12,7 @@
     <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.facade"/>
     <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.dao"/>
     
+    <import resource="classpath:applicationContext-dao.xml" />
+    
         
 </beans>
