@@ -65,7 +65,7 @@ public class CustomerFacadeImplTest {
         Assert.assertEquals(customer2.getPhoneNumber(),customer1.getPhoneNumber());
         //neda sa testovat Assert.assertEquals(kvoli tomu ze neni inicializovany obiekt Rent)
     }
-    
+    /*
     @Test
     public void testDeleteCustomer(){
         CustomerDTO customer1 = customerFacadeImpl.createNewCustomer(customer);
@@ -78,7 +78,7 @@ public class CustomerFacadeImplTest {
         //CustomerDTO customerDeleted = customerFacadeImpl.findById(customer1.getId()); 
         //Assert.assertNull(customerDeleted);
     }
-    
+    */
     @Test
     public void testUpdateCustomer(){
         CustomerDTO customer1 = customerFacadeImpl.createNewCustomer(customer);
@@ -89,8 +89,16 @@ public class CustomerFacadeImplTest {
         Assert.assertEquals(customer2.getFirstName(),customer1.getFirstName());
         Assert.assertEquals(customer2.getLastName(),customer1.getLastName());
         Assert.assertEquals(customer2.getPhoneNumber(),customer1.getPhoneNumber());
-        
     }
     
+    @Test
+    public void testGetAllCustomers(){
+        customerFacadeImpl.createNewCustomer(customer);
+        //customerFacadeImpl.createNewCustomer(customer);
+        List<CustomerDTO> list ;
+        list = customerFacadeImpl.getAllCustomers();
+        Assert.assertEquals(1,list.size());
+        
+    }
     
 }

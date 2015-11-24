@@ -44,9 +44,10 @@ public class CustomerFacadeImpl implements CustomerFacade {
 
     @Override
     public List<CustomerDTO> getAllCustomers() {
-        List<Customer> list = new ArrayList<>();
-               customerService.findAll();
-        List<CustomerDTO> customerDtoList = new ArrayList<>();
+        System.out.println("zacinam getall");
+        List<Customer> list ;
+              list = customerService.findAll();
+        List<CustomerDTO> customerDtoList = new ArrayList<CustomerDTO>();
         for(Customer customerTmp:list){
             customerDtoList.add(dozerBeanMapper.map(customerTmp, CustomerDTO.class));
         }
