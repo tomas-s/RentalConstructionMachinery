@@ -17,9 +17,11 @@ public interface CustomerFacade {
      * 
      * @param customer
      */
-    void deleteCustomer(Long id);
+    void deleteCustomer(CustomerDTO customer);
 
     void updateCustomer(CustomerDTO customer);
 
     List<CustomerDTO> getAllCustomers();
+    
+    CustomerDTO findById(Long id);
 }

@@ -16,6 +16,11 @@ public class CustomerService {
     public Customer createCustomer(Customer customer) {
         return customerDao.create(customer);
     }
+    
+    public void updateCustomer(Customer customer){
+         customerDao.update(customer);
+    }
+    
 
     public void deleteCustomer(Customer customer) {
         customerDao.delete(customer);

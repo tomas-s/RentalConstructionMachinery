@@ -30,14 +30,16 @@ public class CustomerFacadeImpl implements CustomerFacade {
     }
 
     @Override
-    public void deleteCustomer(Long id) {
-        Customer customer = customerService.findCustomerById(id);
+    public void deleteCustomer(CustomerDTO customerDTO) {
+        Customer customer = dozerBeanMapper.map(customerDTO, Customer.class);
         customerService.deleteCustomer(customer);
     }
 
     @Override
-    public void updateCustomer(CustomerDTO customer) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void updateCustomer(CustomerDTO customerDTO) {
+        Customer customer = dozerBeanMapper.map(customerDTO, Customer.class);
+        customerService.updateCustomer(customer);
+        
     }
 
     @Override
@@ -49,5 +51,12 @@ public class CustomerFacadeImpl implements CustomerFacade {
             customerDtoList.add(dozerBeanMapper.map(customerTmp, CustomerDTO.class));
         }
         return customerDtoList;
+    }
+
+    @Override
+    public CustomerDTO findById(Long id) {
+         Customer customerTmp = customerService.findCustomerById(id);
+         return dozerBeanMapper.map(customerTmp, CustomerDTO.class);
+         
     }
 }
