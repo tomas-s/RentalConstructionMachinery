@@ -3,11 +3,8 @@ package cz.mufi.PA165.RentalConstructionMachinery.facade;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import cz.mufi.PA165.RentalConstructionMachinery.dto.MachineDTO;
 
-@Component
 public interface MachineFacade {
 
     /**
