@@ -21,12 +21,18 @@ import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.RentDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
 
+import javax.transaction.Transactional;
+
 /**
  *
  * @author tomas
  */
 @RunWith(SpringJUnit4ClassRunner.class)
+<<<<<<< HEAD
 @ContextConfiguration(locations = { "/applicationContext-service.xml" }) // /mainApplicationContext.xml
+=======
+@ContextConfiguration(locations = { "/mainApplicationContext.xml" }) // /mainApplicationContext.xml
+>>>>>>> 813a956d5e46c606d99c3aa67b466875dd81a3e9
 @Transactional
 public class CustomerFacadeImplTest {
 
