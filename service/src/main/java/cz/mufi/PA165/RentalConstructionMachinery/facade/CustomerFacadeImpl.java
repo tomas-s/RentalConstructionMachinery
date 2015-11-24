@@ -20,7 +20,6 @@ public class CustomerFacadeImpl implements CustomerFacade {
     @Override
     public void createNewCustomer(CustomerDTO customerDTO) {
 
-        // dozerBeanMapper = new DozerBeanMapper();
         Customer customer = dozerBeanMapper.map(customerDTO, Customer.class);
 
         System.out.println("nakopiroval som: " + customer);

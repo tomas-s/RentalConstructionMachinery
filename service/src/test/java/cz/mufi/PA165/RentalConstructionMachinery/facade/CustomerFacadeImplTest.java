@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cz.mufi.PA165.RentalConstructionMachinery.facade;
 
 import java.util.ArrayList;
@@ -21,18 +16,12 @@ import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.RentDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
 
-import javax.transaction.Transactional;
-
 /**
  *
  * @author tomas
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-<<<<<<< HEAD
-@ContextConfiguration(locations = { "/applicationContext-service.xml" }) // /mainApplicationContext.xml
-=======
-@ContextConfiguration(locations = { "/mainApplicationContext.xml" }) // /mainApplicationContext.xml
->>>>>>> 813a956d5e46c606d99c3aa67b466875dd81a3e9
+@ContextConfiguration(locations = { "/mainApplicationContext.xml" }) // applicationContext-service.xml
 @Transactional
 public class CustomerFacadeImplTest {
 
@@ -57,7 +46,7 @@ public class CustomerFacadeImplTest {
     }
 
     @Test
-    public void createNewCustomer() {
+    public void testCreateNewCustomer() {
 
         customerFacadeImpl.createNewCustomer(customerDTO);
     }
