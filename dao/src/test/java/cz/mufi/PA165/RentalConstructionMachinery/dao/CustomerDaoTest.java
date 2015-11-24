@@ -34,65 +34,56 @@ public class CustomerDaoTest {
     @Test
     public void testCreate() {
 
+        // Create
         Customer created = new Customer();
         created.setFirstName("A");
         created.setLastName("B");
         created.setCustomerType(CustomerType.LEGAL);
         created.setPhoneNumber("666");
-
         customerDao.create(created);
 
-        // em.flush();
-        // em.clear();
-
+        // Get
         Customer found = customerDao.findById(created.getId());
-
-        // System.out.println("created: " + created);
-        // System.out.println("found: " + found);
-
         Assert.assertEquals(created, found);
     }
 
     @Test
     public void testUpdate() {
 
+        // Create
         Customer created = new Customer();
         created.setFirstName("A");
         created.setLastName("B");
         created.setCustomerType(CustomerType.LEGAL);
         created.setPhoneNumber("666");
-
         customerDao.create(created);
 
-        // em.flush();
-        // em.clear();
-
+        // Update
         created.setFirstName("D");
-
         customerDao.update(created);
 
+        // Get to compare
         Customer found = customerDao.findById(created.getId());
-
         Assert.assertEquals(found.getFirstName(), "D");
     }
 
     @Test
     public void testDelete() {
 
+        // Create
         Customer created = new Customer();
         created.setFirstName("A");
         created.setLastName("B");
         created.setCustomerType(CustomerType.LEGAL);
         created.setPhoneNumber("666");
-
         customerDao.create(created);
 
+        // Get
         Customer found = customerDao.findById(created.getId());
-
         Assert.assertEquals(created, found);
 
+        // Delete
         customerDao.delete(created);
-
         found = customerDao.findById(created.getId());
         Assert.assertNull(found);
         Assert.assertTrue(customerDao.findAll().isEmpty());
@@ -128,5 +119,4 @@ public class CustomerDaoTest {
 
         customerDao.create(created2);
     }
-
 }
