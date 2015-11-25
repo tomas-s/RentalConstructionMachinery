@@ -34,36 +34,31 @@ public class CustomerFacadeImplTest {
 
     @Before
     public void initCustomer() {
-       // RentDTO rent = new RentDTO();
-        //List<RentDTO> rentHistory = new ArrayList<RentDTO>();
-       // rentHistory.add(rent);
+        RentDTO rent = new RentDTO();
+        List<RentDTO> rentHistory = new ArrayList<RentDTO>();
+        rentHistory.add(rent);
         customer = new CustomerDTO();
         customer.setId(Long.getLong("1"));
         customer.setFirstName("Tom");
         customer.setLastName("xxx");
         customer.setPhoneNumber("555");
         customer.setCustomerType(CustomerType.NATURAL);
-        //customer.setRentHistory(rentHistory);
+        customer.setRentHistory(rentHistory);
     }
 
     @Test
     public void testCreateNewCustomer() {
         
         CustomerDTO customer1 = customerFacadeImpl.createNewCustomer(customer);
-        Assert.assertEquals(customer.getFirstName(),customer1.getFirstName());
-        Assert.assertEquals(customer.getLastName(),customer1.getLastName());
-        Assert.assertEquals(customer.getPhoneNumber(),customer1.getPhoneNumber());
+        Assert.assertEquals(customer, customer1);
     }
     
     @Test
     public void testFindById(){
         CustomerDTO customer1 = customerFacadeImpl.createNewCustomer(customer);
         CustomerDTO customer2 = customerFacadeImpl.findById(customer1.getId());
-        Assert.assertEquals(customer2.getId(),customer1.getId());
-        Assert.assertEquals(customer2.getFirstName(),customer1.getFirstName());
-        Assert.assertEquals(customer2.getLastName(),customer1.getLastName());
-        Assert.assertEquals(customer2.getPhoneNumber(),customer1.getPhoneNumber());
-        //neda sa testovat Assert.assertEquals(kvoli tomu ze neni inicializovany obiekt Rent)
+        Assert.assertEquals(customer2, customer1);
+
     }
     /*
     @Test
@@ -85,10 +80,8 @@ public class CustomerFacadeImplTest {
         customer1.setFirstName("Peter");
         customerFacadeImpl.updateCustomer(customer1);
         CustomerDTO customer2 = customerFacadeImpl.findById(customer1.getId());
-        Assert.assertEquals(customer2.getId(),customer1.getId());
-        Assert.assertEquals(customer2.getFirstName(),customer1.getFirstName());
-        Assert.assertEquals(customer2.getLastName(),customer1.getLastName());
-        Assert.assertEquals(customer2.getPhoneNumber(),customer1.getPhoneNumber());
+        Assert.assertEquals(customer2, customer1);
+
     }
     
     @Test
@@ -100,5 +93,6 @@ public class CustomerFacadeImplTest {
         Assert.assertEquals(1,list.size());
         
     }
+    
     
 }

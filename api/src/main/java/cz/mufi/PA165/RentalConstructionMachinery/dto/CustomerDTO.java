@@ -93,9 +93,9 @@ public class CustomerDTO {
             return true;
         if (obj == null)
             return false;
-        if (!(obj instanceof Customer))
+        if (!(obj instanceof CustomerDTO))
             return false;
-        Customer other = (Customer) obj;
+        CustomerDTO other = (CustomerDTO) obj;
         if (customerType != other.getCustomerType())
             return false;
         if (firstName == null) {
@@ -118,7 +118,7 @@ public class CustomerDTO {
 
     @Override
     public String toString() {
-        return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
+        return "CustomerDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
                 + phoneNumber + ", customerType=" + customerType + "]";
     }
 
