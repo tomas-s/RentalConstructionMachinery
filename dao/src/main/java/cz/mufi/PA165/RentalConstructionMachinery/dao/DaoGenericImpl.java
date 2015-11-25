@@ -31,7 +31,7 @@ public abstract class DaoGenericImpl<T> implements Dao<T> {
     }
 
     public void delete(T entity) {
-        em.remove(entity);
+        em.remove(em.merge(entity));
     }
 
     public T findById(long id) {

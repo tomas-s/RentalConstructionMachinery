@@ -83,7 +83,7 @@ public class CustomerDaoTest {
         Assert.assertEquals(created, found);
 
         // Delete
-        customerDao.delete(created);
+        customerDao.delete(found);
         found = customerDao.findById(created.getId());
         Assert.assertNull(found);
         Assert.assertTrue(customerDao.findAll().isEmpty());

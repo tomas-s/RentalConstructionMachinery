@@ -47,10 +47,14 @@ public class CustomerFacadeImplTest {
     }
 
     @Test
-    public void testCreateNewCustomer() {
+    public void testCreateNewCustomer() {   //nejde vytvarat viac obiektov neviem preco....
         
         CustomerDTO customer1 = customerFacadeImpl.createNewCustomer(customer);
         Assert.assertEquals(customer, customer1);
+//        CustomerDTO customer2 = new CustomerDTO();
+//        customer2.setFirstName("aaa");
+//        customer2.setLastName("xxx");
+//        customerFacadeImpl.createNewCustomer(customer2);
     }
     
     @Test
@@ -60,20 +64,20 @@ public class CustomerFacadeImplTest {
         Assert.assertEquals(customer2, customer1);
 
     }
-    /*
+    
     @Test
     public void testDeleteCustomer(){
         CustomerDTO customer1 = customerFacadeImpl.createNewCustomer(customer);
         CustomerDTO customerFound = customerFacadeImpl.findById(customer1.getId());
-        Assert.assertEquals(customerFound.getId(),customer1.getId());
-        Assert.assertEquals(customerFound.getFirstName(),customer1.getFirstName());
-        Assert.assertEquals(customerFound.getLastName(),customer1.getLastName());
-        Assert.assertEquals(customerFound.getPhoneNumber(),customer1.getPhoneNumber());
+        Assert.assertEquals(customer1, customerFound);
+        
         customerFacadeImpl.deleteCustomer(customer1);
-        //CustomerDTO customerDeleted = customerFacadeImpl.findById(customer1.getId()); 
-        //Assert.assertNull(customerDeleted);
+        
+        List<CustomerDTO> listOfCustomersDto;
+        listOfCustomersDto = customerFacadeImpl.getAllCustomers();
+        Assert.assertEquals(0, listOfCustomersDto.size());
     }
-    */
+    
     @Test
     public void testUpdateCustomer(){
         CustomerDTO customer1 = customerFacadeImpl.createNewCustomer(customer);
