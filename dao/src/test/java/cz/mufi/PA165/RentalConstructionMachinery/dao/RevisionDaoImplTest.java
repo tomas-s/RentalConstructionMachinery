@@ -17,6 +17,8 @@ import cz.mufi.PA165.RentalConstructionMachinery.domain.Revision;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
 import java.util.List;
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
 
 
 /**
@@ -26,7 +28,7 @@ import org.junit.Assert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/applicationContext-dao.xml" })
-
+@Transactional
 public class RevisionDaoImplTest {
     
     @Autowired
@@ -36,15 +38,15 @@ public class RevisionDaoImplTest {
     @Autowired
     private MachineDao machineDao;
     
-    Machine m;
-    Revision revision;
+    private Machine m;
+    private Revision revision;
     
    
     public RevisionDaoImplTest() {
     }
 
-    @Transactional
-    private void createEntity()
+    @Before
+    public void createEntity()
     {
         m = new Machine();
         m.setMachineType(MachineType.LORRY);
@@ -62,10 +64,7 @@ public class RevisionDaoImplTest {
      * Test of create method, of class RevisionDaoImpl.
      */
     @Test
-    @Transactional
     public void testCreate() {
-    	createEntity();
- 
         revisionDao.create(revision);
         Revision found = revisionDao.findById(revision.getId());
         Assert.assertEquals(revision, found);
@@ -75,9 +74,7 @@ public class RevisionDaoImplTest {
      * Test of delete method, of class RevisionDaoImpl.
      */
     @Test
-    @Transactional
     public void testDelete() {
-    	createEntity();
 
         revisionDao.create(revision);
         Revision found = revisionDao.findById(revision.getId());
@@ -95,10 +92,7 @@ public class RevisionDaoImplTest {
      * Test of update method, of class RevisionDaoImpl.
      */
     @Test
-    @Transactional
     public void testUpdate() {
-    	createEntity();
-    	 
         revisionDao.create(revision);
     	
         revision.setRevisionDate(java.sql.Date.valueOf("2000-7-1"));
@@ -112,9 +106,7 @@ public class RevisionDaoImplTest {
      * Test of findAll method, of class RevisionDaoImpl.
      */
     @Test
-    @Transactional
     public void testFindAll() {
-    	createEntity();
     	
     	Machine m1 = new Machine();
         m1.setMachineType(MachineType.LORRY);
