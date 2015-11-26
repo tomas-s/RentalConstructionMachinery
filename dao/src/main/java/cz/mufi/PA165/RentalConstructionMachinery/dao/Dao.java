@@ -1,5 +1,6 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dao;
 
+import cz.mufi.PA165.RentalConstructionMachinery.exception.ProjectDataAccesException;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public interface Dao<T> {
      * 
      * @param entity
      */
-    T create(T entity);
+    T create(T entity) throws ProjectDataAccesException;
 
     /**
      * Update {@code T} from DB.

@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.core.GenericTypeResolver;
-
+import cz.mufi.PA165.RentalConstructionMachinery.exception.ProjectDataAccesException;
 /**
  * Created by jakac on 28.10.15.
  */
@@ -21,16 +21,25 @@ public abstract class DaoGenericImpl<T> implements Dao<T> {
         daoType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), DaoGenericImpl.class);
     }
 
-    public T create(T entity) {
-        em.persist(entity);
+    public T create(T entity)  {
+        if(entity==null)
+            throw new IllegalArgumentException("Obiekt ma hodnotu null.");
+            em.persist(entity);
+        
+            
+        
         return entity;
     }
 
     public void update(T entity) {
+        if(entity==null)
+            throw new IllegalArgumentException("Obiekt ma hodnotu null.");
         em.merge(entity);
     }
 
     public void delete(T entity) {
+    if(entity==null)
+            throw new IllegalArgumentException("Obiekt ma hodnotu null.");
         em.remove(em.merge(entity));
     }
 

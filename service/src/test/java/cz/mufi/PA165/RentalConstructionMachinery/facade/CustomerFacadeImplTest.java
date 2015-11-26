@@ -55,7 +55,7 @@ public class CustomerFacadeImplTest {
 //        customer2.setFirstName("aaa");
 //        customer2.setLastName("xxx");
 //        customerFacadeImpl.createNewCustomer(customer2);
-    }
+    }   
     
     @Test
     public void testFindById(){
