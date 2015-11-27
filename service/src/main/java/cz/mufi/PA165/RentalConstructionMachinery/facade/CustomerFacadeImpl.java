@@ -6,7 +6,8 @@ import org.springframework.stereotype.Component;
 
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
-import cz.mufi.PA165.RentalConstructionMachinery.service.CustomerService;
+import cz.mufi.PA165.RentalConstructionMachinery.service.BeanMappingService;
+import cz.mufi.PA165.RentalConstructionMachinery.service.CustomerServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,30 +15,29 @@ import java.util.List;
 public class CustomerFacadeImpl implements CustomerFacade {
 
     @Autowired
-    private CustomerService customerService;
+    private CustomerServiceImpl customerService;
 
     @Autowired
-    private DozerBeanMapper dozerBeanMapper;
+    private BeanMappingService mappingService;
 
     @Override
     public CustomerDTO createNewCustomer(CustomerDTO customerDTO) {
-        System.out.println("dostal som sa sem");
-        Customer customer = dozerBeanMapper.map(customerDTO, Customer.class);
+        //Customer customer = dozerBeanMapper.map(customerDTO, Customer.class);
         //System.out.println("nakopiroval som: " + customer);
         Customer c ;
-         c = customerService.createCustomer(customer);
-         return dozerBeanMapper.map(c, CustomerDTO.class);
+         c = customerService.createCustomer(mappingService.map(customerDTO, Customer.class));
+         return mappingService.map(c, CustomerDTO.class);
     }
 
     @Override
     public void deleteCustomer(CustomerDTO customerDTO) {
-        Customer customer = dozerBeanMapper.map(customerDTO, Customer.class);
+        Customer customer = mappingService.map(customerDTO, Customer.class);
         customerService.deleteCustomer(customer);
     }
 
     @Override
     public void updateCustomer(CustomerDTO customerDTO) {
-        Customer customer = dozerBeanMapper.map(customerDTO, Customer.class);
+        Customer customer = mappingService.map(customerDTO, Customer.class);
         customerService.updateCustomer(customer);
         
     }
@@ -49,7 +49,7 @@ public class CustomerFacadeImpl implements CustomerFacade {
               list = customerService.findAll();
         List<CustomerDTO> customerDtoList = new ArrayList<CustomerDTO>();
         for(Customer customerTmp:list){
-            customerDtoList.add(dozerBeanMapper.map(customerTmp, CustomerDTO.class));
+            customerDtoList.add(mappingService.map(customerTmp, CustomerDTO.class));
         }
         return customerDtoList;
     }
@@ -57,7 +57,7 @@ public class CustomerFacadeImpl implements CustomerFacade {
     @Override
     public CustomerDTO findById(Long id) {
          Customer customerTmp = customerService.findCustomerById(id);
-         return dozerBeanMapper.map(customerTmp, CustomerDTO.class);
+         return mappingService.map(customerTmp, CustomerDTO.class);
          
     }
 }
