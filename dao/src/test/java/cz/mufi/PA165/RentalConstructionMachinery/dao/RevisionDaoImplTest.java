@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Revision;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
+import java.time.Instant;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -125,6 +126,89 @@ public class RevisionDaoImplTest {
  
         List<Revision> list = revisionDao.findAll();
         Assert.assertEquals(list.size(), 2); 
+    }
+    
+    
+    @Test
+    public void testGetRevisionsBetween(){
+        Machine m1 = new Machine();
+        m1.setMachineType(MachineType.LORRY);
+
+        machineDao.create(m1);
+        
+        Revision revision1 = new Revision();
+        revision1.setRevisionDate((java.sql.Date.valueOf("2015-7-1")));
+        revision1.setMachine(m1);
+        
+        revisionDao.create(revision1);
+        List<Revision> list ;
+        Date from = (java.sql.Date.valueOf("2000-7-1"));
+        Date to = (java.sql.Date.valueOf("2015-7-1"));
+        
+        
+        list = revisionDao.getRevisionsBetween(from, to);
+        assertEquals(list.size(), 1);
+        
+    }
+    
+    @Test
+    public void testGetRevisionsForMachineBetween(){
+        
+
+        Machine machine = machineDao.create(m);
+        
+        Revision revision1 = new Revision();
+        revision1.setRevisionDate((java.sql.Date.valueOf("2013-7-1")));
+        revision1.setMachine(m);
+        
+        revisionDao.create(revision1);
+        List<Revision> list ;
+        Date from = (java.sql.Date.valueOf("2000-7-1"));
+        Date to = (java.sql.Date.valueOf("2015-7-1"));
+        
+        
+        list = revisionDao.getRevisionsForMachineBetween(machine, from, to);
+        assertEquals(list.size(), 1);
+        
+    }
+    
+    @Test
+    public void testGetRevisionsForMachineIsNotBetween(){
+        
+
+        Machine machine = machineDao.create(m);
+        
+        Revision revision1 = new Revision();
+        revision1.setRevisionDate((java.sql.Date.valueOf("1999-7-1")));
+        revision1.setMachine(m);
+        
+        revisionDao.create(revision1);
+        List<Revision> list ;
+        Date from = (java.sql.Date.valueOf("2000-7-1"));
+        Date to = (java.sql.Date.valueOf("2015-7-1"));
+        
+        
+        list = revisionDao.getRevisionsForMachineBetween(machine, from, to);
+        assertEquals(list.size(), 0);
+        
+    }
+    
+    @Test
+    public void revisionExists(){
+        Machine machine = machineDao.create(m);
+        
+        Revision revision1 = new Revision();
+        revision1.setRevisionDate((java.sql.Date.valueOf("2013-7-1")));
+        revision1.setMachine(m);
+        
+        revisionDao.create(revision1);
+        Date from = (java.sql.Date.valueOf("2000-7-1"));
+        Date to = (java.sql.Date.valueOf("2015-7-1"));
+        
+        
+        assertEquals(true, revisionDao.revisionExists(machine, from, to));
+   
+        
     }
 
 
