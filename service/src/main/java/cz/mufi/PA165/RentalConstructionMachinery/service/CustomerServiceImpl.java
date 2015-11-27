@@ -9,11 +9,12 @@ import cz.mufi.PA165.RentalConstructionMachinery.exception.ProjectDataAccesExcep
 import java.util.List;
 
 @Service
-public class CustomerServiceImpl {
+public class CustomerServiceImpl implements CustomerService{
 
     @Autowired
     private CustomerDao customerDao;
 
+    @Override
     public Customer createCustomer(Customer customer) {
         Customer c;
         try{
@@ -25,6 +26,7 @@ public class CustomerServiceImpl {
         return c;
     }
     
+    @Override
     public void updateCustomer(Customer customer){
         
         try{   
@@ -37,6 +39,7 @@ public class CustomerServiceImpl {
     }
     
 
+    @Override
     public void deleteCustomer(Customer customer) {
         try{  
             customerDao.delete(customer);
@@ -46,10 +49,12 @@ public class CustomerServiceImpl {
         }
     }
 
+    @Override
     public Customer findCustomerById(long id) {
         return customerDao.findById(id);
     }
     
+    @Override
     public List<Customer> findAll(){
         return customerDao.findAll();
     }
