@@ -48,6 +48,6 @@ Tento soubor slouží jako WIKI našeho projektu.
 	- [x] Service Layer and Facade Layer implementation
 	- [x] API layer - just DTOs and facade interfaces!
 - [x] Facade layer will use Service layer and Service layer will use DAO layer;
-- [ ] Make sure that DataAccessException or its subclass is thrown in case of any exception on a the DAO layer;
+- [x] Make sure that DataAccessException or its subclass is thrown in case of any exception on a the DAO layer;
 - [ ] Implement simple unit tests for facade layer. Just one simple test per method is enough. This is mainly so that it’s easy to verify the Facade layer works;
 - [x] There must be extensive unit tests for the service layer (particularly for your 2 business functions) and all the tests of service layer must use Mock DAO objects;

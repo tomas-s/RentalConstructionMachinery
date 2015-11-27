@@ -6,6 +6,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.core.GenericTypeResolver;
 import cz.mufi.PA165.RentalConstructionMachinery.exception.ProjectDataAccesException;
+import static org.apache.derby.impl.sql.compile.SQLParserConstants.T;
 /**
  * Created by jakac on 28.10.15.
  */
@@ -49,11 +50,24 @@ public abstract class DaoGenericImpl<T> implements Dao<T> {
     }
 
     public T findById(long id) {
-        
-        return em.find(daoType, id);
+        T obj = null;
+        try{
+        obj =  em.find(daoType, id);
+        }
+        catch(ProjectDataAccesException pe){
+            pe.getMessage();
+        }
+        return obj;
     }
 
     public List<T> findAll() {
-        return em.createQuery("SELECT t FROM " + daoType.getName() + " t ").getResultList();
+        List<T> list = null;
+        try{
+            list = em.createQuery("SELECT t FROM " + daoType.getName() + " t ").getResultList();
+        }
+        catch(ProjectDataAccesException pe){
+            pe.getMessage();
+        }
+        return list;
     }
 }
