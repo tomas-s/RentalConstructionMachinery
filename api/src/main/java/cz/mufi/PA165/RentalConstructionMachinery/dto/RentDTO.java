@@ -2,6 +2,8 @@ package cz.mufi.PA165.RentalConstructionMachinery.dto;
 
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
+
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class RentDTO {
@@ -9,9 +11,9 @@ public class RentDTO {
     @NotNull
     private Long id;
 
-    private Machine machine;
+    private MachineDTO machine;
 
-    private Customer customer;
+    private CustomerDTO customer;
 
     private Date rentSinceDate;
 
@@ -25,21 +27,6 @@ public class RentDTO {
         this.id = id;
     }
 
-<<<<<<< HEAD
-    public Machine getMachine() {
-        return machine;
-    }
-
-    public void setMachine(Machine machine) {
-        this.machine = machine;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-=======
     public MachineDTO getMachine() {
         return machine;
     }
@@ -53,7 +40,7 @@ public class RentDTO {
     }
 
     public void setCustomer(CustomerDTO customer) {
->>>>>>> mates
+
         this.customer = customer;
     }
 
