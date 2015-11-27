@@ -12,16 +12,16 @@ import org.springframework.stereotype.Repository;
 public class RentDaoImpl extends DaoGenericImpl<Rent> implements RentDao {
 
     public List<Rent> getMachineRentsBetween(Machine machine, Date from, Date to) {
-        return em.createQuery("SELECT r FROM RENT WHERE r.machine_id = ?1 " +
-                "AND r.rent_till_date > ?2 AND r.rent_since_date < ?3", Rent.class)
-                .setParameter(1, machine.getId())
+        return em.createQuery("SELECT r FROM Rent r WHERE r.machine = ?1 " +
+                "AND r.rentTillDate > ?2 AND r.rentSinceDate < ?3", Rent.class)
+                .setParameter(1, machine)
                 .setParameter(2, from)
                 .setParameter(3, to).getResultList();
     }
 
     public List<Rent> getRentsBetween(Date from, Date to) {
-        return em.createQuery("SELECT r FROM RENT WHERE " +
-                "AND r.rent_till_date > ?2 AND r.rent_since_date < ?3", Rent.class)
+        return em.createQuery("SELECT r FROM Rent r WHERE " +
+                " r.rentTillDate > ?2 AND r.rentSinceDate < ?3", Rent.class)
                 .setParameter(2, from)
                 .setParameter(3, to).getResultList();
     }
