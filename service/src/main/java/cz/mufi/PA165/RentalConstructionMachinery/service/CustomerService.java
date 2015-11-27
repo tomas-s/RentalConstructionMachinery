@@ -1,56 +1,27 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package cz.mufi.PA165.RentalConstructionMachinery.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import cz.mufi.PA165.RentalConstructionMachinery.dao.CustomerDao;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
-import cz.mufi.PA165.RentalConstructionMachinery.exception.ProjectDataAccesException;
 import java.util.List;
 
-@Service
-public class CustomerService {
-
-    @Autowired
-    private CustomerDao customerDao;
-
-    public Customer createCustomer(Customer customer) {
-        Customer c;
-        try{
-        c = customerDao.create(customer);    
-        }
-        catch(IllegalArgumentException ex){
-            throw new ProjectDataAccesException("Vyvolanie DataAccesVynimky", ex);
-        }
-        return c;
-    }
+/**
+ *
+ * @author tomas
+ */
+public interface CustomerService {
     
-    public void updateCustomer(Customer customer){
-        
-        try{   
-         customerDao.update(customer);
-        }
-        catch(IllegalArgumentException ex){
-            throw new ProjectDataAccesException("Vyvolanie DataAccesVynimky", ex);
-        }
-        
-    }
+    public Customer createCustomer(Customer customer);
     
-
-    public void deleteCustomer(Customer customer) {
-        try{  
-            customerDao.delete(customer);
-        }
-        catch(IllegalArgumentException ex){
-            throw new ProjectDataAccesException("Vyvolanie DataAccesVynimky", ex);
-        }
-    }
-
-    public Customer findCustomerById(long id) {
-        return customerDao.findById(id);
-    }
+    public void updateCustomer(Customer customer);
     
-    public List<Customer> findAll(){
-        return customerDao.findAll();
-    }
+    public void deleteCustomer(Customer customer);
+    
+    public Customer findCustomerById(long id);
+    
+    public List<Customer> findAll();
+    
 }

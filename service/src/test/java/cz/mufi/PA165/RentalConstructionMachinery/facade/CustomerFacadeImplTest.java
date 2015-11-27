@@ -22,7 +22,7 @@ import org.junit.Assert;
  * @author tomas
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/mainApplicationContext.xml" }) // applicationContext-service.xml
+@ContextConfiguration(locations = {"/mainApplicationContext.xml"})
 @Transactional
 public class CustomerFacadeImplTest {
 
