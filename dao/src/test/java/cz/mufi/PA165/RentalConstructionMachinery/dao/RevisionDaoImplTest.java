@@ -15,6 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Revision;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
+
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
@@ -123,5 +126,7 @@ public class RevisionDaoImplTest {
         List<Revision> list = revisionDao.findAll();
         Assert.assertEquals(list.size(), 2); 
     }
+
+
     
 }

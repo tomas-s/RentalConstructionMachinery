@@ -18,11 +18,11 @@ public class RevisionDaoImpl extends DaoGenericImpl<Revision> implements Revisio
     @Override
     public List<Revision> getRevisionsForMachineBetween(Machine machine, Date from, Date to) {
 
-        return em.createQuery("SELECT r FROM REVISION r WHERE r.machine_id = ?3 AND" +
+        return em.createQuery("SELECT r FROM REVISION r WHERE r.machine = ?3 AND" +
                 " r.revisionDate BETWEEN ?1 AND ?2", Revision.class)
                 .setParameter(1, from)
                 .setParameter(2, to)
-                .setParameter(3, machine.getId()).getResultList();
+                .setParameter(3, machine).getResultList();
     }
 
     @Override
