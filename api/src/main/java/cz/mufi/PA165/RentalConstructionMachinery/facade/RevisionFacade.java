@@ -1,8 +1,11 @@
 package cz.mufi.PA165.RentalConstructionMachinery.facade;
 
+import cz.mufi.PA165.RentalConstructionMachinery.dto.RevisionCreateDTO;
+import cz.mufi.PA165.RentalConstructionMachinery.dto.RevisionDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.exceptions.ServiceException;
 
 import java.util.Date;
+import java.util.List;
 
 public interface RevisionFacade {
 
@@ -11,6 +14,10 @@ public interface RevisionFacade {
      * 
      * @param revision
      */
-    void reviseMachine(Long machineId, Date revision_date) throws ServiceException;
+    void createRevision(RevisionCreateDTO revision) throws ServiceException;
+
+    void deleteRevision(long revisionId);
+
+    List<RevisionDTO> getRevisionsBetween(Date from, Date to);
 
 }

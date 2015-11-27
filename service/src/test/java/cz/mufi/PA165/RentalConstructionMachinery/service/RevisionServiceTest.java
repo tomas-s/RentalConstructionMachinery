@@ -125,4 +125,13 @@ public class RevisionServiceTest {
         revisionService.deleteRevision(r);
         verify(revisionDao).delete(r);
     }
+
+    @Test
+    public void testFindById() {
+        Revision r = getRevision();
+        long id = 123;
+        when(revisionDao.findById(id)).thenReturn(r);
+        Assert.assertEquals(revisionService.findRevisionById(id), r);
+        verify(revisionDao).findById(id);
+    }
 }

@@ -1,14 +1,18 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dto;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 
 public class RevisionDTO {
 
+    @NotNull
     private Long id;
 
+    @NotNull
     private Date revisionDate;
 
+    @NotNull
     private MachineDTO machine;
 
     /*

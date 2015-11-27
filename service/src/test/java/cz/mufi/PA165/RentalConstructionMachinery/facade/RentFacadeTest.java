@@ -10,6 +10,7 @@ import cz.mufi.PA165.RentalConstructionMachinery.service.BeanMappingService;
 import cz.mufi.PA165.RentalConstructionMachinery.service.RentService;
 import cz.mufi.PA165.RentalConstructionMachinery.service.RentServiceImpl;
 import org.dozer.DozerBeanMapper;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +23,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
@@ -82,7 +86,7 @@ public class RentFacadeTest {
     }
 
     @Test
-    public void rent()
+    public void testRent()
     {
         Rent rent = new Rent();
 
@@ -95,12 +99,38 @@ public class RentFacadeTest {
     }
 
     @Test
-    public void delete()
+    public void testDelete()
     {
         Rent rent = new Rent();
         long id = 123;
         when(rentService.findRentById(id)).thenReturn(rent);
         rentFacade.deleteRent(id);
         verify(rentService).deleteRent(rent);
+    }
+
+    @Test
+    public void testGetRentsForNextWeek() {
+        List<Rent> list = new ArrayList<>();
+        List<RentDTO> list2 = new ArrayList<>();
+
+        when(rentService.getRentsForNextWeek()).thenReturn(list);
+        when(mapperService.map(list, RentDTO.class)).thenReturn(list2);
+        Assert.assertEquals(rentFacade.getRentsForNextWeek(), list2);
+        verify(mapperService).map(list, RentDTO.class);
+        verify(rentService).getRentsForNextWeek();
+    }
+
+    @Test
+    public void testGetRentsBetween() {
+        Date d = Calendar.getInstance().getTime();
+
+        List<Rent> list = new ArrayList<>();
+        List<RentDTO> list2 = new ArrayList<>();
+
+        when(rentService.getRentsBetween(d, d)).thenReturn(list);
+        when(mapperService.map(list, RentDTO.class)).thenReturn(list2);
+        Assert.assertEquals(rentFacade.getRentsBetween(d, d), list2);
+        verify(mapperService).map(list, RentDTO.class);
+        verify(rentService).getRentsBetween(d, d);
     }
 }
