@@ -24,4 +24,6 @@ public interface RevisionService {
 
     void deleteRevision(Revision revision);
 
+    Revision findRevisionById(Long id);
+
 }

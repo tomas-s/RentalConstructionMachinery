@@ -1,6 +1,7 @@
 package cz.mufi.PA165.RentalConstructionMachinery.service;
 
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
+import cz.mufi.PA165.RentalConstructionMachinery.domain.Rent;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Revision;
 import cz.mufi.PA165.RentalConstructionMachinery.exceptions.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,10 @@ public class RevisionServiceImpl implements RevisionService {
     public void deleteRevision(Revision revision)
     {
         revisionDao.delete(revision);
+    }
+
+    public Revision findRevisionById(Long id) {
+        return revisionDao.findById(id);
     }
 
 }
