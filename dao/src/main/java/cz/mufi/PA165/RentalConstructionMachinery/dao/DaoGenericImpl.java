@@ -1,7 +1,6 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dao;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -22,28 +21,35 @@ public abstract class DaoGenericImpl<T> implements Dao<T> {
     }
 
     public T create(T entity)  {
-        if(entity==null)
-            throw new IllegalArgumentException("Obiekt ma hodnotu null.");
-            em.persist(entity);
-        
-            
-        
+        try{
+        em.persist(entity);
+        }
+        catch(ProjectDataAccesException pe){
+            pe.getMessage();
+        }
         return entity;
     }
 
     public void update(T entity) {
-        if(entity==null)
-            throw new IllegalArgumentException("Obiekt ma hodnotu null.");
+        try{
         em.merge(entity);
+        }
+        catch(ProjectDataAccesException pe){
+            pe.getMessage();
+        }
     }
 
     public void delete(T entity) {
-    if(entity==null)
-            throw new IllegalArgumentException("Obiekt ma hodnotu null.");
+    try{
         em.remove(em.merge(entity));
+        }
+        catch(ProjectDataAccesException pe){
+            pe.getMessage();
+        }
     }
 
     public T findById(long id) {
+        
         return em.find(daoType, id);
     }
 

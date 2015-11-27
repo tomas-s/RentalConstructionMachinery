@@ -15,38 +15,24 @@ public class CustomerServiceImpl implements CustomerService{
     private CustomerDao customerDao;
 
     @Override
-    public Customer createCustomer(Customer customer) {
-        Customer c;
-        try{
-        c = customerDao.create(customer);    
-        }
-        catch(IllegalArgumentException ex){
-            throw new ProjectDataAccesException("Vyvolanie DataAccesVynimky", ex);
-        }
-        return c;
+    public Customer createCustomer(Customer customer) {        
+        return customerDao.create(customer);
+
     }
     
     @Override
     public void updateCustomer(Customer customer){
         
-        try{   
          customerDao.update(customer);
-        }
-        catch(IllegalArgumentException ex){
-            throw new ProjectDataAccesException("Vyvolanie DataAccesVynimky", ex);
-        }
+        
         
     }
     
 
     @Override
-    public void deleteCustomer(Customer customer) {
-        try{  
+    public void deleteCustomer(Customer customer) { 
             customerDao.delete(customer);
-        }
-        catch(IllegalArgumentException ex){
-            throw new ProjectDataAccesException("Vyvolanie DataAccesVynimky", ex);
-        }
+        
     }
 
     @Override
