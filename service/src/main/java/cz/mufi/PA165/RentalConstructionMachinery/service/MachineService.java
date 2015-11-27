@@ -1,26 +1,55 @@
 package cz.mufi.PA165.RentalConstructionMachinery.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Date;
+import java.util.List;
 
-import cz.mufi.PA165.RentalConstructionMachinery.dao.MachineDao;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
-import org.springframework.stereotype.Service;
 
-@Service
-public class MachineService {
+/**
+ * 
+ * @author zdenek
+ *
+ */
+public interface MachineService {
 
-    @Autowired
-    private MachineDao machineDao;
+    /**
+     * Add a new machine to our offer.
+     * 
+     * @param machine
+     */
+    void addMachine(Machine machine);
 
-    public void addMachine(Machine machine) {
-        machineDao.create(machine);
-    }
+    /**
+     * Remove machine from our offer.
+     * 
+     * @param machine
+     */
+    void removeMachine(Machine machine);
 
-    public void removeMachine(Machine machine) {
-        machineDao.delete(machine);
-    }
+    /**
+     * Find machone by ID.
+     * 
+     * @param id
+     * @return
+     */
+    Machine findMachineById(long id);
 
-    public Machine findMachineById(long id) {
-        return machineDao.findById(id);
-    }
+    /**
+     * Get available machines to rent in passed time period.
+     * 
+     * @param sinceDate
+     * @param tillDate
+     * @return
+     */
+    List<Machine> getAvailableMachines(Date sinceDate, Date tillDate);
+
+    /**
+     * Get rented machones in passed time period.
+     * 
+     * @param sinceDate
+     * @param tillDate
+     * @return
+     */
+    List<Machine> getRentedMachines(Date sinceDate, Date tillDate);
+
 }
