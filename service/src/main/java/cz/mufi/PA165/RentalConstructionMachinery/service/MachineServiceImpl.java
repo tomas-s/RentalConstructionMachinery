@@ -24,18 +24,22 @@ public class MachineServiceImpl implements MachineService {
     @Autowired
     private RevisionService revisionService;
 
+    @Override
     public void addMachine(Machine machine) {
         machineDao.create(machine);
     }
 
+    @Override
     public void removeMachine(Machine machine) {
         machineDao.delete(machine);
     }
 
-    public Machine findMachineById(long id) {
+    @Override
+    public Machine findMachineById(Long id) {
         return machineDao.findById(id);
     }
 
+    @Override
     public List<Machine> getAvailableMachines(Date sinceDate, Date tillDate) {
 
         // Get all machines

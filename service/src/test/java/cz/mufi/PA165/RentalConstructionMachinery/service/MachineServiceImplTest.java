@@ -182,5 +182,4 @@ public class MachineServiceImplTest {
         assertEquals(m2, machineService.getRentedMachines(since, till).get(1));
 
     }
-
 }

@@ -32,7 +32,7 @@ public interface MachineService {
      * @param id
      * @return
      */
-    Machine findMachineById(long id);
+    Machine findMachineById(Long id);
 
     /**
      * Get available machines to rent in passed time period.
