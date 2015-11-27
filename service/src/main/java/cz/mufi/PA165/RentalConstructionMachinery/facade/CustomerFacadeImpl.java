@@ -10,8 +10,10 @@ import cz.mufi.PA165.RentalConstructionMachinery.service.BeanMappingService;
 import cz.mufi.PA165.RentalConstructionMachinery.service.CustomerServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
+@Transactional
 public class CustomerFacadeImpl implements CustomerFacade {
 
     @Autowired

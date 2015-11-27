@@ -13,7 +13,6 @@ public class RevisionDaoImpl extends DaoGenericImpl<Revision> implements Revisio
 
     @Override
     public List<Revision> getRevisionsForMachineBetween(Machine machine, Date from, Date to) {
-
         return em
                 .createQuery("SELECT r FROM Revision r WHERE r.machine = ?3 AND" + " r.revisionDate BETWEEN ?1 AND ?2",
                         Revision.class)
@@ -22,7 +21,6 @@ public class RevisionDaoImpl extends DaoGenericImpl<Revision> implements Revisio
 
     @Override
     public List<Revision> getRevisionsBetween(Date from, Date to) {
-
         return em.createQuery("SELECT r FROM Revision r WHERE " + " r.revisionDate BETWEEN ?1 AND ?2", Revision.class)
                 .setParameter(1, from).setParameter(2, to).getResultList();
     }

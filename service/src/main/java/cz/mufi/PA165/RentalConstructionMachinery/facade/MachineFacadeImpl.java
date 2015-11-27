@@ -10,8 +10,10 @@ import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.MachineDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.service.BeanMappingService;
 import cz.mufi.PA165.RentalConstructionMachinery.service.MachineServiceImpl;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
+@Transactional
 public class MachineFacadeImpl implements MachineFacade {
 
     @Autowired
