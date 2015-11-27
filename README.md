@@ -34,20 +34,20 @@ Tento soubor slouží jako WIKI našeho projektu.
  
 # MILESTONE 2
 
-- [ ] Implement Facade layer interfaces and implementations.
+- [x] Implement Facade layer interfaces and implementations.
 	- [x] Everything that should happen in the system must be available through these interfaces (create entities, deleting them etc);
-	- [ ] You must have at least 2 non-trivial business functions on Service Layer (the example project contains several of them). Service layer is not always just a  place to delegate to DAO;
-- [ ] Other points about the Facade and Service layers:
+	- [x] You must have at least 2 non-trivial business functions on Service Layer (the example project contains several of them). Service layer is not always just a  place to delegate to DAO;
+- [x] Other points about the Facade and Service layers:
 	- [x] All the classes must be wired via dependency injection. Your service objects should obtain an instance of the EntityManager that way;
 	- [x] All the facade interfaces must not reference entities, but Transfer Objects only;
 	- [x] All service interfaces must reference only entities, not Data Transfer Objects;
 	- [x] You can use Dozer framework to map entity instances to transfer objects. The mapping may be done on Facade Layer;
-	- [ ] Facade layer is used to drive transactions;
+	- [x] Facade layer is used to drive transactions;
 - [x] Change layout of your project to Multimodule Maven project (tutorial here http://maven.apache.org/guides/getting-started/index.html) Your project should have 3 separate modules:
 	- [x] DAO layer
-	- [ ] Service Layer and Facade Layer implementation
+	- [x] Service Layer and Facade Layer implementation
 	- [x] API layer - just DTOs and facade interfaces!
 - [x] Facade layer will use Service layer and Service layer will use DAO layer;
 - [ ] Make sure that DataAccessException or its subclass is thrown in case of any exception on a the DAO layer;
 - [ ] Implement simple unit tests for facade layer. Just one simple test per method is enough. This is mainly so that it’s easy to verify the Facade layer works;
-- [ ] There must be extensive unit tests for the service layer (particularly for your 2 business functions) and all the tests of service layer must use Mock DAO objects;
+- [x] There must be extensive unit tests for the service layer (particularly for your 2 business functions) and all the tests of service layer must use Mock DAO objects;
