@@ -151,12 +151,11 @@ public class RentServiceTest {
     @Test
     public void testHasConflict() {
         Machine m = getMachine();
-        Machine m2 = getMachine();
         Date time = Calendar.getInstance().getTime();
         when(rentDao.hasConflict(m, time)).thenReturn(true);
         boolean with = rentService.hasConflict(m ,time);
-        when(rentDao.hasConflict(m2, time)).thenReturn(false);
-        boolean without = rentService.hasConflict(m2, time);
+        when(rentDao.hasConflict(m, time)).thenReturn(false);
+        boolean without = rentService.hasConflict(m, time);
 
         assert with;
         assert !without;
@@ -169,5 +168,12 @@ public class RentServiceTest {
         rentService.getRentsForNextWeek();
         verify(rentDao).getRentsBetween(from.capture(), to.capture());
         assert to.getValue().getTime() - from.getValue().getTime() == 1000 * 3600 * 24 * 7;
+    }
+
+    @Test
+    public void testDelete() {
+        Rent rent = getRent();
+        rentService.deleteRent(rent);
+        verify(rentDao).delete(rent);
     }
 }

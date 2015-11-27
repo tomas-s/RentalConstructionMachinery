@@ -11,12 +11,16 @@ public class RentDTO {
     @NotNull
     private Long id;
 
+    @NotNull
     private MachineDTO machine;
 
+    @NotNull
     private CustomerDTO customer;
 
+    @NotNull
     private Date rentSinceDate;
 
+    @NotNull
     private Date rentTillDate;
 
     public Long getId() {
