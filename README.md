@@ -51,3 +51,12 @@ Tento soubor slouží jako WIKI našeho projektu.
 - [x] Make sure that DataAccessException or its subclass is thrown in case of any exception on a the DAO layer;
 - [x] Implement simple unit tests for facade layer. Just one simple test per method is enough. This is mainly so that it’s easy to verify the Facade layer works;
 - [x] There must be extensive unit tests for the service layer (particularly for your 2 business functions) and all the tests of service layer must use Mock DAO objects;
+
+# MILESTONE 3
+- [ ] tomcat 7 + module : asi Matej
+- [ ] MVC impl Template, Rent + 1 Zdenek
+- [ ] REST for Revision Tomas
+- [ ] SpringDaoException fix 
+- [ ] JavaDoc everyone everywhere !
+- [ ] MCV impl pages Customer, Machine
+- [ ] Security Matej 
