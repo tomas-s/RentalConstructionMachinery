@@ -30,9 +30,12 @@
         <module>dao</module>
         <module>service</module>
         <module>api</module>
+        <module>web</module>
     </modules>
 
+
     <dependencyManagement>
+
         <dependencies>
 
             <!--   	JUnit -->

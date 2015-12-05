@@ -29,7 +29,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author tomas
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/mainApplicationContext.xml"})
+@ContextConfiguration(locations = {"/applicationContext-service.xml"})
 @Transactional
 public class CustomerFacadeImplTestMock {
     

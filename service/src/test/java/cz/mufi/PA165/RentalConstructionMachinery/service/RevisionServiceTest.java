@@ -29,7 +29,7 @@ import java.util.List;
  * Created by jakac on 26.11.15.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/mainApplicationContext.xml"})
+@ContextConfiguration(locations = {"/applicationContext-service.xml"})
 @Transactional
 public class RevisionServiceTest {
 

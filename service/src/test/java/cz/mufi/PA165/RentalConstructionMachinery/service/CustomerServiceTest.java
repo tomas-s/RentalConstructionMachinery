@@ -27,7 +27,7 @@ import static org.mockito.Mockito.verify;
  * @author tomas
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/mainApplicationContext.xml"})
+@ContextConfiguration(locations = {"/applicationContext-service.xml"})
 @Transactional
 public class CustomerServiceTest {
     

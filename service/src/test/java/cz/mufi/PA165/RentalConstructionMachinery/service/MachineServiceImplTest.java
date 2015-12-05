@@ -32,7 +32,7 @@ import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/mainApplicationContext.xml" })
+@ContextConfiguration(locations = { "/applicationContext-service.xml" })
 @Transactional
 public class MachineServiceImplTest {
 
