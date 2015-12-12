@@ -33,9 +33,11 @@ public class LoginController
 
 
     @RequestMapping(value="/login",method=RequestMethod.POST)
-    public ModelAndView executeLogin(HttpServletRequest request, HttpServletResponse response,
-                                     @ModelAttribute("loginDTO") LoginDTO loginDTO)
+    public ModelAndView executeLogin(HttpServletRequest request, HttpServletResponse response
+                                     //@ModelAttribute("loginDTO") LoginDTO loginDTO)
+    )
     {
+        LoginDTO loginDTO = null;
         ModelAndView model= null;
         try
         {
@@ -62,5 +64,6 @@ public class LoginController
 
         return model;
     }
+
 }
 

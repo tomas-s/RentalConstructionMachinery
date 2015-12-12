@@ -1,11 +1,8 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dto;
 
-import org.springframework.stereotype.Component;
-
 /**
  * Created by Matej Jakimov on 12.12.15.
  */
-@Component
 public class LoginDTO {
 
     private String username;
