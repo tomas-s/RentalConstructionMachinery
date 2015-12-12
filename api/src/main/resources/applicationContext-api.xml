@@ -9,7 +9,8 @@
 ">
 
     <!-- enable component scanning for service classes -->
-    <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.api"/>
+    <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.dto"/>
+    <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.facade"/>
 
     <bean id="org.dozer.Mapper" class="org.dozer.DozerBeanMapper">
         <!--

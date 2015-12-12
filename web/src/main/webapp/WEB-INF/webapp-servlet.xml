@@ -18,6 +18,9 @@ xsi:schemaLocation="
         <property name="prefix" value="/WEB-INF/jsp/"></property>
         <property name="suffix" value=".jsp"></property>        
     </bean>
+
+    <import resource="classpath:applicationContext-service.xml" />
+    <import resource="classpath:applicationContext-api.xml" />
      
 <!-- 	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"> -->
 <!-- 		<property name="viewClass" 	value="org.springframework.web.servlet.view.JstlView" /> -->
