@@ -21,7 +21,21 @@
             <version>${tomcat.version}</version>
             <scope>provided</scope>
         </dependency>
+        
         <dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>javax.servlet.jsp-api</artifactId>
+        <version>2.3.1</version>
+        <scope>provided</scope>
+    </dependency>
+        
+        <dependency>
+	<groupId>taglibs</groupId>
+	<artifactId>standard</artifactId>
+	<version>1.1.2</version>
+	</dependency>
+        <dependency>
+        
             <groupId>org.apache.taglibs</groupId>
             <artifactId>taglibs-standard-spec</artifactId>
             <version>${taglibs-standard.version}</version>
@@ -74,42 +88,20 @@
     </dependencies>
   
       <build>
-        <!-- what to do when only "mvn" is run -->
-<!--         <defaultGoal>tomcat7:run</defaultGoal> -->
-<!--         <plugins> -->
-<!--             Servlet 3.0 allows no web.xml deployment descriptor -->
-<!--             <plugin> -->
-<!--                 <groupId>org.apache.maven.plugins</groupId> -->
-<!--                 <artifactId>maven-war-plugin</artifactId> -->
-<!--                 <version>2.5</version> -->
-<!--                 <configuration> -->
-<!--                     <failOnMissingWebXml>false</failOnMissingWebXml> -->
-<!--                 </configuration> -->
-<!--             </plugin> -->
             
             
-            <plugins>
+     <plugins>
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
         <!-- No version needed here, it is already defined in the multi-module root pom -->
         <configuration>
           <!-- This is where our specific configuration goes -->
-          <path>/rental</path> 
+          <path>/PA165</path> 
         </configuration>
       </plugin>
     </plugins>
-            
-            
-<!--              embedded tomcat -->
-<!--             <plugin> -->
-<!--                 <groupId>org.apache.tomcat.maven</groupId> -->
-<!--                 <artifactId>tomcat7-maven-plugin</artifactId> -->
-<!--                 <version>2.2</version> -->
-<!--                 <configuration> -->
-<!--                     <path>/eshop</path> -->
-<!--                 </configuration> -->
-<!--             </plugin> -->
-<!--         </plugins> -->
+
     </build>
 </project>

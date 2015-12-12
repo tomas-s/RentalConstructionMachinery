@@ -1,9 +1,12 @@
-<%@ include file="/WEB-INF/jsp/include.jsp" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" trimDirectiveWhitespaces="false" session="false" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 
-<html>
-  <head><title>Hello :: Spring Application</title></head>
-  <body>
+<my:template title="Categories">
+<jsp:attribute name="body">
+
+
     <h1>Hello - Spring Application</h1>
-    <p>Greetings, it is now <c:out value="${now}"/></p>
-  </body>
-</html>
+    <p>Greetings, it is </p>
+
+</jsp:attribute>
+</my:template>
