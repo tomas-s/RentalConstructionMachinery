@@ -38,6 +38,9 @@ public class CustomerDaoTest {
         Customer created = new Customer();
         created.setFirstName("A");
         created.setLastName("B");
+        created.setUsername("user");
+        created.setPassword("");
+        created.setRole("ROLE");
         created.setCustomerType(CustomerType.LEGAL);
         created.setPhoneNumber("666");
         customerDao.create(created);
@@ -54,6 +57,9 @@ public class CustomerDaoTest {
         Customer created = new Customer();
         created.setFirstName("A");
         created.setLastName("B");
+        created.setUsername("user");
+        created.setPassword("");
+        created.setRole("ROLE");
         created.setCustomerType(CustomerType.LEGAL);
         created.setPhoneNumber("666");
         customerDao.create(created);
@@ -74,6 +80,9 @@ public class CustomerDaoTest {
         Customer created = new Customer();
         created.setFirstName("A");
         created.setLastName("B");
+        created.setUsername("user");
+        created.setPassword("");
+        created.setRole("ROLE");
         created.setCustomerType(CustomerType.LEGAL);
         created.setPhoneNumber("666");
         customerDao.create(created);
@@ -90,7 +99,7 @@ public class CustomerDaoTest {
     }
 
     @Test(expected = Exception.class)
-    public void testNullPhoneNumber() {
+    public void testNullNumber() {
 
         Customer created = new Customer();
         created.setFirstName("A");
@@ -106,6 +115,9 @@ public class CustomerDaoTest {
         Customer created1 = new Customer();
         created1.setFirstName("A");
         created1.setLastName("B");
+        created1.setUsername("user");
+        created1.setPassword("");
+        created1.setRole("ROLE");
         created1.setCustomerType(CustomerType.LEGAL);
         created1.setPhoneNumber("666");
 
@@ -114,6 +126,9 @@ public class CustomerDaoTest {
         Customer created2 = new Customer();
         created2.setFirstName("C");
         created2.setLastName("D");
+        created2.setUsername("user");
+        created2.setPassword("");
+        created2.setRole("ROLE");
         created2.setCustomerType(CustomerType.LEGAL);
         created2.setPhoneNumber("666");
 

@@ -54,6 +54,9 @@ public class RentDaoTest { // extends AbstractTestNGSpringContextTests {
         c = new Customer();
         c.setFirstName("A");
         c.setLastName("B");
+        c.setUsername("user");
+        c.setRole("ROLE");
+        c.setPassword("");
         c.setPhoneNumber("0");
         c.setCustomerType(CustomerType.LEGAL);
 

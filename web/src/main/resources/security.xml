@@ -18,7 +18,7 @@
         <form-login login-page="/login" authentication-failure-url="/login/failure"
                     username-parameter="username"
                     password-parameter="password"
-                    default-target-url="/home" />
+                    default-target-url="/hello" />
         <logout invalidate-session="true" logout-success-url="/login/"
                 logout-url="/j_spring_security_logout" />
         <access-denied-handler error-page="/login/failure"/>

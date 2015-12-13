@@ -6,6 +6,7 @@
 
 
     <h1>Hello - ${pageContext.request.userPrincipal.name}</h1>
+    <h2><a href="${baseUrl}/j_spring_security_logout">Logout</a></h2>
 
 </jsp:attribute>
 </my:template>

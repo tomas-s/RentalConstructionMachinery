@@ -28,7 +28,6 @@ public class LoginFacadeImpl implements LoginFacade {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
-            System.out.println("dotaz na username");
             UserDetails ud = mappingService.map(customerService.getCustomerByUsername(username), CustomerDTO.class);
             System.out.println(ud.toString());
             return ud;

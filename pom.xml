@@ -32,7 +32,6 @@
         <module>service</module>
         <module>api</module>
         <module>web</module>
-        <module>neco</module>
     </modules>
 
     <dependencyManagement>
