@@ -12,20 +12,32 @@
         </authentication-provider>
     </authentication-manager>
 
+    <global-method-security pre-post-annotations="enabled" />
 
-    <http auto-config="true">
-        <intercept-url pattern="/customer/**" access="ROLE_ADMIN" />
-        <form-login login-page="/login" authentication-failure-url="/login/failure"
-                    username-parameter="username"
-                    password-parameter="password"
-                    default-target-url="/hello" />
-        <logout invalidate-session="true" logout-success-url="/login/"
-                logout-url="/j_spring_security_logout" />
-        <access-denied-handler error-page="/login/failure"/>
-        <session-management invalid-session-url="/login/">
+    <http auto-config="true" use-expressions="true">
+        <intercept-url pattern="/login/**" access="permitAll"/>
+        <intercept-url pattern="/**" access="authenticated"/>
+        <intercept-url pattern="/logout" access="permitAll"/>
+
+        <form-login
+                login-page="/login"
+                authentication-failure-url="/login/failure"
+                username-parameter="username"
+                password-parameter="password"
+                default-target-url="/hello" />
+
+        <logout
+                invalidate-session="true"
+                logout-success-url="/login/"
+                logout-url="/logout" />
+
+        <access-denied-handler error-page="/denied"/>
+        <session-management invalid-session-url="/login">
             <concurrency-control max-sessions="1"
-                                 expired-url="/login/" />
+                                 expired-url="/login" />
         </session-management>
+
+        <csrf />
     </http>
 
 

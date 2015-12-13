@@ -18,7 +18,7 @@ import cz.mufi.PA165.RentalConstructionMachinery.facade.LoginFacade;
  * @author Matej Jakimov
  */
 @Controller
-@RequestMapping("login")
+@RequestMapping("/login")
 public class LoginController
 {
     @Autowired
@@ -39,6 +39,11 @@ public class LoginController
         ModelAndView model = login(request, response);
         request.setAttribute("message", "Wrong credentials");
         return model;
+    }
+
+    @RequestMapping(value = "/denied")
+    public String denied(){
+        return "login/denied";
     }
 
 }

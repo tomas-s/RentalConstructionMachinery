@@ -8,6 +8,7 @@ package cz.mufi.PA165.RentalConstructionMachinery.facade;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
+import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerTypeDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.service.BeanMappingService;
 import cz.mufi.PA165.RentalConstructionMachinery.service.CustomerServiceImpl;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class CustomerFacadeImplTestMock {
         customerDto.setFirstName("A");
         customerDto.setLastName("B");
         customerDto.setPhoneNumber("0");
-        customerDto.setCustomerType(CustomerType.LEGAL);
+        customerDto.setCustomerType(CustomerTypeDTO.LEGAL);
         MockitoAnnotations.initMocks(this);
     }
     

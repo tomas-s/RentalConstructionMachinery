@@ -6,10 +6,9 @@ import cz.mufi.PA165.RentalConstructionMachinery.dto.MachineDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.RentCreateDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.RentDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
+import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerTypeDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.service.BeanMappingService;
 import cz.mufi.PA165.RentalConstructionMachinery.service.RentService;
-import cz.mufi.PA165.RentalConstructionMachinery.service.RentServiceImpl;
-import org.dozer.DozerBeanMapper;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,8 +16,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -28,12 +25,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
- * Created by jakac on 26.11.15.
+ * Created by Matej Jakimov on 26.11.15.
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -69,7 +65,7 @@ public class RentFacadeTest {
         c.setFirstName("A");
         c.setLastName("B");
         c.setPhoneNumber("0");
-        c.setCustomerType(CustomerType.LEGAL);
+        c.setCustomerType(CustomerTypeDTO.LEGAL);
 
         return c;
     }
