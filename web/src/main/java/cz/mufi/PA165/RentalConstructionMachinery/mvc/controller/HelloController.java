@@ -27,6 +27,12 @@ public class HelloController implements InitializingBean {
         logger.info("Returning hello view with " + now);
         request.setAttribute("baseUrl", request.getContextPath());
 
+        logger.info("CCCCCCCCCCCCCCCCCCCCCCC");
+        logger.info("CCCCCCCCCCCCCCCCCCCCCCC");
+        logger.info("CCCCCCCCCCCCCCCCCCCCCCC");
+        logger.info("CCCCCCCCCCCCCCCCCCCCCCC");
+        logger.info("CCCCCCCCCCCCCCCCCCCCCCC");
+
         return new ModelAndView("hello", "now", now);
     }
 
