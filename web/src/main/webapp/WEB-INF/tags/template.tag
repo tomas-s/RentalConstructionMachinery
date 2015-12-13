@@ -1,29 +1,39 @@
-<%@ taglib tagdir="/WEB-INF/tags" prefix="h" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%-- <%@ taglib tagdir="/WEB-INF/tags" prefix="h" %> --%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> --%>
 <%@ attribute name="title" required="false" %>
 <%@ attribute name="head" fragment="true" %>
 <%@ attribute name="body" fragment="true" required="true" %>
 
+<%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
-<head><title>Hello</title></head>
+<head><title>Rental Construction Machinery</title></head>
 <body bgcolor="white">
-<h2>my name is Duke. What’s yours?</h2>
-<%--  <c:set var="greeting" value="Hello" /> --%>
-<%--  <h2>${greeting}, my name is Duke. What’s yours?</h2> --%>
-<!-- <form method="get"> -->
-<!-- <input type="text" name="username" size="25"> -->
-<!-- <p></p> -->
-<!-- <input type="submit" value="Submit"> -->
-<!-- <input type="reset" value="Reset"> -->
-<!-- </form> -->
+   <h2>Rental Construction Machinery</h2>
+   <div>
 
-<%-- <c:if test="${fn:length(param.username) > 0}" > --%>
-<%--     <h:response greeting="${greeting}" --%>
-<%--         name="${param.username}"/></c:if> --%>
 
-<!-- page body -->
-<jsp:invoke fragment="body"/>
+   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+     <ul class="nav navbar-nav">
+           <!-- CUSTOMER -->
+           <li >
+<%--            class="<cc:if test="${section == 'flights'}">active</cc:if>" --%>
+<!-- <fmt:message key="menu.customer"/> -->
+              <a href="<c:url value='/customer/list'/>"><fmt:message key="menu.customer"/>customer</a></li>
+           <!-- MACHINE -->
+           <li><a href="<c:url value='/machine/list'/>">machine</a></li>
+           <!-- HELLO -->
+           <li><a href="<c:url value='/hello'/>">hello</a></li>
+     </ul>
+   </div>
+
+   <!-- PAGE BODY -->
+   <jsp:invoke fragment="body"/>
+   
+   </div>
 
 </body>
 </html>
