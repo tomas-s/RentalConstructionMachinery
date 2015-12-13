@@ -29,10 +29,21 @@ public class UsersInitializer extends ContextLoaderListener {
         admin.setLastName("adminovic");
         admin.setUsername("admin");
         admin.setPassword(encoder.encodePassword("admin", null));
-        admin.setRole("admin");
+        admin.setRole("ADMIN");
         admin.setPhoneNumber("666");
         customerFacade.createNewCustomer(admin);
-        System.out.println("Imported admin");
+        System.out.println("Imported user admin, password admin");
+
+        CustomerDTO user = new CustomerDTO();
+        user.setCustomerType(CustomerType.LEGAL);
+        user.setFirstName("user");
+        user.setLastName("userovic");
+        user.setUsername("user");
+        user.setPassword(encoder.encodePassword("user", null));
+        user.setRole("USER");
+        user.setPhoneNumber("777");
+        customerFacade.createNewCustomer(user);
+        System.out.println("Imported user user, password user");
     }
 
 }
