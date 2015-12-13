@@ -72,11 +72,7 @@ public class CustomerController {
             return "redirect:" + uriBuilder.path("/customer/").toUriString();
         }
 
-<<<<<<< HEAD
         return "customer/detail";
-=======
-        return new ModelAndView("customer/customer", "message", message);
->>>>>>> 09649bb6a0aaa64d88c47ba0a7e0595ee7aac56c
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
