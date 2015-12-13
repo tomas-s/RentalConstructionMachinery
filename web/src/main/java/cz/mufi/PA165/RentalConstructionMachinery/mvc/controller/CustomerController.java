@@ -1,4 +1,4 @@
-package cz.mufi.PA165.RentalConstructionMachinery.controller;
+package cz.mufi.PA165.RentalConstructionMachinery.mvc.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/customer")
 public class CustomerController implements InitializingBean {
 
     protected final Log logger = LogFactory.getLog(getClass());
 
-    @RequestMapping("/customer")
+    @RequestMapping("/")
     public ModelAndView helloWorld() {
 
         String message = "<b>CUSTOMER<b>";

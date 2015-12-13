@@ -8,7 +8,7 @@ import org.springframework.core.GenericTypeResolver;
 import cz.mufi.PA165.RentalConstructionMachinery.exception.ProjectDataAccesException;
 import static org.apache.derby.impl.sql.compile.SQLParserConstants.T;
 /**
- * Created by jakac on 28.10.15.
+ * Created by Matej Jakimov on 28.10.15.
  */
 public abstract class DaoGenericImpl<T> implements Dao<T> {
 

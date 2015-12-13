@@ -5,8 +5,7 @@
 <jsp:attribute name="body">
 
 
-    <h1>Hello - Spring Application</h1>
-    <p>Greetings, it is </p>
+    <h1>Hello - ${pageContext.request.userPrincipal.name}</h1>
 
 </jsp:attribute>
 </my:template>

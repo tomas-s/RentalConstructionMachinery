@@ -14,14 +14,16 @@ import java.util.List;
  */
 public interface CustomerService {
     
-    public Customer createCustomer(Customer customer);
+    Customer createCustomer(Customer customer);
     
-    public void updateCustomer(Customer customer);
+    void updateCustomer(Customer customer);
     
-    public void deleteCustomer(Customer customer);
+    void deleteCustomer(Customer customer);
     
-    public Customer findCustomerById(long id);
+    Customer findCustomerById(long id);
     
-    public List<Customer> findAll();
+    List<Customer> findAll();
+
+    Customer getCustomerByUsername(String username);
     
 }

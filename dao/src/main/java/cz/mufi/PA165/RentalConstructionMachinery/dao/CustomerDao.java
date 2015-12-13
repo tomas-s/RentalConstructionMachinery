@@ -8,4 +8,6 @@ import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
  *
  */
 public interface CustomerDao extends Dao<Customer> {
+
+    Customer getCustomerByUsername(String username);
 }

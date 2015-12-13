@@ -31,6 +31,18 @@ public class Customer {
 
     @NotNull
     @Column(nullable = false)
+    private String username;
+
+    @NotNull
+    @Column(nullable = false)
+    private String password;
+
+    @NotNull
+    @Column(nullable = false)
+    private String role;
+
+    @NotNull
+    @Column(nullable = false)
     private String firstName;
 
     @NotNull
@@ -59,6 +71,30 @@ public class Customer {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getFirstName() {
@@ -106,48 +142,36 @@ public class Customer {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Customer customer = (Customer) o;
+
+        if (id != null ? !id.equals(customer.id) : customer.id != null) return false;
+        if (username != null ? !username.equals(customer.username) : customer.username != null) return false;
+        if (password != null ? !password.equals(customer.password) : customer.password != null) return false;
+        if (role != null ? !role.equals(customer.role) : customer.role != null) return false;
+        if (firstName != null ? !firstName.equals(customer.firstName) : customer.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(customer.lastName) : customer.lastName != null) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(customer.phoneNumber) : customer.phoneNumber != null)
+            return false;
+        if (customerType != customer.customerType) return false;
+        return !(rentHistory != null ? !rentHistory.equals(customer.rentHistory) : customer.rentHistory != null);
+
+    }
+
+    @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((customerType == null) ? 0 : customerType.hashCode());
-        result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-        result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-        result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
+        result = 31 * result + (customerType != null ? customerType.hashCode() : 0);
+        result = 31 * result + (rentHistory != null ? rentHistory.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof Customer))
-            return false;
-        Customer other = (Customer) obj;
-        if (customerType != other.getCustomerType())
-            return false;
-        if (firstName == null) {
-            if (other.getFirstName() != null)
-                return false;
-        } else if (!firstName.equals(other.getFirstName()))
-            return false;
-        if (lastName == null) {
-            if (other.getLastName() != null)
-                return false;
-        } else if (!lastName.equals(other.getLastName()))
-            return false;
-        if (phoneNumber == null) {
-            if (other.getPhoneNumber() != null)
-                return false;
-        } else if (!phoneNumber.equals(other.getPhoneNumber()))
-            return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
-                + phoneNumber + ", customerType=" + customerType + "]";
     }
 }

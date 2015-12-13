@@ -3,16 +3,38 @@ package cz.mufi.PA165.RentalConstructionMachinery.dto;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
 import javax.validation.constraints.NotNull;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerDTO {
+public class CustomerDTO implements UserDetails {
+
+    public class Role implements GrantedAuthority {
+        private String role;
+
+        public Role(String role) {
+            this.role = role;
+        }
+
+        public String getAuthority() {
+            return role;
+        }
+    }
 
     private Long id;
 
     private String firstName;
 
     private String lastName;
+
+    private String username;
+
+    private String password;
+
+    private String role;
+
 
     private String phoneNumber;
 
@@ -46,6 +68,32 @@ public class CustomerDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getPhoneNumber() {
@@ -118,9 +166,43 @@ public class CustomerDTO {
 
     @Override
     public String toString() {
-        return "CustomerDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
-                + phoneNumber + ", customerType=" + customerType + "]";
+        return "CustomerDTO{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", customerType=" + customerType +
+                ", rentHistory=" + rentHistory +
+                '}';
     }
 
+    @Override
+    public List<Role> getAuthorities(){
+        List<Role> role = new ArrayList<>();
+        role.add(new Role(this.role));
+        return role;
+    }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

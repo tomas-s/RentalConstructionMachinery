@@ -1,4 +1,4 @@
-package cz.mufi.PA165.RentalConstructionMachinery.controller;
+package cz.mufi.PA165.RentalConstructionMachinery.mvc.controller;
 
 import java.io.IOException;
 import java.util.Date;
