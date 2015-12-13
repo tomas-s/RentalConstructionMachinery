@@ -53,10 +53,11 @@ Tento soubor slouží jako WIKI našeho projektu.
 - [x] There must be extensive unit tests for the service layer (particularly for your 2 business functions) and all the tests of service layer must use Mock DAO objects;
 
 # MILESTONE 3
-- [ ] tomcat 7 + module : asi Matej
+- [x] tomcat 7 + module : asi Matej
 - [ ] MVC impl Template, Rent + 1 Zdenek
 - [ ] REST for Revision Tomas
 - [ ] SpringDaoException fix 
 - [ ] JavaDoc everyone everywhere !
-- [ ] MCV impl pages Customer, Machine
-- [ ] Security Matej 
+- [x] MCV impl pages Customer
+- [ ] MCV impl pages Machine
+- [x] Security Matej 
