@@ -12,6 +12,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Matej Jakimov
+ */
 @Service
 public class RentServiceImpl implements RentService {
 

@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by jakac on 27.11.15.
+ * Created by Matej Jakimov on 27.11.15.
  */
 public interface RentService {
 

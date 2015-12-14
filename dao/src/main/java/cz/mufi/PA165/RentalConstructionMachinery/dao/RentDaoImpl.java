@@ -7,7 +7,9 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
-
+/**
+ * @author Matej Jakimov
+ */
 @Repository
 public class RentDaoImpl extends DaoGenericImpl<Rent> implements RentDao {
 

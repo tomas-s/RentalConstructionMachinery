@@ -70,11 +70,26 @@ public class CustomerServiceTest {
 
     @Test
     public void testFindById() {
-//        Customer customer = getCustomer();
         long id = 9;
         when(customerDao.findById(id)).thenReturn(c);
         assertEquals(customerService.findCustomerById(id), c);
         verify(customerDao).findById(id);
+    }
+
+    @Test
+    public void testFindByUsername() {
+        String username = "username";
+        when(customerDao.getCustomerByUsername(username)).thenReturn(c);
+        assertEquals(customerService.getCustomerByUsername(username), c);
+        verify(customerDao).getCustomerByUsername(username);
+    }
+
+    @Test
+    public void testFindByUsernameNull() {
+        String username = "username";
+        when(customerDao.getCustomerByUsername(username)).thenReturn(null);
+        assertNull(customerService.getCustomerByUsername(username));
+        verify(customerDao).getCustomerByUsername(username);
     }
     
     @Test

@@ -47,30 +47,27 @@ public class CustomerController {
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public String delete(@PathVariable long id, UriComponentsBuilder uriBuilder,
                          RedirectAttributes redirectAttributes) {
-        CustomerDTO customer;
-        try {
-            customer = customerFacade.findById(id);
-            customerFacade.deleteCustomer(customer);
-        } catch(Exception e) {
-            logger.error(e);
+        CustomerDTO customer = customerFacade.findById(id);
+
+        if(customer == null) {
             redirectAttributes.addFlashAttribute("alert_error", "Error during deleting customer");
-            return "redirect:" + uriBuilder.path("/customer/").toUriString();
+            return "redirect:" + uriBuilder.path("customer").toUriString();
         }
+        customerFacade.deleteCustomer(customer);
         redirectAttributes.addFlashAttribute("alert_success", "Customer \"" + customer.getUsername() + "\" was deleted.");
-        return "redirect:" + uriBuilder.path("/customer/").toUriString();
+        //return "redirect:" + uriBuilder.path("customer").toUriString();
+        return "redirect:/customer";
     }
 
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
     public String detail(@PathVariable long id, Model model, RedirectAttributes redirectAttributes,
                          UriComponentsBuilder uriBuilder) {
-        try {
-            CustomerDTO customer = customerFacade.findById(id);
-            model.addAttribute("customer", customer);
-        } catch(Exception e) {
-            logger.error(e);
+        CustomerDTO customer = customerFacade.findById(id);
+        if(customer == null) {
             redirectAttributes.addFlashAttribute("alert_error", "Cannot find user");
-            return "redirect:" + uriBuilder.path("/customer/").toUriString();
+            return "redirect:" + uriBuilder.path("customer").toUriString();
         }
+        model.addAttribute("customer", customer);
 
         return "customer/detail";
     }
@@ -78,15 +75,15 @@ public class CustomerController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String edit(@PathVariable long id, Model model, RedirectAttributes redirectAttributes,
                        UriComponentsBuilder uriBuilder) {
-        try {
-            CustomerDTO customer = customerFacade.findById(id);
-            model.addAttribute("customer", customer);
-            model.addAttribute("types", CustomerTypeDTO.values());
-        } catch(Exception e){
-            logger.error(e);
+        CustomerDTO customer = customerFacade.findById(id);
+
+        if(customer == null){
             redirectAttributes.addFlashAttribute("alert_error", "Cannot find user");
-            return "redirect:" + uriBuilder.path("/customer/").toUriString();
+            return "redirect:" + uriBuilder.path("customer").toUriString();
         }
+
+        model.addAttribute("customer", customer);
+        model.addAttribute("types", CustomerTypeDTO.values());
 
         return "customer/edit";
     }
@@ -95,13 +92,11 @@ public class CustomerController {
     public String editPost(@Valid @ModelAttribute("customer") CustomerDTO customer,
                            BindingResult bindingResult, Model model,
                            RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
-        CustomerDTO oldCustomer;
-        try {
-            oldCustomer = customerFacade.findById(customer.getId());
-        } catch(Exception e){
-            logger.error(e);
+        CustomerDTO oldCustomer = customerFacade.findById(customer.getId());
+
+        if(oldCustomer == null) {
             redirectAttributes.addFlashAttribute("alert_error", "Cannot find customer");
-            return "redirect:" + uriBuilder.path("/customer/").toUriString();
+            return "redirect:" + uriBuilder.path("customer").toUriString();
         }
 
         if (bindingResult.hasErrors()) {
@@ -109,7 +104,7 @@ public class CustomerController {
             for (FieldError fe : bindingResult.getFieldErrors()) {
                 model.addAttribute(fe.getField() + "_error", true);
             }
-            return "/customer/edit/" + customer.getId();
+            return "customer/edit/" + customer.getId();
         }
 
         try {
@@ -121,12 +116,12 @@ public class CustomerController {
         } catch(Exception e) {
             logger.error(e);
             redirectAttributes.addFlashAttribute("alert_error", "Error during update");
-            return "/customer/edit/" + customer.getId();
+            return "customer/edit/" + customer.getId();
         }
 
         redirectAttributes.addFlashAttribute("alert_success", "Customer " + customer.getUsername() + " was updated");
 
-        return "redirect:" + uriBuilder.path("/customer/").toUriString();
+        return "redirect:" + uriBuilder.path("customer").toUriString();
     }
 
 

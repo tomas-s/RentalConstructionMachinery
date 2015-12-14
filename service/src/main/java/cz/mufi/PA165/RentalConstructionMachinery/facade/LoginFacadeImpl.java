@@ -1,5 +1,6 @@
 package cz.mufi.PA165.RentalConstructionMachinery.facade;
 
+import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.service.BeanMappingService;
 import cz.mufi.PA165.RentalConstructionMachinery.service.CustomerService;
@@ -28,8 +29,12 @@ public class LoginFacadeImpl implements LoginFacade {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
-            UserDetails ud = mappingService.map(customerService.getCustomerByUsername(username), CustomerDTO.class);
-            System.out.println(ud.toString());
+            Customer customer = customerService.getCustomerByUsername(username);
+            if(customer == null)
+            {
+                throw new UsernameNotFoundException("User " + username + " not found");
+            }
+            UserDetails ud = mappingService.map(customer, CustomerDTO.class);
             return ud;
         } catch(Exception e) {
             throw new UsernameNotFoundException("User " + username + " not found");
