@@ -26,7 +26,7 @@ import org.springframework.stereotype.Component;
 @Path("/")
 public class CustomerRestControler {
 
-    @Autowired RevisionCreateDTO revisionCreateDTO;
+    @Autowired RevisionCreateDTO revisionCreateDTO; //tuto to zhavaruje ono si treba pozriet ako prepojit Jersey(rest Framework) zo springom
     
      
     @GET
@@ -47,7 +47,7 @@ public class CustomerRestControler {
        // CustomerDTO customerDTO =new CustomerDTO();
        Date date = new Date(97, 1, 23);
        
-       //revisionCreateDTO = new RevisionCreateDTO();
+       
         revisionCreateDTO.setRevisionDate(date);
         revisionCreateDTO.setMachine(new MachineDTO());
         return revisionCreateDTO;
