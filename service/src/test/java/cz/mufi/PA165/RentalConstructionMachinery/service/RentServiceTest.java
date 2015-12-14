@@ -29,7 +29,7 @@ import static org.mockito.Mockito.when;
 import org.mockito.ArgumentCaptor;
 
 /**
- * Created by jakac on 26.11.15.
+ * Created by Matej Jakimov on 26.11.15.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/mainApplicationContext.xml"})

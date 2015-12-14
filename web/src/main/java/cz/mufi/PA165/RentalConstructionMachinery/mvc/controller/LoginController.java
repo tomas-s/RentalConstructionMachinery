@@ -28,17 +28,8 @@ public class LoginController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
-
-        logger.info("AAAAAAAAAAAAAAAAAAAAAAA");
-        logger.info("AAAAAAAAAAAAAAAAAAAAAAA");
-        logger.info("AAAAAAAAAAAAAAAAAAAAAAA");
-        logger.info("AAAAAAAAAAAAAAAAAAAAAAA");
-        logger.info("AAAAAAAAAAAAAAAAAAAAAAA");
-        logger.info("AAAAAAAAAAAAAAAAAAAAAAA");
-
         ModelAndView model = new ModelAndView("login/login");
         model.addObject("loginDTO", new LoginDTO());
-        request.setAttribute("baseUrl", request.getContextPath());
         return model;
     }
 
@@ -47,6 +38,11 @@ public class LoginController {
         ModelAndView model = login(request, response);
         request.setAttribute("message", "Wrong credentials");
         return model;
+    }
+
+    @RequestMapping(value = "/denied")
+    public String denied(){
+        return "login/denied";
     }
 
 }

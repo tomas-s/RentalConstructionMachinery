@@ -9,7 +9,7 @@ import cz.mufi.PA165.RentalConstructionMachinery.exception.ProjectDataAccesExcep
 import java.util.List;
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private CustomerDao customerDao;

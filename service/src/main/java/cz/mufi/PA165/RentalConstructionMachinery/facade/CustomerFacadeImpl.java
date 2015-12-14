@@ -46,7 +46,6 @@ public class CustomerFacadeImpl implements CustomerFacade {
 
     @Override
     public List<CustomerDTO> getAllCustomers() {
-        System.out.println("zacinam getall");
         List<Customer> list ;
               list = customerService.findAll();
         List<CustomerDTO> customerDtoList = new ArrayList<CustomerDTO>();

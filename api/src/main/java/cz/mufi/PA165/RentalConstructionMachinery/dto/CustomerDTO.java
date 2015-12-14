@@ -38,7 +38,7 @@ public class CustomerDTO implements UserDetails {
 
     private String phoneNumber;
 
-    private CustomerType customerType;
+    private CustomerTypeDTO customerType;
 
     private List<RentDTO> rentHistory = new ArrayList<RentDTO>();
 
@@ -104,11 +104,11 @@ public class CustomerDTO implements UserDetails {
         this.phoneNumber = phoneNumber;
     }
 
-    public CustomerType getCustomerType() {
+    public CustomerTypeDTO getCustomerType() {
         return customerType;
     }
 
-    public void setCustomerType(CustomerType customerType) {
+    public void setCustomerType(CustomerTypeDTO customerType) {
         this.customerType = customerType;
     }
 
@@ -123,45 +123,38 @@ public class CustomerDTO implements UserDetails {
     public void addRent(RentDTO rent) {
         this.rentHistory.add(rent);
     }
-    
-        @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((customerType == null) ? 0 : customerType.hashCode());
-        result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-        result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-        result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
-        return result;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CustomerDTO that = (CustomerDTO) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+        if (username != null ? !username.equals(that.username) : that.username != null) return false;
+        if (password != null ? !password.equals(that.password) : that.password != null) return false;
+        if (role != null ? !role.equals(that.role) : that.role != null) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(that.phoneNumber) : that.phoneNumber != null) return false;
+        if (customerType != that.customerType) return false;
+        return !(rentHistory != null ? !rentHistory.equals(that.rentHistory) : that.rentHistory != null);
+
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof CustomerDTO))
-            return false;
-        CustomerDTO other = (CustomerDTO) obj;
-        if (customerType != other.getCustomerType())
-            return false;
-        if (firstName == null) {
-            if (other.getFirstName() != null)
-                return false;
-        } else if (!firstName.equals(other.getFirstName()))
-            return false;
-        if (lastName == null) {
-            if (other.getLastName() != null)
-                return false;
-        } else if (!lastName.equals(other.getLastName()))
-            return false;
-        if (phoneNumber == null) {
-            if (other.getPhoneNumber() != null)
-                return false;
-        } else if (!phoneNumber.equals(other.getPhoneNumber()))
-            return false;
-        return true;
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
+        result = 31 * result + (customerType != null ? customerType.hashCode() : 0);
+        result = 31 * result + (rentHistory != null ? rentHistory.hashCode() : 0);
+        return result;
     }
 
     @Override

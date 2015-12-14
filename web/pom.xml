@@ -43,6 +43,12 @@
             <version>${springframework.security.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${springframework.security.version}</version>
+        </dependency>
+
         <!-- servlet, JSP, JSTL -->
         <!-- must be this instead of javaee-web for the springmvc-tests to succeed -->
         <dependency>

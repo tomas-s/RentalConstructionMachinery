@@ -1,9 +1,12 @@
-<%-- <%@ taglib tagdir="/WEB-INF/tags" prefix="h" %> --%>
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> --%>
+
+<%@ tag pageEncoding="utf-8" dynamic-attributes="dynattrs" trimDirectiveWhitespaces="true" %>
 <%@ attribute name="title" required="false" %>
 <%@ attribute name="head" fragment="true" %>
 <%@ attribute name="body" fragment="true" required="true" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -34,6 +37,3 @@
    <jsp:invoke fragment="body"/>
    
    </div>
-
-</body>
-</html>
