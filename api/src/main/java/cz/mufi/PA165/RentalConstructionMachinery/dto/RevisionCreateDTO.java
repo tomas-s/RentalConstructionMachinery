@@ -2,10 +2,13 @@ package cz.mufi.PA165.RentalConstructionMachinery.dto;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
+
 
 /**
  * Created by jakac on 27.11.15.
  */
+@XmlRootElement
 public class RevisionCreateDTO {
 
     @NotNull

@@ -140,6 +140,18 @@
             <artifactId>json</artifactId>
             <version>20090211</version>
         </dependency>
+        <!--jersy autowired-->
+        <dependency>
+            <groupId>org.glassfish.jersey.ext</groupId>
+            <artifactId>jersey-spring3</artifactId>
+
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+
+        </dependency>
 
     </dependencies>
 
