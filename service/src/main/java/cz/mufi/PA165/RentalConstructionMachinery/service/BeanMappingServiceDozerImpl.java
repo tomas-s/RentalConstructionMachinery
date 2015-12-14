@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by jakac on 27.11.15.
+ * Created by Matej Jakimov on 27.11.15.
  */
 @Service
 public class BeanMappingServiceDozerImpl implements BeanMappingService {

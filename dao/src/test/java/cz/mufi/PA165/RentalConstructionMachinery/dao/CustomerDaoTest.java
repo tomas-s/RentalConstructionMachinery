@@ -134,4 +134,20 @@ public class CustomerDaoTest {
 
         customerDao.create(created2);
     }
+
+    @Test
+    public void testGetUserByUsername() {
+        Customer created = new Customer();
+        created.setFirstName("A");
+        created.setLastName("B");
+        created.setUsername("user");
+        created.setPassword("");
+        created.setRole("ROLE");
+        created.setCustomerType(CustomerType.LEGAL);
+        created.setPhoneNumber("666");
+        customerDao.create(created);
+
+        Assert.assertEquals(customerDao.getCustomerByUsername("user"), created);
+    }
+
 }

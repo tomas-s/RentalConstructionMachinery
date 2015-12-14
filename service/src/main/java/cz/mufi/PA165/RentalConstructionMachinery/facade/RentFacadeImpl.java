@@ -14,6 +14,9 @@ import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Matej Jakimov
+ */
 @Component
 @Transactional
 public class RentFacadeImpl implements RentFacade {

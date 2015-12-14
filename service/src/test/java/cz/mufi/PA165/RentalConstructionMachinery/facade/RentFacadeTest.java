@@ -5,7 +5,6 @@ import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.MachineDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.RentCreateDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.RentDTO;
-import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerTypeDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.service.BeanMappingService;
 import cz.mufi.PA165.RentalConstructionMachinery.service.RentService;
