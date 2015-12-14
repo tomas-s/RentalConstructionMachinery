@@ -8,3 +8,17 @@
 *.iml
 /service/nbproject/
 /dao/nbproject/
+/.metadata/
+/RemoteSystemsTempFiles/
+/api/.classpath
+/api/.project
+/api/.settings/
+/dao/.classpath
+/dao/.project
+/dao/.settings/
+/service/.classpath
+/service/.project
+/service/.settings/
+/web/.classpath
+/web/.project
+/web/.settings/
