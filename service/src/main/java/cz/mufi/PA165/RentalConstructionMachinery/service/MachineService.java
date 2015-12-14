@@ -35,6 +35,12 @@ public interface MachineService {
     Machine findMachineById(Long id);
 
     /**
+     * Get all machines.
+     * @return
+     */
+    List<Machine> getAllMachines();
+    
+    /**
      * Get available machines to rent in passed time period.
      * 
      * @param sinceDate

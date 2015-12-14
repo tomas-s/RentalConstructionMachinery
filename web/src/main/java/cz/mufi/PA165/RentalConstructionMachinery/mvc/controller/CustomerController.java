@@ -37,11 +37,11 @@ public class CustomerController {
     @Autowired
     private CustomerFacade customerFacade;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String index(Model model) {
         List<CustomerDTO> customers = customerFacade.getAllCustomers();
         model.addAttribute("customers", customers);
-        return "customer/index";
+        return "customer/list";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
@@ -93,6 +93,8 @@ public class CustomerController {
                            BindingResult bindingResult, Model model,
                            RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
         CustomerDTO oldCustomer = customerFacade.findById(customer.getId());
+        
+        logger.info("EDIT CUSTOMER");
 
         if(oldCustomer == null) {
             redirectAttributes.addFlashAttribute("alert_error", "Cannot find customer");
@@ -123,6 +125,5 @@ public class CustomerController {
 
         return "redirect:" + uriBuilder.path("customer").toUriString();
     }
-
-
+    
 }

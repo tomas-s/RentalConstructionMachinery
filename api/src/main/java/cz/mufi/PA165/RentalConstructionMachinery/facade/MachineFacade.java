@@ -21,6 +21,12 @@ public interface MachineFacade {
      *            of machine to remove
      */
     void removeMachine(Long id);
+    
+    /**
+     * Get list of all machines.
+     * @return
+     */
+    List<MachineDTO> getAllMachines();
 
     /**
      * Get lists of available machines in our fleets for required time period.
