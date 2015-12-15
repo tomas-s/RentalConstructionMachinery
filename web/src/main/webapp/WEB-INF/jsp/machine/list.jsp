@@ -10,7 +10,7 @@
 <jsp:attribute name="body">
 
 
-    <h3>List of Machines</h3>
+    <h3><fmt:message key="menu.machine"/></h3>
     
         <table class="table table-striped">
 		<thead>

@@ -10,14 +10,14 @@
 <my:template title="List of Customers">
 <jsp:attribute name="body">
 
-    <h3>List of Customers</h3>
+    <h3><fmt:message key="menu.customer.list"/></h3>
 
     <table class="table table-striped">
 		<thead>
         	<tr>
-            	<td>Username</td>
-                <td>Name</td>
-                <td>Last name</td>
+            	<td><fmt:message key="customer.list.name"/></td>
+                <td><fmt:message key="customer.list.username"/></td>
+                <td><fmt:message key="customer.list.lastname"/></td>
                 <td></td>
                 <td></td>
                 <td></td>

@@ -56,6 +56,9 @@
         <welcome-file>
           jsp/login/login.jsp
         </welcome-file>
+<!--         <welcome-file> -->
+<!--           jsp/hello.jsp -->
+<!--         </welcome-file> -->
       </welcome-file-list>
 
   <servlet>
