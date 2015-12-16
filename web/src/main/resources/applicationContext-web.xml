@@ -15,6 +15,11 @@
     <import resource="classpath:applicationContext-api.xml" />
 
     <mvc:annotation-driven />
+    
+    
+    <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.rest.controler"/>
+    <import resource="classpath:applicationContext-service.xml" />
+    <import resource="classpath:applicationContext-api.xml" />
 
     <!-- <bean name="/hello.htm" class="cz.mufi.PA165.RentalConstructionMachinery.controller.HelloController"/> -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
