@@ -35,6 +35,11 @@ public class MachineFacadeImpl implements MachineFacade {
         machineService.removeMachine(machine);
 
     }
+    
+    @Override
+    public List<MachineDTO> getAllMachines() {
+    	return mappingService.map(machineService.getAllMachines() , MachineDTO.class);
+    }
 
     @Override
     public List<MachineDTO> getAvailableMachines(Date sinceDate, Date tillDate) {

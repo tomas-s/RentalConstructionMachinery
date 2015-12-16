@@ -27,12 +27,15 @@ public class LoginDTO {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         LoginDTO loginDTO = (LoginDTO) o;
 
-        if (username != null ? !username.equals(loginDTO.username) : loginDTO.username != null) return false;
+        if (username != null ? !username.equals(loginDTO.username) : loginDTO.username != null)
+            return false;
         return !(password != null ? !password.equals(loginDTO.password) : loginDTO.password != null);
 
     }
@@ -43,4 +46,10 @@ public class LoginDTO {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "LoginDTO [username=" + username + ", password=" + password + "]";
+    }
+
 }

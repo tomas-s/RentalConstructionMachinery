@@ -41,7 +41,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/denied")
-    public String denied(){
+    public String denied() {
         return "login/denied";
     }
 

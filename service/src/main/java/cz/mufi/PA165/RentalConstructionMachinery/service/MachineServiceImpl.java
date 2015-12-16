@@ -40,6 +40,11 @@ public class MachineServiceImpl implements MachineService {
     }
 
     @Override
+    public List<Machine> getAllMachines() {
+    	return machineDao.findAll();
+    }
+    
+    @Override
     public List<Machine> getAvailableMachines(Date sinceDate, Date tillDate) {
 
         // Get all machines

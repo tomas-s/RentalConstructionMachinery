@@ -7,11 +7,22 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
-<my:template title="Customers">
+<my:template title="List of Customers">
 <jsp:attribute name="body">
 
+    <h3><fmt:message key="menu.customer.list"/></h3>
 
-    <table>
+    <table class="table table-striped">
+		<thead>
+        	<tr>
+            	<td><fmt:message key="customer.list.name"/></td>
+                <td><fmt:message key="customer.list.username"/></td>
+                <td><fmt:message key="customer.list.lastname"/></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
         <c:forEach items="${customers}" var="customer">
             <tr>
                 <td><c:out value="${customer.username}" /></td>

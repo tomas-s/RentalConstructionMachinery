@@ -1,13 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" trimDirectiveWhitespaces="false" session="false" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-<my:template title="Categories">
+<my:template title="Hello">
 <jsp:attribute name="body">
 
 
-    <h1>Hello - ${pageContext.request.userPrincipal.name}</h1>
+    <h3><fmt:message key="hello.welcomemsg"/>${pageContext.request.userPrincipal.name}</h3>
     Details: <sec:authentication property="principal" />
 
     <form method="post" action="${pageContext.request.contextPath}/logout">

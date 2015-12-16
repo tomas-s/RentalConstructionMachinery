@@ -15,6 +15,11 @@
     <import resource="classpath:applicationContext-api.xml" />
 
     <mvc:annotation-driven />
+    
+    
+    <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.rest.controler"/>
+    <import resource="classpath:applicationContext-service.xml" />
+    <import resource="classpath:applicationContext-api.xml" />
 
     <!-- <bean name="/hello.htm" class="cz.mufi.PA165.RentalConstructionMachinery.controller.HelloController"/> -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -25,11 +30,27 @@
 
     <import resource="security.xml" />
 
+	
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
 
-    <!-- 	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"> -->
-    <!-- 		<property name="viewClass" 	value="org.springframework.web.servlet.view.JstlView" /> -->
-    <!-- 		<property name="prefix" value="/WEB-INF/jsp/" /> -->
-    <!-- 		<property name="suffix" value=".jsp" /> -->
-    <!-- 	</bean> -->
+	<bean id="localeChangeInterceptor"
+		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="language" />
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" >
+		<property name="interceptors">
+		   <list>
+			<ref bean="localeChangeInterceptor" />
+		   </list>
+		</property>
+	</bean>
+	
+	    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="locale/texts" />
+	</bean>
 
 </beans> 

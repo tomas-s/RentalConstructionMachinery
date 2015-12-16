@@ -7,12 +7,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
-<my:template title="Detail of customer ${customer.username}">
+<my:template title="Detail of customer: ${customer.username}">
 <jsp:attribute name="body">
 
     <h1>Detail of customer <c:out value="${customer.username}" /></h1>
 
-    <table>
+    <table class="table table-striped">
         <tr>
             <td>ID</td>
             <td><c:out value="${customer.id}" /></td>
