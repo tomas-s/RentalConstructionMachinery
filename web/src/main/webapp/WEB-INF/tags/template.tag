@@ -51,6 +51,19 @@
             <!-- MACHINE -->
             <li><a href="<c:url value='/machine/list'/>"><fmt:message key="menu.machine"/></a></li>
             
+            <!-- Revision -->
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="Revision menu"/></a>
+               <ul class="dropdown-menu">
+                  <sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"  >
+                  <li><a href="<c:url value='/revision/list'/>"><fmt:message key="menu.revision.list"/>Revision List</a></li>
+                  </sec:authorize>
+                  <%--<sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">--%>
+   				  <!--<li><a href="<c:url value='/revision/detail/{1}'/>"><fmt:message key="menu.revision.detail"/></a></li>-->
+   				  <%--</sec:authorize>--%>
+   		       </ul>
+            </li>>
+            
             <!-- HELLO -->
             <li><a href="<c:url value='/hello'/>">hello</a></li>
          </ul>

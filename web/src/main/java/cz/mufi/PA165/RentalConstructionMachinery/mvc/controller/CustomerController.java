@@ -56,7 +56,7 @@ public class CustomerController {
         customerFacade.deleteCustomer(customer);
         redirectAttributes.addFlashAttribute("alert_success", "Customer \"" + customer.getUsername() + "\" was deleted.");
         //return "redirect:" + uriBuilder.path("customer").toUriString();
-        return "redirect:/customer";
+        return "redirect:/customer/list";
     }
 
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)

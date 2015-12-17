@@ -23,15 +23,18 @@ public class RevisionFacadeImpl implements RevisionFacade {
     @Autowired
     private BeanMappingService mappingService;
 
+    @Override
     public void createRevision(RevisionCreateDTO revision) throws ServiceException {
         revisionService.createRevision(mappingService.map(revision, Revision.class));
     }
 
+    @Override
     public void deleteRevision(long revisionId) {
         Revision r = revisionService.findRevisionById(revisionId);
         revisionService.deleteRevision(r);
     }
 
+    @Override
     public List<RevisionDTO> getRevisionsBetween(Date from, Date to) {
         return mappingService.map(revisionService.getRevisionsBetween(from ,to), RevisionDTO.class);
     }
