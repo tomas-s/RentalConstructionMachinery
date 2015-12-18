@@ -6,6 +6,8 @@
 package cz.mufi.PA165.RentalConstructionMachinery.rest.controler;
 
 import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
+import cz.mufi.PA165.RentalConstructionMachinery.dto.MachineDTO;
+import cz.mufi.PA165.RentalConstructionMachinery.dto.RevisionCreateDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.facade.CustomerFacade;
 import java.util.List;
 import javax.ws.rs.PathParam;
