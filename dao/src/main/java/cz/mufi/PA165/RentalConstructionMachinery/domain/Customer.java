@@ -167,7 +167,9 @@ public class Customer {
             return false;
         if (customerType != customer.customerType)
             return false;
-        return !(rentHistory != null ? !rentHistory.equals(customer.rentHistory) : customer.rentHistory != null);
+        return true;
+        // !(rentHistory != null ? !rentHistory.equals(customer.rentHistory) :
+        // customer.rentHistory != null);
 
     }
 
@@ -181,7 +183,8 @@ public class Customer {
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
         result = 31 * result + (customerType != null ? customerType.hashCode() : 0);
-        result = 31 * result + (rentHistory != null ? rentHistory.hashCode() : 0);
+        // result = 31 * result + (rentHistory != null ? rentHistory.hashCode()
+        // : 0);
         return result;
     }
 }

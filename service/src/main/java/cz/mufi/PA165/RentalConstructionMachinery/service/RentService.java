@@ -1,11 +1,12 @@
 package cz.mufi.PA165.RentalConstructionMachinery.service;
 
+import java.util.Date;
+import java.util.List;
+
+import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Rent;
 import cz.mufi.PA165.RentalConstructionMachinery.exceptions.ServiceException;
-
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Matej Jakimov on 27.11.15.
@@ -25,4 +26,6 @@ public interface RentService {
     boolean hasConflict(Machine machine, Date at);
 
     List<Rent> getRentsForNextWeek();
+
+    List<Rent> getRentsByCustomer(Customer customer, Date from, Date to);
 }

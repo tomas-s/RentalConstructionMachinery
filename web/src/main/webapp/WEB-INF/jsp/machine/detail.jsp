@@ -41,7 +41,7 @@
             <tr>
                 <td><c:out value="${rent.rentSinceDate}" /></td>
                 <td><c:out value="${rent.rentTillDate}" /></td>
-                <td><c:out value="${rent.customer}" /></td>
+<%--                 <td><c:out value="${rent.customer.lastName}" /></td> --%>
                 <td><a href="${pageContext.request.contextPath}/customer/detail/${rent.customer.id}">${rent.customer.lastName}</a></td>
             </tr>
         </c:forEach>

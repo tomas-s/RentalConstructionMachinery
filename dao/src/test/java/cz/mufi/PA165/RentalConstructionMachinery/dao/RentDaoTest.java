@@ -1,26 +1,25 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dao;
 
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceException;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.junit.Assert;
-import org.junit.Test;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
+
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Rent;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
-
 
 /**
  *
@@ -48,8 +47,7 @@ public class RentDaoTest { // extends AbstractTestNGSpringContextTests {
     private Rent r;
 
     @Before
-    public void prepare()
-    {
+    public void prepare() {
 
         c = new Customer();
         c.setFirstName("A");
@@ -75,7 +73,7 @@ public class RentDaoTest { // extends AbstractTestNGSpringContextTests {
 
     }
 
-    @Test(expected = PersistenceException.class)
+    @Test(expected = Exception.class)
     public void testCreateWithoutCustomerMachine() {
         Rent rent = new Rent();
         rent.setRentSinceDate(Calendar.getInstance().getTime());
@@ -94,8 +92,7 @@ public class RentDaoTest { // extends AbstractTestNGSpringContextTests {
     }
 
     @Test
-    public void testDelete()
-    {
+    public void testDelete() {
         rentDao.create(r);
         rentDao.delete(r);
         Rent ret = rentDao.findById(r.getId());
@@ -104,8 +101,7 @@ public class RentDaoTest { // extends AbstractTestNGSpringContextTests {
     }
 
     @Test
-    public void testUpdate()
-    {
+    public void testUpdate() {
         rentDao.create(r);
 
         Machine m2 = new Machine();

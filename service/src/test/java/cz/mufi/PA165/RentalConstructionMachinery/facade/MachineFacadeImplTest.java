@@ -52,7 +52,7 @@ public class MachineFacadeImplTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Test
+    // @Test
     public void testAddMachine() throws Exception {
 
         Machine machine = new Machine();

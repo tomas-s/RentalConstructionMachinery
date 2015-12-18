@@ -83,12 +83,13 @@ public class SampleDataInitializer extends ContextLoaderListener {
          * Rent
          */
 
-        // RentCreateDTO rent1 = createRent(user, m1, sdf.parse("2015-06-02"),
-        // sdf.parse("2015-12-31"));
-        // RentCreateDTO rent2 = createRent(user, m2, sdf.parse("2015-06-01"),
-        // sdf.parse("2015-12-05"));
-        // RentCreateDTO rent3 = createRent(user, m3, sdf.parse("2014-05-05"),
-        // sdf.parse("2014-07-22"));
+        user = customerFacade.findById(user.getId());
+        admin = customerFacade.findById(admin.getId());
+
+        RentCreateDTO rent1 = createRent(user, m1, sdf.parse("2015-06-02"), sdf.parse("2015-12-31"));
+        RentCreateDTO rent2 = createRent(user, m3, sdf.parse("2014-05-05"), sdf.parse("2014-07-22"));
+
+        RentCreateDTO rent3 = createRent(admin, m7, sdf.parse("2014-01-05"), sdf.parse("2014-03-22"));
     }
 
     private RevisionCreateDTO createRevision(MachineDTO m, Date revisionDate) {

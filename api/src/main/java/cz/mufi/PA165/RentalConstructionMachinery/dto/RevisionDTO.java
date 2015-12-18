@@ -1,10 +1,11 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dto;
 
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
 
-public class RevisionDTO {
+public class RevisionDTO implements Serializable {
 
     @NotNull
     private Long id;
@@ -64,13 +65,13 @@ public class RevisionDTO {
                 return false;
         } else if (!revisionDate.equals(revision.getRevisionDate()))
             return false;
-        if (machine != revision.getMachine())
-            return false;
-        if (machine == null) {
-            if (revision.getMachine() != null)
-                return false;
-        } else if (!machine.equals(revision.getMachine()))
-            return false;
+        // if (machine != revision.getMachine())
+        // return false;
+        // if (machine == null) {
+        // if (revision.getMachine() != null)
+        // return false;
+        // } else if (!machine.equals(revision.getMachine()))
+        // return false;
         return true;
     }
 
@@ -78,7 +79,8 @@ public class RevisionDTO {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((machine == null) ? 0 : machine.hashCode());
+        // result = prime * result + ((machine == null) ? 0 :
+        // machine.hashCode());
         result = prime * result + ((revisionDate == null) ? 0 : revisionDate.hashCode());
         return result;
 

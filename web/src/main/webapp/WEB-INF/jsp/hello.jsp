@@ -8,7 +8,8 @@
 
 
     <h3><fmt:message key="hello.welcomemsg"/>${pageContext.request.userPrincipal.name}</h3>
-    Details: <sec:authentication property="principal" />
+    
+<%--     Details: <sec:authentication property="principal" /> --%>
 
     <form method="post" action="${pageContext.request.contextPath}/logout">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

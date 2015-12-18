@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.MachineDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.facade.MachineFacade;
 
+/**
+ * 
+ * @author zdenek skerik
+ *
+ */
 @Controller
 @RequestMapping("/machine")
 public class MachineController {

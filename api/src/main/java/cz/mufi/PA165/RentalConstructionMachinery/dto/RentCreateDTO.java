@@ -21,6 +21,16 @@ public class RentCreateDTO {
     @NotNull
     private Date rentTillDate;
 
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public MachineDTO getMachine() {
         return machine;
     }
@@ -62,10 +72,12 @@ public class RentCreateDTO {
 
         RentCreateDTO that = (RentCreateDTO) o;
 
-        if (machine != null ? !machine.equals(that.machine) : that.machine != null)
-            return false;
-        if (customer != null ? !customer.equals(that.customer) : that.customer != null)
-            return false;
+        // if (machine != null ? !machine.equals(that.machine) : that.machine !=
+        // null)
+        // return false;
+        // if (customer != null ? !customer.equals(that.customer) :
+        // that.customer != null)
+        // return false;
         if (rentSinceDate != null ? !rentSinceDate.equals(that.rentSinceDate) : that.rentSinceDate != null)
             return false;
         return !(rentTillDate != null ? !rentTillDate.equals(that.rentTillDate) : that.rentTillDate != null);
@@ -74,9 +86,9 @@ public class RentCreateDTO {
 
     @Override
     public int hashCode() {
-        int result = machine != null ? machine.hashCode() : 0;
-        result = 31 * result + (customer != null ? customer.hashCode() : 0);
-        result = 31 * result + (rentSinceDate != null ? rentSinceDate.hashCode() : 0);
+        // int result = machine != null ? machine.hashCode() : 0;
+        // result = 31 * result + (customer != null ? customer.hashCode() : 0);
+        int result = (rentSinceDate != null ? rentSinceDate.hashCode() : 0);
         result = 31 * result + (rentTillDate != null ? rentTillDate.hashCode() : 0);
         return result;
     }

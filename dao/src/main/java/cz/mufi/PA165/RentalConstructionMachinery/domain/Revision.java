@@ -85,13 +85,13 @@ public class Revision {
                 return false;
         } else if (!revisionDate.equals(revision.getRevisionDate()))
             return false;
-        if (machine != revision.getMachine())
-            return false;
-        if (machine == null) {
-            if (revision.getMachine() != null)
-                return false;
-        } else if (!machine.equals(revision.getMachine()))
-            return false;
+        // if (machine != revision.getMachine())
+        // return false;
+        // if (machine == null) {
+        // if (revision.getMachine() != null)
+        // return false;
+        // } else if (!machine.equals(revision.getMachine()))
+        // return false;
         return true;
     }
 
@@ -99,11 +99,11 @@ public class Revision {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((machine == null) ? 0 : machine.hashCode());
+        // result = prime * result + ((machine == null) ? 0 :
+        // machine.hashCode());
         result = prime * result + ((revisionDate == null) ? 0 : revisionDate.hashCode());
         return result;
 
     }
-    
 
 }

@@ -1,5 +1,6 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import cz.mufi.PA165.RentalConstructionMachinery.domain.Revision;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineState;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
 
-public class MachineDTO {
+public class MachineDTO implements Serializable {
     private Long id;
 
     private MachineType machineType;

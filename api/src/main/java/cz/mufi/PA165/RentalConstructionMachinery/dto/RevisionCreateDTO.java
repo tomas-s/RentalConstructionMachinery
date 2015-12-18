@@ -40,16 +40,17 @@ public class RevisionCreateDTO {
 
         RevisionCreateDTO that = (RevisionCreateDTO) o;
 
-        if (machine != null ? !machine.equals(that.machine) : that.machine != null)
-            return false;
+        // if (machine != null ? !machine.equals(that.machine) : that.machine !=
+        // null)
+        // return false;
         return !(revisionDate != null ? !revisionDate.equals(that.revisionDate) : that.revisionDate != null);
 
     }
 
     @Override
     public int hashCode() {
-        int result = machine != null ? machine.hashCode() : 0;
-        result = 31 * result + (revisionDate != null ? revisionDate.hashCode() : 0);
+        // int result = machine != null ? machine.hashCode() : 0;
+        int result = (revisionDate != null ? revisionDate.hashCode() : 0);
         return result;
     }
 
