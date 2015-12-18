@@ -6,11 +6,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.ContextLoaderListener;
 
 import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
-import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerTypeDTO;
+import cz.mufi.PA165.RentalConstructionMachinery.dto.RevisionCreateDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.MachineDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
 import cz.mufi.PA165.RentalConstructionMachinery.facade.CustomerFacade;
 import cz.mufi.PA165.RentalConstructionMachinery.facade.MachineFacade;
+import cz.mufi.PA165.RentalConstructionMachinery.facade.RevisionFacade;
+import java.util.Date;
 
 /**
  * 
@@ -21,7 +23,7 @@ import cz.mufi.PA165.RentalConstructionMachinery.facade.MachineFacade;
 public class MachineInitializer  extends ContextLoaderListener {
 
 	  @Autowired
-	    public MachineInitializer(MachineFacade machineFacade) {
+	    public MachineInitializer(MachineFacade machineFacade, RevisionFacade revisionFacade) {
 
 	        MachineDTO m1 = new MachineDTO();
 	        m1.setMachineType(MachineType.CRANE);
@@ -57,6 +59,16 @@ public class MachineInitializer  extends ContextLoaderListener {
 	        m7.setMachineType(MachineType.LORRY);
 	        machineFacade.addMachine(m7);
 	        System.out.println("Imported machine m7.");
+                
+                RevisionCreateDTO r1= new RevisionCreateDTO();
+                r1.setMachine(machineFacade.getAllMachines().get(0));
+                r1.setRevisionDate(new Date(2015,11,10));
+                revisionFacade.createRevision(r1);
+                
+                RevisionCreateDTO r2= new RevisionCreateDTO();
+                r2.setMachine(machineFacade.getAllMachines().get(1));
+                r2.setRevisionDate(new Date(2014,5,2));
+                revisionFacade.createRevision(r2);
 
 	    }
 }

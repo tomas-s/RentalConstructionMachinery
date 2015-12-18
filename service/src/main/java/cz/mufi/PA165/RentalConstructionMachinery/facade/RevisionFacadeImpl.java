@@ -33,10 +33,27 @@ public class RevisionFacadeImpl implements RevisionFacade {
         Revision r = revisionService.findRevisionById(revisionId);
         revisionService.deleteRevision(r);
     }
+    
+    @Override
+    public List<RevisionDTO> getAllRevisions() {
+    	return mappingService.map(revisionService.getAllRevision(), RevisionDTO.class);
+    }
 
     @Override
     public List<RevisionDTO> getRevisionsBetween(Date from, Date to) {
         return mappingService.map(revisionService.getRevisionsBetween(from ,to), RevisionDTO.class);
+    }
+    
+    @Override
+    public RevisionDTO findById(long id){
+        Revision r = revisionService.findRevisionById(id);
+        return mappingService.map(r, RevisionDTO.class);
+    }
+    
+    @Override
+    public void updateRevision(RevisionDTO revision){
+        Revision r = mappingService.map(revision, Revision.class);
+        revisionService.updateRevision(r);
     }
 
 }

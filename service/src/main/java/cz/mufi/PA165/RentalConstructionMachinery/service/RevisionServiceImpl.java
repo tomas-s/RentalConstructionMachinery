@@ -52,5 +52,14 @@ public class RevisionServiceImpl implements RevisionService {
     public Revision findRevisionById(Long id) {
         return revisionDao.findById(id);
     }
+    
+    public List<Revision> getAllRevision(){
+        return revisionDao.findAll();
+    }
+    
+    @Override
+    public void updateRevision(Revision revision){
+        revisionDao.update(revision);
+    }
 
 }
