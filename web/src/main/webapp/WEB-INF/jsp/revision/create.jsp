@@ -6,14 +6,12 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<my:template title="List of Machines">
+<my:template title="Create">
 <jsp:attribute name="body">
 
+<h1>Create revision </h1>
 
-    <h3><fmt:message key="menu.revision.create"/></h3>
     
-        sddsad
-   
 
 </jsp:attribute>
 </my:template>

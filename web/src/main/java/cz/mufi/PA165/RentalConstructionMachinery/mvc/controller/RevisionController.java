@@ -61,11 +61,7 @@ public class RevisionController {
 //        this.init();
         revision = new ArrayList<>();
         revision = revisionFacade.getAllRevisions();
-//        revision = RevisionFacade.getRevisionsBetween(new Date(2014, 2, 1), new Date(2014,7,10));
-//        revision.add(r);
-//        revision = revisionFacade.getRevisionsBetween(new Date(2014, 2, 1), new Date(2014,7,10));
-//        revision.add(r);
-        
+
         model.addAttribute("Revisions", revision); 
         return "revision/list";
     }
@@ -73,26 +69,26 @@ public class RevisionController {
     
     @RequestMapping(value = "/listUser", method = RequestMethod.GET)
     public String listUser(Model model) {
-//        this.init();
         revision = new ArrayList<>();
         revision = revisionFacade.getAllRevisions();
-//        revision = RevisionFacade.getRevisionsBetween(new Date(2014, 2, 1), new Date(2014,7,10));
-//        revision.add(r);
-//        revision = revisionFacade.getRevisionsBetween(new Date(2014, 2, 1), new Date(2014,7,10));
-//        revision.add(r);
-        
+
         model.addAttribute("Revisions", revision); 
         return "revision/listUser";
     }
     
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String create(Model model) {
-        revision = new ArrayList<>();
-        revision = revisionFacade.getAllRevisions();
-String s = "ahoj";
-        model.addAttribute("name", s);
-        model.addAttribute("revisions", revision); 
-        return "revision/create";
+     @RequestMapping(value="/create", method=RequestMethod.GET)
+    public String greetingForm(Model model) {
+        
+        List<MachineDTO> list=machineFacade.getAllMachines();
+        model.addAttribute("list", list);
+        model.addAttribute("ahoj", "Ahoj");
+        return "create";
+    }
+
+    @RequestMapping(value="/create", method=RequestMethod.POST)
+    public String greetingSubmit(@ModelAttribute RevisionDTO revision, Model model) {
+        model.addAttribute("greeting", revision);
+        return "result";
     }
 
     
@@ -116,60 +112,7 @@ String s = "ahoj";
     }
     
     
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String edit(@PathVariable long id, Model model, RedirectAttributes redirectAttributes,
-                       UriComponentsBuilder uriBuilder) {
-        RevisionDTO r = revisionFacade.findById(id);
-
-        
-
-        if(r == null){
-            redirectAttributes.addFlashAttribute("alert_error", "Cannot find revision");
-            return "redirect:" + uriBuilder.path("revision").toUriString();
-        }
-
-        model.addAttribute("revision", r);
-//        model.addAttribute("types", CustomerTypeDTO.values());
-
-        return "revision/edit";
-    }
     
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String editPost(@Valid @ModelAttribute("revision") RevisionDTO revision,
-                           BindingResult bindingResult, Model model,
-                           RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
-        RevisionDTO oldRevision = revisionFacade.findById(revision.getId());
-        
-        logger.info("EDIT REVISION");
-
-        if(oldRevision == null) {
-            redirectAttributes.addFlashAttribute("alert_error", "Cannot find customer");
-            return "redirect:" + uriBuilder.path("customer").toUriString();
-        }
-
-        if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("alert_error", "There are some errors in form");
-            for (FieldError fe : bindingResult.getFieldErrors()) {
-                model.addAttribute(fe.getField() + "_error", true);
-            }
-            return "revision/edit/" + revision.getId();
-        }
-
-        try {
-            
-            revision.setMachine(oldRevision.getMachine());
-
-            revisionFacade.updateRevision(revision);
-        } catch(Exception e) {
-            logger.error(e);
-            redirectAttributes.addFlashAttribute("alert_error", "Error during update");
-            return "customer/edit/" + revision.getId();
-        }
-
-        redirectAttributes.addFlashAttribute("alert_success", "Customer " + revision.getId()+ " was updated");
-
-        return "redirect:" + uriBuilder.path("revision").toUriString();
-    }
     
     
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
