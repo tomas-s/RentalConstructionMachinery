@@ -15,14 +15,22 @@
         <table class="table table-striped">
 		<thead>
         	<tr>
-            	<td>ID</td>
-                <td>Type</td>
+            	<td><fmt:message key="machine.id"/></td>
+                <td><fmt:message key="machine.type"/></td>
+                <td><fmt:message key="machine.state"/></td>
+                <td></td>
             </tr>
         </thead>
         <c:forEach items="${machines}" var="machine">
             <tr>
                 <td><c:out value="${machine.id}" /></td>
                 <td><c:out value="${machine.machineType}" /></td>
+                <td><c:out value="${machine.machineState}" /></td>
+                <td>
+                   <a href="${pageContext.request.contextPath}/machine/detail/${machine.id}">
+                      <button class="btn btn-primary"><fmt:message key="detail"/></button>
+                   </a>
+                </td>
             </tr>
         </c:forEach>
     </table>

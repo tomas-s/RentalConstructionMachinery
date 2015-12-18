@@ -10,7 +10,7 @@
 <my:template title="Editation of customer ${customer.username}">
 <jsp:attribute name="body">
 
-    <h1>Editation of customer <c:out value="${customer.username}" /></h1>
+    <h3>Editation of customer <c:out value="${customer.username}" /></h3>
 
     <form:form method="post" action="${pageContext.request.contextPath}/customer/edit" modelAttribute="customer" cssClass="form-horizontal">
 

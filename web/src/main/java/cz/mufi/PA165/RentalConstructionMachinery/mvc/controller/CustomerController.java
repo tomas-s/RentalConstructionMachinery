@@ -1,14 +1,12 @@
 package cz.mufi.PA165.RentalConstructionMachinery.mvc.controller;
 
-import cz.mufi.PA165.RentalConstructionMachinery.domain.Customer;
-import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
-import cz.mufi.PA165.RentalConstructionMachinery.facade.CustomerFacade;
-import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerTypeDTO;
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,19 +15,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.validation.Valid;
-import java.util.List;
+import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
+import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerTypeDTO;
+import cz.mufi.PA165.RentalConstructionMachinery.facade.CustomerFacade;
 
 /**
  * @author Matej Jakimov
  */
 @Controller
 @RequestMapping("/customer")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+// @PreAuthorize("hasRole('ROLE_ADMIN')")
 public class CustomerController {
 
     protected final Log logger = LogFactory.getLog(getClass());
@@ -46,24 +44,25 @@ public class CustomerController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public String delete(@PathVariable long id, UriComponentsBuilder uriBuilder,
-                         RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes) {
         CustomerDTO customer = customerFacade.findById(id);
 
-        if(customer == null) {
+        if (customer == null) {
             redirectAttributes.addFlashAttribute("alert_error", "Error during deleting customer");
             return "redirect:" + uriBuilder.path("customer").toUriString();
         }
         customerFacade.deleteCustomer(customer);
-        redirectAttributes.addFlashAttribute("alert_success", "Customer \"" + customer.getUsername() + "\" was deleted.");
-        //return "redirect:" + uriBuilder.path("customer").toUriString();
+        redirectAttributes.addFlashAttribute("alert_success",
+                "Customer \"" + customer.getUsername() + "\" was deleted.");
+        // return "redirect:" + uriBuilder.path("customer").toUriString();
         return "redirect:/customer/list";
     }
 
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
     public String detail(@PathVariable long id, Model model, RedirectAttributes redirectAttributes,
-                         UriComponentsBuilder uriBuilder) {
+            UriComponentsBuilder uriBuilder) {
         CustomerDTO customer = customerFacade.findById(id);
-        if(customer == null) {
+        if (customer == null) {
             redirectAttributes.addFlashAttribute("alert_error", "Cannot find user");
             return "redirect:" + uriBuilder.path("customer").toUriString();
         }
@@ -74,10 +73,10 @@ public class CustomerController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String edit(@PathVariable long id, Model model, RedirectAttributes redirectAttributes,
-                       UriComponentsBuilder uriBuilder) {
+            UriComponentsBuilder uriBuilder) {
         CustomerDTO customer = customerFacade.findById(id);
 
-        if(customer == null){
+        if (customer == null) {
             redirectAttributes.addFlashAttribute("alert_error", "Cannot find user");
             return "redirect:" + uriBuilder.path("customer").toUriString();
         }
@@ -89,14 +88,13 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String editPost(@Valid @ModelAttribute("customer") CustomerDTO customer,
-                           BindingResult bindingResult, Model model,
-                           RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
+    public String editPost(@Valid @ModelAttribute("customer") CustomerDTO customer, BindingResult bindingResult,
+            Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
         CustomerDTO oldCustomer = customerFacade.findById(customer.getId());
-        
+
         logger.info("EDIT CUSTOMER");
 
-        if(oldCustomer == null) {
+        if (oldCustomer == null) {
             redirectAttributes.addFlashAttribute("alert_error", "Cannot find customer");
             return "redirect:" + uriBuilder.path("customer").toUriString();
         }
@@ -115,7 +113,7 @@ public class CustomerController {
             customer.setRole(oldCustomer.getRole());
 
             customerFacade.updateCustomer(customer);
-        } catch(Exception e) {
+        } catch (Exception e) {
             logger.error(e);
             redirectAttributes.addFlashAttribute("alert_error", "Error during update");
             return "customer/edit/" + customer.getId();
@@ -123,7 +121,7 @@ public class CustomerController {
 
         redirectAttributes.addFlashAttribute("alert_success", "Customer " + customer.getUsername() + " was updated");
 
-        return "redirect:" + uriBuilder.path("customer").toUriString();
+        return "redirect:" + uriBuilder.path("customer/detail/" + oldCustomer.getId()).toUriString();
     }
-    
+
 }

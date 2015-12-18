@@ -1,7 +1,8 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dto;
 
-import javax.validation.constraints.NotNull;
 import java.util.Date;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by jakac on 27.11.15.
@@ -32,12 +33,15 @@ public class RevisionCreateDTO {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         RevisionCreateDTO that = (RevisionCreateDTO) o;
 
-        if (machine != null ? !machine.equals(that.machine) : that.machine != null) return false;
+        if (machine != null ? !machine.equals(that.machine) : that.machine != null)
+            return false;
         return !(revisionDate != null ? !revisionDate.equals(that.revisionDate) : that.revisionDate != null);
 
     }
@@ -47,5 +51,10 @@ public class RevisionCreateDTO {
         int result = machine != null ? machine.hashCode() : 0;
         result = 31 * result + (revisionDate != null ? revisionDate.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "RevisionCreateDTO [machine=" + machine + ", revisionDate=" + revisionDate + "]";
     }
 }

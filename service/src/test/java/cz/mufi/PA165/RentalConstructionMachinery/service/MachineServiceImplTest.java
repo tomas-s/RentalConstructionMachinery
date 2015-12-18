@@ -57,6 +57,11 @@ public class MachineServiceImplTest {
         MockitoAnnotations.initMocks(this);
     }
 
+    // @Test
+    public void testGetAllMachines() {
+        machineService.getAllMachines();
+    }
+
     @Test
     public void testGetAvailableMachines() throws Exception {
 

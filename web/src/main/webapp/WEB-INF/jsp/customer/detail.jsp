@@ -10,7 +10,7 @@
 <my:template title="Detail of customer: ${customer.username}">
 <jsp:attribute name="body">
 
-    <h1>Detail of customer <c:out value="${customer.username}" /></h1>
+    <h3>Detail of customer <c:out value="${customer.username}" /></h3>
 
     <table class="table table-striped">
         <tr>
@@ -47,11 +47,11 @@
                 <a href="${pageContext.request.contextPath}/customer/edit/${customer.id}">
                     <button class="btn btn-primary">Edit</button></a>
             </td>
-                <td>
-                    <form method="post" action="${pageContext.request.contextPath}/customer/delete/${customer.id}">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
+<!--                 <td> -->
+<%--                     <form method="post" action="${pageContext.request.contextPath}/customer/delete/${customer.id}"> --%>
+<!--                         <button type="submit" class="btn btn-danger">Delete</button> -->
+<%--                     </form> --%>
+<!--                 </td> -->
         </tr>
     </table>
 

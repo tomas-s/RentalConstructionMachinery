@@ -1,7 +1,8 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dto;
 
-import javax.validation.constraints.NotNull;
 import java.util.Date;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by jakac on 26.11.15.
@@ -54,13 +55,17 @@ public class RentCreateDTO {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         RentCreateDTO that = (RentCreateDTO) o;
 
-        if (machine != null ? !machine.equals(that.machine) : that.machine != null) return false;
-        if (customer != null ? !customer.equals(that.customer) : that.customer != null) return false;
+        if (machine != null ? !machine.equals(that.machine) : that.machine != null)
+            return false;
+        if (customer != null ? !customer.equals(that.customer) : that.customer != null)
+            return false;
         if (rentSinceDate != null ? !rentSinceDate.equals(that.rentSinceDate) : that.rentSinceDate != null)
             return false;
         return !(rentTillDate != null ? !rentTillDate.equals(that.rentTillDate) : that.rentTillDate != null);
@@ -74,5 +79,11 @@ public class RentCreateDTO {
         result = 31 * result + (rentSinceDate != null ? rentSinceDate.hashCode() : 0);
         result = 31 * result + (rentTillDate != null ? rentTillDate.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "RentCreateDTO [machine=" + machine + ", customer=" + customer + ", rentSinceDate=" + rentSinceDate
+                + ", rentTillDate=" + rentTillDate + "]";
     }
 }

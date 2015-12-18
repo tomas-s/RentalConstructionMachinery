@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
+import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineState;
 
 /**
  * 
@@ -17,7 +18,7 @@ public interface MachineService {
      * 
      * @param machine
      */
-    void addMachine(Machine machine);
+    Machine addMachine(Machine machine);
 
     /**
      * Remove machine from our offer.
@@ -36,10 +37,11 @@ public interface MachineService {
 
     /**
      * Get all machines.
+     * 
      * @return
      */
     List<Machine> getAllMachines();
-    
+
     /**
      * Get available machines to rent in passed time period.
      * 
@@ -58,4 +60,7 @@ public interface MachineService {
      */
     List<Machine> getRentedMachines(Date sinceDate, Date tillDate);
 
+    MachineState getState(Machine machine, Date date);
+
+    MachineState getCurrentState(Machine machine);
 }

@@ -23,10 +23,10 @@ public class MachineFacadeImpl implements MachineFacade {
     private BeanMappingService mappingService;
 
     @Override
-    public void addMachine(MachineDTO machineDTO) {
+    public MachineDTO addMachine(MachineDTO machineDTO) {
 
         Machine machine = mappingService.map(machineDTO, Machine.class);
-        machineService.addMachine(machine);
+        return mappingService.map(machineService.addMachine(machine), MachineDTO.class);
     }
 
     @Override
@@ -35,10 +35,15 @@ public class MachineFacadeImpl implements MachineFacade {
         machineService.removeMachine(machine);
 
     }
-    
+
+    @Override
+    public MachineDTO getMachineById(Long id) {
+        return mappingService.map(machineService.findMachineById(id), MachineDTO.class);
+    }
+
     @Override
     public List<MachineDTO> getAllMachines() {
-    	return mappingService.map(machineService.getAllMachines() , MachineDTO.class);
+        return mappingService.map(machineService.getAllMachines(), MachineDTO.class);
     }
 
     @Override

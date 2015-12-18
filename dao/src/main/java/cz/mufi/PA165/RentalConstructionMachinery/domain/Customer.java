@@ -3,7 +3,15 @@ package cz.mufi.PA165.RentalConstructionMachinery.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
@@ -50,6 +58,7 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private CustomerType customerType;
 
+    // cascade = { CascadeType.MERGE }
     @OneToMany(mappedBy = "customer")
     private List<Rent> rentHistory = new ArrayList<Rent>();
 
@@ -135,20 +144,29 @@ public class Customer {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         Customer customer = (Customer) o;
 
-        if (id != null ? !id.equals(customer.id) : customer.id != null) return false;
-        if (username != null ? !username.equals(customer.username) : customer.username != null) return false;
-        if (password != null ? !password.equals(customer.password) : customer.password != null) return false;
-        if (role != null ? !role.equals(customer.role) : customer.role != null) return false;
-        if (firstName != null ? !firstName.equals(customer.firstName) : customer.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(customer.lastName) : customer.lastName != null) return false;
+        if (id != null ? !id.equals(customer.id) : customer.id != null)
+            return false;
+        if (username != null ? !username.equals(customer.username) : customer.username != null)
+            return false;
+        if (password != null ? !password.equals(customer.password) : customer.password != null)
+            return false;
+        if (role != null ? !role.equals(customer.role) : customer.role != null)
+            return false;
+        if (firstName != null ? !firstName.equals(customer.firstName) : customer.firstName != null)
+            return false;
+        if (lastName != null ? !lastName.equals(customer.lastName) : customer.lastName != null)
+            return false;
         if (phoneNumber != null ? !phoneNumber.equals(customer.phoneNumber) : customer.phoneNumber != null)
             return false;
-        if (customerType != customer.customerType) return false;
+        if (customerType != customer.customerType)
+            return false;
         return !(rentHistory != null ? !rentHistory.equals(customer.rentHistory) : customer.rentHistory != null);
 
     }

@@ -32,7 +32,7 @@
                 <td><a href="${pageContext.request.contextPath}/customer/edit/${customer.id}">Edit</a></td>
                 <td>
                     <form method="post" action="${pageContext.request.contextPath}/customer/delete/${customer.id}">
-                        <button type="submit" class="btn btn-primary">Delete</button>
+                        <button type="submit" class="btn btn-primary"><fmt:message key="delete"/></button>
                     </form>
                 </td>
             </tr>

@@ -1,6 +1,7 @@
 package cz.mufi.PA165.RentalConstructionMachinery.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 import cz.mufi.PA165.RentalConstructionMachinery.dao.MachineDao;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Machine;
 import cz.mufi.PA165.RentalConstructionMachinery.domain.Rent;
+import cz.mufi.PA165.RentalConstructionMachinery.domain.Revision;
+import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineState;
 
 @Service
 public class MachineServiceImpl implements MachineService {
@@ -25,8 +28,8 @@ public class MachineServiceImpl implements MachineService {
     private RevisionService revisionService;
 
     @Override
-    public void addMachine(Machine machine) {
-        machineDao.create(machine);
+    public Machine addMachine(Machine machine) {
+        return machineDao.create(machine);
     }
 
     @Override
@@ -41,9 +44,17 @@ public class MachineServiceImpl implements MachineService {
 
     @Override
     public List<Machine> getAllMachines() {
-    	return machineDao.findAll();
+
+        List<Machine> machines = machineDao.findAll();
+
+        for (Machine machine : machines) {
+            MachineState state = getCurrentState(machine);
+            machine.setMachineState(state);
+        }
+
+        return machines;
     }
-    
+
     @Override
     public List<Machine> getAvailableMachines(Date sinceDate, Date tillDate) {
 
@@ -91,5 +102,42 @@ public class MachineServiceImpl implements MachineService {
         }
 
         return machines;
+    }
+
+    @Override
+    public MachineState getCurrentState(Machine machine) {
+
+        Calendar currentDate = Calendar.getInstance();
+        return getState(machine, currentDate.getTime());
+    }
+
+    @Override
+    public MachineState getState(Machine machine, Date date) {
+
+        if (machine.getRentHistory().size() != 0) {
+
+            // Rent
+            final Rent lastRent = machine.getRentHistory().get(machine.getRentHistory().size() - 1);
+            final Date from = lastRent.getRentSinceDate();
+            final Date to = lastRent.getRentTillDate();
+
+            if (from.before(date) && to.after(date)) {
+                return MachineState.RENT;
+            }
+
+        }
+
+        if (machine.getRevisionHistory().size() != 0) {
+
+            // Revised
+            final Revision lastRevision = machine.getRevisionHistory().get(machine.getRevisionHistory().size() - 1);
+            final Date revisionDate = lastRevision.getRevisionDate();
+
+            if (revisionDate.equals(date)) {
+                return MachineState.REVISED;
+            }
+        }
+
+        return MachineState.AVAILABLE;
     }
 }

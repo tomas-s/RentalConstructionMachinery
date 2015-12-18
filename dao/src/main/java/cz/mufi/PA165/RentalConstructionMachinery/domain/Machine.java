@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineState;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
 
 /**
@@ -39,6 +40,8 @@ public class Machine {
 
     @OneToMany(mappedBy = "machine")
     private List<Revision> revisionHistory = new ArrayList<Revision>();
+
+    private MachineState machineState;
 
     /*
      * Generated
@@ -82,6 +85,14 @@ public class Machine {
 
     public void setMachineType(MachineType machineType) {
         this.machineType = machineType;
+    }
+
+    public MachineState getMachineState() {
+        return machineState;
+    }
+
+    public void setMachineState(MachineState machineState) {
+        this.machineState = machineState;
     }
 
     @Override

@@ -1,15 +1,14 @@
 package cz.mufi.PA165.RentalConstructionMachinery.dto;
 
-import cz.mufi.PA165.RentalConstructionMachinery.domain.Rent;
-import cz.mufi.PA165.RentalConstructionMachinery.domain.Revision;
-import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
 import java.util.ArrayList;
 import java.util.List;
 
+import cz.mufi.PA165.RentalConstructionMachinery.domain.Rent;
+import cz.mufi.PA165.RentalConstructionMachinery.domain.Revision;
+import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineState;
+import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
 
 public class MachineDTO {
-
-
     private Long id;
 
     private MachineType machineType;
@@ -18,6 +17,7 @@ public class MachineDTO {
 
     private List<Revision> revisionHistory = new ArrayList<Revision>();
 
+    private MachineState machineState;
     /*
      * Generated
      */
@@ -62,6 +62,14 @@ public class MachineDTO {
         this.machineType = machineType;
     }
 
+    public MachineState getMachineState() {
+        return machineState;
+    }
+
+    public void setMachineState(MachineState machineState) {
+        this.machineState = machineState;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -98,9 +106,7 @@ public class MachineDTO {
 
     @Override
     public String toString() {
-        return "id: "+id+" Machine type: "+machineType;
+        return "id: " + id + " Machine type: " + machineType + " Machine state: " + machineState;
     }
-    
-    
 
 }

@@ -1,29 +1,26 @@
 package cz.mufi.PA165.RentalConstructionMachinery.mvc.config;
 
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.web.context.ContextLoaderListener;
+
 import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.CustomerTypeDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.facade.CustomerFacade;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.ContextLoaderListener;
-
-import javax.servlet.ServletContextEvent;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 
 /**
  * Created by jakac on 13.12.15.
  */
-@Component
+// @Component
 public class UsersInitializer extends ContextLoaderListener {
 
+    protected CustomerDTO admin;
+    protected CustomerDTO user;
 
-    @Autowired
+    // @Autowired
     public UsersInitializer(CustomerFacade customerFacade) {
         ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
 
-        CustomerDTO admin = new CustomerDTO();
+        admin = new CustomerDTO();
         admin.setCustomerType(CustomerTypeDTO.LEGAL);
         admin.setFirstName("admin");
         admin.setLastName("adminovic");
@@ -31,10 +28,10 @@ public class UsersInitializer extends ContextLoaderListener {
         admin.setPassword(encoder.encodePassword("admin", null));
         admin.setRole("ROLE_ADMIN");
         admin.setPhoneNumber("666");
-        customerFacade.createNewCustomer(admin);
+        admin = customerFacade.createNewCustomer(admin);
         System.out.println("Imported user admin, password admin");
 
-        CustomerDTO user = new CustomerDTO();
+        user = new CustomerDTO();
         user.setCustomerType(CustomerTypeDTO.LEGAL);
         user.setFirstName("user");
         user.setLastName("userovic");
@@ -42,7 +39,7 @@ public class UsersInitializer extends ContextLoaderListener {
         user.setPassword(encoder.encodePassword("user", null));
         user.setRole("ROLE_USER");
         user.setPhoneNumber("777");
-        customerFacade.createNewCustomer(user);
+        user = customerFacade.createNewCustomer(user);
         System.out.println("Imported user user, password user");
     }
 

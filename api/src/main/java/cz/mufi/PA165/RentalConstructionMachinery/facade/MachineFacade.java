@@ -12,7 +12,7 @@ public interface MachineFacade {
      * 
      * @param machine
      */
-    void addMachine(MachineDTO machine);
+    MachineDTO addMachine(MachineDTO machine);
 
     /**
      * Remove a machine from our fleets.
@@ -21,9 +21,12 @@ public interface MachineFacade {
      *            of machine to remove
      */
     void removeMachine(Long id);
-    
+
+    MachineDTO getMachineById(Long id);
+
     /**
      * Get list of all machines.
+     * 
      * @return
      */
     List<MachineDTO> getAllMachines();

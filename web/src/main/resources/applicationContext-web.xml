@@ -11,11 +11,13 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.mvc"/>
+    <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.mvc.config"/>
     <import resource="classpath:applicationContext-service.xml" />
     <import resource="classpath:applicationContext-api.xml" />
 
     <mvc:annotation-driven />
-    
+
+    <context:annotation-config />
     
     <context:component-scan base-package="cz.mufi.PA165.RentalConstructionMachinery.rest.controler"/>
     <import resource="classpath:applicationContext-service.xml" />
@@ -29,6 +31,8 @@
     </bean>
 
     <import resource="security.xml" />
+    
+    
 
 	
 	<bean id="localeResolver"

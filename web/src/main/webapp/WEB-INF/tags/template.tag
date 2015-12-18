@@ -25,10 +25,11 @@
 </head>
 
 <body bgcolor="white">
+<sec:authentication property="principal" var="user" />
 <div class="container">
    
    <h1>Rental Construction Machinery</h1>
-
+  
    <!-- MENU can see only authenticated user -->
    <sec:authorize access="isAuthenticated()"> 
       <nav class="navbar navbar-inverse" role="navigation">
@@ -43,7 +44,7 @@
                   <li><a href="<c:url value='/customer/list'/>"><fmt:message key="menu.customer.list"/></a></li>
                   </sec:authorize>
                   <sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
-   				  <li><a href="<c:url value='/customer/detail/{1}'/>"><fmt:message key="menu.customer.detail"/></a></li>
+   				  <li><a href="<c:url value='/customer/detail/${user.id}'/>"><fmt:message key="menu.customer.detail"/></a></li>
    				  </sec:authorize>
    		       </ul>
             </li>
@@ -51,7 +52,7 @@
             <!-- MACHINE -->
             <li><a href="<c:url value='/machine/list'/>"><fmt:message key="menu.machine"/></a></li>
             
-            <!-- Revision -->
+            <!-- REVISION -->
             <li class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="Revision menu"/></a>
                <ul class="dropdown-menu">
