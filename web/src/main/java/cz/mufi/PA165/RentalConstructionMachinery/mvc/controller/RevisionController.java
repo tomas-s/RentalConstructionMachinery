@@ -17,6 +17,7 @@ import cz.mufi.PA165.RentalConstructionMachinery.dto.RevisionDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.RevisionCreateDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.dto.MachineDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
+import cz.mufi.PA165.RentalConstructionMachinery.facade.MachineFacade;
 import cz.mufi.PA165.RentalConstructionMachinery.facade.RevisionFacade;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +26,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -38,6 +40,10 @@ public class RevisionController {
 
     @Autowired
         private RevisionFacade revisionFacade;
+    
+    
+    @Autowired
+        private MachineFacade machineFacade;
 
     private RevisionDTO r;
     public void init(){
@@ -63,6 +69,32 @@ public class RevisionController {
         model.addAttribute("Revisions", revision); 
         return "revision/list";
     }
+    
+    
+    @RequestMapping(value = "/listUser", method = RequestMethod.GET)
+    public String listUser(Model model) {
+//        this.init();
+        revision = new ArrayList<>();
+        revision = revisionFacade.getAllRevisions();
+//        revision = RevisionFacade.getRevisionsBetween(new Date(2014, 2, 1), new Date(2014,7,10));
+//        revision.add(r);
+//        revision = revisionFacade.getRevisionsBetween(new Date(2014, 2, 1), new Date(2014,7,10));
+//        revision.add(r);
+        
+        model.addAttribute("Revisions", revision); 
+        return "revision/listUser";
+    }
+    
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public String create(Model model) {
+        revision = new ArrayList<>();
+        revision = revisionFacade.getAllRevisions();
+String s = "ahoj";
+        model.addAttribute("name", s);
+        model.addAttribute("revisions", revision); 
+        return "revision/create";
+    }
+
     
     
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)

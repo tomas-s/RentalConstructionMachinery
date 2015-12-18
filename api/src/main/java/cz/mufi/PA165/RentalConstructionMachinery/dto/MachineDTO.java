@@ -98,7 +98,7 @@ public class MachineDTO {
 
     @Override
     public String toString() {
-        return "id: "+id+" Machine type: "+machineType;
+        return "id: "+id+" Machine type: "+machineType+ " Revision history: "+revisionHistory;
     }
     
     

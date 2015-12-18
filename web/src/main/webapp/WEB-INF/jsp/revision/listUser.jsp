@@ -10,7 +10,7 @@
 <jsp:attribute name="body">
 
 
-    <h3><fmt:message key="menu.revision.list"/></h3>
+    <h3><fmt:message key="menu.revision.listUser"/></h3>
     
         <table class="table table-striped">
 		<thead>
@@ -28,13 +28,7 @@
                     <fmt:formatDate type="date" value="${revision.revisionDate}" />
                 <td><c:out value="${revision.machine}" /></td>
                 <td><a href="${pageContext.request.contextPath}/revision/detail/${revision.id}">Detail</a></td>
-                    
-                <td>
-                    <form method="post" action="${pageContext.request.contextPath}/revision/delete/${revision.id}">
-                        <button type="submit" class="btn btn-primary">Delete</button>
-                    </form>
-                </td>
-                      
+                  
             </tr>
         </c:forEach>
     </table>

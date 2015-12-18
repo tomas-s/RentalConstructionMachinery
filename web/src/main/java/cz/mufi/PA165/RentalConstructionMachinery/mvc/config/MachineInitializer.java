@@ -62,12 +62,12 @@ public class MachineInitializer  extends ContextLoaderListener {
                 
                 RevisionCreateDTO r1= new RevisionCreateDTO();
                 r1.setMachine(machineFacade.getAllMachines().get(0));
-                r1.setRevisionDate(new Date(2015,11,10));
+                r1.setRevisionDate(new Date(115,11,10));
                 revisionFacade.createRevision(r1);
                 
                 RevisionCreateDTO r2= new RevisionCreateDTO();
                 r2.setMachine(machineFacade.getAllMachines().get(1));
-                r2.setRevisionDate(new Date(2014,5,2));
+                r2.setRevisionDate(new Date(114,5,2));
                 revisionFacade.createRevision(r2);
 
 	    }
