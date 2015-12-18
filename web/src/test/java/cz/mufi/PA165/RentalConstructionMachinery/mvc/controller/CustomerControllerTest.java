@@ -61,7 +61,7 @@ public class CustomerControllerTest {
 
         when(customerFacade.getAllCustomers()).thenReturn(customers);
 
-        mvc.perform(get("/customer")).andExpect(status().isOk())
+        mvc.perform(get("/customer/list")).andExpect(status().isOk())
                 .andExpect(model().attributeExists("customers"))
                 .andExpect(model().attribute("customers", customers));
     }

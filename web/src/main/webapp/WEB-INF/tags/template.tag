@@ -56,12 +56,15 @@
             <li class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="Revision menu"/></a>
                <ul class="dropdown-menu">
-                  <sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"  >
+                  <sec:authorize access="hasAnyRole('ROLE_ADMIN')"  >
                   <li><a href="<c:url value='/revision/list'/>"><fmt:message key="menu.revision.list"/>Revision List</a></li>
                   </sec:authorize>
-                  <%--<sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">--%>
-   				  <!--<li><a href="<c:url value='/revision/detail/{1}'/>"><fmt:message key="menu.revision.detail"/></a></li>-->
-   				  <%--</sec:authorize>--%>
+                  <sec:authorize access="hasAnyRole('ROLE_USER')"  >
+                  <li><a href="<c:url value='/revision/listUser'/>"><fmt:message key="menu.revision.listUser"/>Revision List</a></li>
+                  </sec:authorize>
+                  <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+   				  <li><a href="<c:url value='/revision/create'/>"><fmt:message key="menu.revision.create"/></a></li>
+   				  </sec:authorize>
    		       </ul>
             </li>>
             

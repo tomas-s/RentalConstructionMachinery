@@ -21,19 +21,12 @@
             <td>Revision Date</td>
             <td><c:out value="${revision.revisionDate}" /></td>
         </tr>
-        
-
         <tr>
-            <td>
-                <a href="${pageContext.request.contextPath}/revision/edit/${revision.id}">
-                    <button class="btn btn-primary">Edit</button></a>
-            </td>
-                <td>
-                    <form method="post" action="${pageContext.request.contextPath}/revision/delete/${revision.id}">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
+            <td>Machine of Revision</td>
+            <td><c:out value="${revision.machine}" /></td>
         </tr>
+
+        
     </table>
 
 </jsp:attribute>

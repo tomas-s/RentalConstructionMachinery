@@ -19,5 +19,11 @@ public interface RevisionFacade {
     void deleteRevision(long revisionId);
 
     List<RevisionDTO> getRevisionsBetween(Date from, Date to);
+    
+    public List<RevisionDTO> getAllRevisions();
+    
+    public RevisionDTO findById(long id);
+    
+    void updateRevision(RevisionDTO revision);
 
 }

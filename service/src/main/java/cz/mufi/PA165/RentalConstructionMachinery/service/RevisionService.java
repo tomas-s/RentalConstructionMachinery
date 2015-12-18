@@ -25,5 +25,9 @@ public interface RevisionService {
     void deleteRevision(Revision revision);
 
     Revision findRevisionById(Long id);
+    
+    public List<Revision> getAllRevision();
+    
+    public void updateRevision(Revision revision);
 
 }

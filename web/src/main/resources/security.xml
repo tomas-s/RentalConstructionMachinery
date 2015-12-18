@@ -38,7 +38,7 @@
                                  expired-url="/login" />
         </session-management>
 
-        <csrf />
+        <!--<csrf />-->
     </http>
 
 
