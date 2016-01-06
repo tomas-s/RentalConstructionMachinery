@@ -63,12 +63,12 @@ Tento soubor slouží jako WIKI našeho projektu.
 - [x] Security Matej 
 
 # Logins
-Admin role:
-login: admin
-pswd: admin
+ * Admin role:
+   * login: admin
+   * pswd: admin
 
-User role:
-login: user
-pswd: user
+ * User role:
+   * login: user
+   * pswd: user
 
 Navod na pouzitie RESTu: <a href="https://github.com/xskerik/RentalConstructionMachinery/blob/master/RestUserGuide">KLIK</a>
