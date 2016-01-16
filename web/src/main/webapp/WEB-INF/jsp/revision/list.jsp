@@ -10,7 +10,7 @@
 <jsp:attribute name="body">
 
 
-    <h3><fmt:message key="menu.revision.list"/></h3>
+    <h3>List of Revisions</h3>
     
         <table class="table table-striped">
 		<thead>

@@ -42,7 +42,7 @@
         </div>
 
         <div class="form-group">
-            <form:label path="customerType" cssClass="col-sm-2 control-label">Color</form:label>
+            <form:label path="customerType" cssClass="col-sm-2 control-label">Type</form:label>
             <div class="col-sm-10">
                 <form:select path="customerType" cssClass="form-control">
                     <c:forEach items="${types}" var="t">

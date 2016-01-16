@@ -7,7 +7,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
+
+
 <my:template title="New Rent">
+
 <jsp:attribute name="body">
 
     <h3><fmt:message key="menu.rent.new"/></h3>
@@ -24,7 +27,7 @@
                 <form:errors path="rentSinceDate" cssClass="help-block"/>
             </div>
         </div>
-
+                        
         <div class="form-group ${rentTillDate_error?'has-error':''}">
             <form:label path="rentTillDate" cssClass="col-sm-2 control-label">Till</form:label>
             <div class="col-sm-5">
@@ -36,12 +39,12 @@
 
         <div class="form-group">
             <form:label path="machine" cssClass="col-sm-2 control-label">Machine</form:label>
-            <div class="col-sm-10">
+            <div class="col-sm-5">
                 <form:select path="machine" cssClass="form-control">
                     <c:forEach items="${machines}" var="machine">
-                        <form:option value="${machine.machineType}">${machine.machineType}</form:option>
+                        <form:option value="${machine.id}">${machine.machineType}</form:option>
                     </c:forEach>
-                </form:select>
+                </form:select>                
                 <form:errors path="machine" cssClass="error"/>
             </div>
         </div>
@@ -50,7 +53,11 @@
     </form:form>
 
 </jsp:attribute>
+
 </my:template>
+
+
+
 
 
 

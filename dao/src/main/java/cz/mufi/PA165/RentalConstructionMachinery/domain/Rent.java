@@ -8,10 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 /**
  * @author Matej Jakimov
@@ -28,9 +26,9 @@ public class Rent {
     private Machine machine;
 
     // @ManyToOne(optional = false, cascade = { CascadeType.MERGE })
-  //  @NotNull
-   // @ManyToOne(optional = false)
-   // @JoinColumn(name = "customer_id")
+    // @NotNulls
+    // @ManyToOne(optional = false)
+    // @JoinColumn(name = "customer_id")
     @ManyToOne(optional = false, cascade = { CascadeType.MERGE })
     private Customer customer;
 

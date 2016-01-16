@@ -15,7 +15,7 @@
     <import resource="classpath:applicationContext-service.xml" />
     <import resource="classpath:applicationContext-api.xml" />
 
-    <mvc:annotation-driven />
+<!--     <mvc:annotation-driven /> -->
 
     <context:annotation-config />
     
@@ -53,8 +53,21 @@
 		</property>
 	</bean>
 	
-	    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="locale/texts" />
 	</bean>
+	
+	<bean id="stringToMachineConverter" class="cz.mufi.PA165.RentalConstructionMachinery.rest.conversion.StringToMachineConverter" />
+	
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> 
+		<property name="converters"> 
+			<set> 
+				<ref bean="stringToMachineConverter" /> 
+			</set> 
+		</property> 
+	</bean>
+	
+	<mvc:annotation-driven conversion-service="conversionService" />
+	
 
 </beans> 

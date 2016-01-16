@@ -121,7 +121,7 @@ public class CustomerController {
 
         redirectAttributes.addFlashAttribute("alert_success", "Customer " + customer.getUsername() + " was updated");
 
-        return "redirect:" + uriBuilder.path("customer/detail/" + oldCustomer.getId()).toUriString();
+        return "redirect:" + uriBuilder.path("/customer/detail/" + oldCustomer.getId()).toUriString();
     }
 
 }

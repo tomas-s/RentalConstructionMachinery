@@ -22,6 +22,7 @@
     <!-- bootstrap loaded from content delivery network -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" crossorigin="anonymous">
+
 </head>
 
 <body bgcolor="white">
@@ -63,11 +64,11 @@
                   <li><a href="<c:url value='/revision/list'/>"><fmt:message key="menu.revision.list"/>Revision List</a></li>
                   </sec:authorize>
                   <sec:authorize access="hasAnyRole('ROLE_USER')"  >
-                  <li><a href="<c:url value='/revision/listUser'/>"><fmt:message key="menu.revision.listUser"/>Revision List</a></li>
+                  <li><a href="<c:url value='/revision/listUser'/>">Revision List</a></li>
                   </sec:authorize>
-                  <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
-   				  <li><a href="<c:url value='/revision/create'/>"><fmt:message key="menu.revision.create"/></a></li>
-   				  </sec:authorize>
+<%--                   <sec:authorize access="hasAnyRole('ROLE_ADMIN')"> --%>
+<%--    				  <li><a href="<c:url value='/revision/create'/>"><fmt:message key="menu.revision.create"/></a></li> --%>
+<%--    				  </sec:authorize> --%>
    		       </ul>
             </li>
             
@@ -97,5 +98,6 @@
 <!-- javascripts placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </body>
 </html>

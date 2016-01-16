@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -11,10 +12,13 @@ import javax.validation.Valid;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -109,21 +113,20 @@ public class RentController {
     public String newRentPost(@Valid @ModelAttribute("rent") RentCreateDTO rent, BindingResult bindingResult,
             Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder, Principal principal) {
 
-        logger.info("AAAAAAAA");
-        logger.info("AAAAAAAA");
-        logger.info("AAAAAAAA");
-        logger.info("AAAAAAAA");
-
         // Get active user
         CustomerDTO activeUser = (CustomerDTO) ((Authentication) principal).getPrincipal();
 
-        logger.info(rent);
+        rent.setCustomer(activeUser);
 
-        List<MachineDTO> machines = machineFacade.getAllMachines();
+        rentFacade.rentMachine(rent);
 
-        model.addAttribute("rent", rent);
-        model.addAttribute("machines", machines);
-        return "rent/new";
+        return "redirect:" + uriBuilder.path("/rent/list/" + rent.getCustomer().getId()).toUriString();
+    }
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
 
 }
