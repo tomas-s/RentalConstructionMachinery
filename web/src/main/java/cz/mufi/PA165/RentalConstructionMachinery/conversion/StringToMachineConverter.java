@@ -1,4 +1,4 @@
-package cz.mufi.PA165.RentalConstructionMachinery.rest.conversion;
+package cz.mufi.PA165.RentalConstructionMachinery.conversion;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
