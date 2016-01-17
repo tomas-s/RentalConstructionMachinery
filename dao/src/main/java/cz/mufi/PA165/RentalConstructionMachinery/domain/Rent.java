@@ -10,12 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @author Matej Jakimov
  */
 @Entity
 @Table(name = "RENT")
+@XmlRootElement
 public class Rent {
 
     @Id
@@ -30,6 +33,7 @@ public class Rent {
     // @ManyToOne(optional = false)
     // @JoinColumn(name = "customer_id")
     @ManyToOne(optional = false, cascade = { CascadeType.MERGE })
+    @XmlTransient
     private Customer customer;
 
     @Column(nullable = false)
@@ -54,6 +58,7 @@ public class Rent {
         this.machine = machine;
     }
 
+    @XmlTransient
     public Customer getCustomer() {
         return customer;
     }

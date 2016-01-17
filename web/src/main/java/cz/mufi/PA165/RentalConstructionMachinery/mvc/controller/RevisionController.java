@@ -19,6 +19,8 @@ import cz.mufi.PA165.RentalConstructionMachinery.dto.MachineDTO;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
 import cz.mufi.PA165.RentalConstructionMachinery.facade.MachineFacade;
 import cz.mufi.PA165.RentalConstructionMachinery.facade.RevisionFacade;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.validation.Valid;
@@ -33,7 +35,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Controller
 @RequestMapping("/revision")
 public class RevisionController {
-
+    final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     protected final Log logger = LogFactory.getLog(getClass());
     
     List<RevisionDTO> revision;
@@ -64,6 +66,27 @@ public class RevisionController {
 
         model.addAttribute("Revisions", revision); 
         return "revision/list";
+    }
+    
+    //potom odstranit throw
+    //funguje treba potom do menu pridat 
+    @RequestMapping(value = "/finded", method = RequestMethod.GET)
+    public String findedRevision(Model model) throws ParseException {
+        revision = new ArrayList<>();
+        revision = revisionFacade.getRevisionsBetween(sdf.parse("2013-10-10"),sdf.parse("2014-10-10"));
+                
+        model.addAttribute("Revisions", revision); 
+        return "revision/findedBy";
+    }
+    
+    
+    @RequestMapping(value = "/find", method = RequestMethod.GET)
+    public String findRevision(Model model) throws ParseException {
+                String dateSince = new String();
+                String dateTill = new String();
+        model.addAttribute("dateSince", dateSince); 
+        model.addAttribute("dateTill", dateTill); 
+        return "revision/find";
     }
     
     

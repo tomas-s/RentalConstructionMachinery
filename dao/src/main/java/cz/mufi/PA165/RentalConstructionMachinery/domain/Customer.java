@@ -15,6 +15,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * 
@@ -22,6 +25,7 @@ import cz.mufi.PA165.RentalConstructionMachinery.enums.CustomerType;
  *
  */
 @Entity
+@XmlAccessorType(value = XmlAccessType.FIELD)
 @Table(name = "CUSTOMER")
 public class Customer {
 
@@ -60,6 +64,7 @@ public class Customer {
 
     // cascade = { CascadeType.MERGE }
     @OneToMany(mappedBy = "customer")
+    @XmlTransient
     private List<Rent> rentHistory = new ArrayList<Rent>();
 
     /*
@@ -129,7 +134,8 @@ public class Customer {
     public void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
     }
-
+    
+    @XmlTransient
     public List<Rent> getRentHistory() {
         return rentHistory;
     }

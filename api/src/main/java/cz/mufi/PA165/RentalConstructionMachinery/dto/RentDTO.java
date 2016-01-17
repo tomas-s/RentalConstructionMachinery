@@ -4,16 +4,20 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement
 public class RentDTO implements Serializable {
 
     @NotNull
     private Long id;
-
+    
     @NotNull
     private MachineDTO machine;
 
     @NotNull
+    @XmlTransient
     private CustomerDTO customer;
 
     @NotNull
@@ -38,6 +42,7 @@ public class RentDTO implements Serializable {
         this.machine = machine;
     }
 
+    @XmlTransient
     public CustomerDTO getCustomer() {
         return customer;
     }
