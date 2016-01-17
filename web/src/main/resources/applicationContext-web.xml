@@ -57,7 +57,7 @@
         <property name="basename" value="locale/texts" />
 	</bean>
 	
-	<bean id="stringToMachineConverter" class="cz.mufi.PA165.RentalConstructionMachinery.rest.conversion.StringToMachineConverter" />
+	<bean id="stringToMachineConverter" class="cz.mufi.PA165.RentalConstructionMachinery.conversion.StringToMachineConverter" />
 	
 	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> 
 		<property name="converters"> 
