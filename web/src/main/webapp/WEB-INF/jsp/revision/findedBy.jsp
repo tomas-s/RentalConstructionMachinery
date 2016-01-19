@@ -10,7 +10,7 @@
 <jsp:attribute name="body">
 
 
-    <h3>List of finded Revisions</h3>
+    <h3>List of finded Revisions:   ${dateSince} / ${dateTill}</h3>
     
         <table class="table table-striped">
 		<thead>

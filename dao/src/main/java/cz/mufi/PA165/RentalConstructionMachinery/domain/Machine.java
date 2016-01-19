@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineState;
 import cz.mufi.PA165.RentalConstructionMachinery.enums.MachineType;
+import java.io.Serializable;
 
 /**
  * 

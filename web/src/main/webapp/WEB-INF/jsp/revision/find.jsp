@@ -14,16 +14,18 @@
     <jsp:attribute name="body">
 
         <h3><fmt:message key="menu.revision.find"/></h3>
-
-        <form:form method="get" action="${pageContext.request.contextPath}/revision/findedBy" modelAttribute="dateSince" cssClass="form-horizontal">
+        
+        <form:form method="get" action="${pageContext.request.contextPath}/revision/finded" cssClass="form-horizontal">
 
             Date Since:  <input type="text" name="dateSince" />
             <br />
-            Date till:  <input type="text" name="dateTill" />
+            Date Till:   <input type="text" name="dateTill" />
 
 
             <button class="btn btn-primary" type="submit">Find</button>
         </form:form>
+            
+            Write Date by format: yyyy-mm-dd   for example: 2013-10-15 / 2014-10-10
 
     </jsp:attribute>
 

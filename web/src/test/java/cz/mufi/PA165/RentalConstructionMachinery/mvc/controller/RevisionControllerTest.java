@@ -108,6 +108,38 @@ public class RevisionControllerTest {
         verify(revisionFacade, never()).deleteRevision(revisionDTO.getId());
     }
 
+    @Test
+    public void testInit() {
+    }
+
+    @Test
+    public void testList() {
+    }
+
+    @Test
+    public void testFindedRevision() throws Exception {
+    }
+
+    @Test
+    public void testFindRevision() {
+    }
+
+    @Test
+    public void testListUser() {
+    }
+
+    @Test
+    public void testGreetingForm() {
+    }
+
+    @Test
+    public void testGreetingSubmit() {
+    }
+
+    @Test
+    public void testDetail() {
+    }
+
     
     
     

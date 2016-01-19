@@ -1,5 +1,6 @@
 package cz.mufi.PA165.RentalConstructionMachinery.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;

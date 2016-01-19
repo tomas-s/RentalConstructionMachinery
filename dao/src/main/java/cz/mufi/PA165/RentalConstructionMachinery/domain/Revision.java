@@ -5,6 +5,7 @@ package cz.mufi.PA165.RentalConstructionMachinery.domain;
  * @author Tomas
  *
  */
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;

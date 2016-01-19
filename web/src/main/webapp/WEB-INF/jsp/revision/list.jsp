@@ -6,11 +6,12 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+
 <my:template title="List of Revision">
 <jsp:attribute name="body">
 
 
-    <h3>List of Revisions</h3>
+    <h3><fmt:message key="menu.revision.list"/></h3>
     
         <table class="table table-striped">
 		<thead>

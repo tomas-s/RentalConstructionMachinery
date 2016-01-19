@@ -24,6 +24,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -71,21 +73,27 @@ public class RevisionController {
     //potom odstranit throw
     //funguje treba potom do menu pridat 
     @RequestMapping(value = "/finded", method = RequestMethod.GET)
-    public String findedRevision(Model model) throws ParseException {
+
+    public String findedRevision(Model model,@RequestParam(value="dateSince")  String dateSince,@RequestParam(value="dateTill")  String dateTill) throws ParseException {
+        
+       
         revision = new ArrayList<>();
-        revision = revisionFacade.getRevisionsBetween(sdf.parse("2013-10-10"),sdf.parse("2014-10-10"));
+        revision = revisionFacade.getRevisionsBetween(sdf.parse(dateSince),sdf.parse(dateTill));
                 
+        model.addAttribute("dateSince",dateSince);
+        model.addAttribute("dateTill",dateTill);
         model.addAttribute("Revisions", revision); 
         return "revision/findedBy";
+        
     }
     
     
     @RequestMapping(value = "/find", method = RequestMethod.GET)
-    public String findRevision(Model model) throws ParseException {
-                String dateSince = new String();
-                String dateTill = new String();
-        model.addAttribute("dateSince", dateSince); 
-        model.addAttribute("dateTill", dateTill); 
+    public String findRevision(Model model) {
+//                String dateSince = new String();
+//                String dateTill = new String();
+//        model.addAttribute("dateSince", dateSince); 
+//        model.addAttribute("dateTill", dateTill); 
         return "revision/find";
     }
     
@@ -153,5 +161,6 @@ public class RevisionController {
         return "revision/detail";
     }
 
+  
 
 }
