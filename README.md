@@ -54,12 +54,11 @@ Tento soubor slouží jako WIKI našeho projektu.
 
 # MILESTONE 3
 - [x] tomcat 7 + module : asi Matej
-- [ ] MVC impl Template, Rent + 1 Zdenek
+- [x] MVC impl Template, Rent + 1 Zdenek
 - [x] REST for Revision Tomas
-- [ ] SpringDaoException fix 
 - [ ] JavaDoc everyone everywhere !
 - [x] MCV impl pages Customer
-- [ ] MCV impl pages Machine
+- [x] MCV impl pages Machine
 - [x] Security Matej 
 
 # Logins
