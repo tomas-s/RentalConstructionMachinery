@@ -16,11 +16,15 @@
         <h3><fmt:message key="menu.revision.find"/></h3>
         
         <form:form method="get" action="${pageContext.request.contextPath}/revision/finded" cssClass="form-horizontal">
-
+<table class="table table-striped">
+        <tr>
             Date Since:  <input type="text" name="dateSince" />
-            <br />
+</tr>
+            <!--<br />-->
+            <tr>
             Date Till:   <input type="text" name="dateTill" />
-
+            </tr>
+</table>
 
             <button class="btn btn-primary" type="submit">Find</button>
         </form:form>

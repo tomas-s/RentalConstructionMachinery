@@ -23,17 +23,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
+/**
+ *
+ * @author tomas
+ */
 @Controller
 @RequestMapping("/revision")
 public class RevisionController {
@@ -60,6 +59,11 @@ public class RevisionController {
          r.setRevisionDate(new Date(2005,15,1));
     }
 
+    /**
+     *Show list of Revisions
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
 //        this.init();
@@ -70,8 +74,15 @@ public class RevisionController {
         return "revision/list";
     }
     
-    //potom odstranit throw
-    //funguje treba potom do menu pridat 
+    /**
+     *Find revisions between Date Since and Date Till 
+     * @param model
+     * @param redirectAttributes
+     * @param dateSince
+     * @param dateTill
+     * @return
+     * @throws ParseException
+     */
     @RequestMapping(value = "/finded", method = RequestMethod.GET)
 
     public String findedRevision(Model model,RedirectAttributes redirectAttributes,@RequestParam(value="dateSince")  String dateSince,@RequestParam(value="dateTill")  String dateTill) throws ParseException {
@@ -93,17 +104,21 @@ public class RevisionController {
         
     }
     
-    
+    /**
+     *Show form
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public String findRevision(Model model) {
-//                String dateSince = new String();
-//                String dateTill = new String();
-//        model.addAttribute("dateSince", dateSince); 
-//        model.addAttribute("dateTill", dateTill); 
         return "revision/find";
     }
     
-    
+    /**
+     *
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/listUser", method = RequestMethod.GET)
     public String listUser(Model model) {
         revision = new ArrayList<>();
@@ -113,50 +128,44 @@ public class RevisionController {
         return "revision/listUser";
     }
     
-     @RequestMapping(value="/create", method=RequestMethod.GET)
-    public String greetingForm(Model model) {
-        
-        List<MachineDTO> list=machineFacade.getAllMachines();
-        model.addAttribute("list", list);
-        model.addAttribute("ahoj", "Ahoj");
-        return "create";
-    }
+  
 
-    @RequestMapping(value="/create", method=RequestMethod.POST)
-    public String greetingSubmit(@ModelAttribute RevisionDTO revision, Model model) {
-        model.addAttribute("greeting", revision);
-        return "result";
-    }
 
-    
-    
+    /**
+     * delete revision 
+     * @param id
+     * @param uriBuilder
+     * @param redirectAttributes
+     * @return
+     */
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public String delete(@PathVariable long id, UriComponentsBuilder uriBuilder,
                          RedirectAttributes redirectAttributes) {
         RevisionDTO r = revisionFacade.findById(id);
-//        r = revision.get((int)id);
         
         if(r == null) {
             redirectAttributes.addFlashAttribute("alert_error", "Error during deleting Revision");
             return "redirect:" + uriBuilder.path("revision").toUriString();
         }
         else{
-        revisionFacade.deleteRevision(r.getId()); //potom pouzit RevisionCreateDTO
+        revisionFacade.deleteRevision(r.getId()); 
         redirectAttributes.addFlashAttribute("alert_success", "Revision \"" + r.getId()+ "\" was deleted.");
-        //return "redirect:" + uriBuilder.path("customer").toUriString();
         return "redirect:/revision/list";
         }
     }
     
-    
-    
-    
-    
+    /**
+     * show detail about revision
+     * @param id
+     * @param model
+     * @param redirectAttributes
+     * @param uriBuilder
+     * @return
+     */
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
     public String detail(@PathVariable long id, Model model, RedirectAttributes redirectAttributes,
                          UriComponentsBuilder uriBuilder) {
         RevisionDTO r = revisionFacade.findById(id);
-//        r = revision.get(((int)id)-1);
         
         if(r == null) {
             redirectAttributes.addFlashAttribute("alert_error", "Cannot find revision");

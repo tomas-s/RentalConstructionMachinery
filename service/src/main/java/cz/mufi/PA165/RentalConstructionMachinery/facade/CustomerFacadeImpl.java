@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ *
+ * @author tomas
+ */
 @Component
 @Transactional
 public class CustomerFacadeImpl implements CustomerFacade {
@@ -24,8 +28,6 @@ public class CustomerFacadeImpl implements CustomerFacade {
 
     @Override
     public CustomerDTO createNewCustomer(CustomerDTO customerDTO) {
-        //Customer customer = dozerBeanMapper.map(customerDTO, Customer.class);
-        //System.out.println("nakopiroval som: " + customer);
         Customer c ;
          c = customerService.createCustomer(mappingService.map(customerDTO, Customer.class));
          return mappingService.map(c, CustomerDTO.class);
@@ -37,6 +39,10 @@ public class CustomerFacadeImpl implements CustomerFacade {
         customerService.deleteCustomer(customer);
     }
 
+    /**
+     * update customer
+     * @param customerDTO
+     */
     @Override
     public void updateCustomer(CustomerDTO customerDTO) {
         Customer customer = mappingService.map(customerDTO, Customer.class);
@@ -44,7 +50,10 @@ public class CustomerFacadeImpl implements CustomerFacade {
         
     }
 
-   
+    /**
+     * get all customers
+     * @return
+     */
     @Override
     public List<CustomerDTO> getAllCustomers() {
         List<Customer> list ;
@@ -56,6 +65,11 @@ public class CustomerFacadeImpl implements CustomerFacade {
         return customerDtoList;
     }
 
+    /**
+     * find customer by id
+     * @param id
+     * @return
+     */
     @Override
     public CustomerDTO findById(Long id) {
          Customer customerTmp = customerService.findCustomerById(id);
