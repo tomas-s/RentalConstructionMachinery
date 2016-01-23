@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "RENT")
 @XmlRootElement
-public class Rent {
+public class Rent implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

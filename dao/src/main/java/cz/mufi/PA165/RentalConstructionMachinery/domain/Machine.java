@@ -25,7 +25,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "MACHINE")
-public class Machine {
+public class Machine implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

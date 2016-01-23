@@ -74,12 +74,18 @@ public class RevisionController {
     //funguje treba potom do menu pridat 
     @RequestMapping(value = "/finded", method = RequestMethod.GET)
 
-    public String findedRevision(Model model,@RequestParam(value="dateSince")  String dateSince,@RequestParam(value="dateTill")  String dateTill) throws ParseException {
+    public String findedRevision(Model model,RedirectAttributes redirectAttributes,@RequestParam(value="dateSince")  String dateSince,@RequestParam(value="dateTill")  String dateTill) throws ParseException {
         
        
         revision = new ArrayList<>();
+        try{
         revision = revisionFacade.getRevisionsBetween(sdf.parse(dateSince),sdf.parse(dateTill));
-                
+        }
+        catch(Exception e){
+            logger.error(e);
+            redirectAttributes.addFlashAttribute("alert_error", "Error during find");
+            return "revision/error"; 
+        }
         model.addAttribute("dateSince",dateSince);
         model.addAttribute("dateTill",dateTill);
         model.addAttribute("Revisions", revision); 

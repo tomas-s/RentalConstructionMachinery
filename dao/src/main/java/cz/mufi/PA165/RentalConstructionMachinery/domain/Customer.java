@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlAccessorType(value = XmlAccessType.FIELD)
 @Table(name = "CUSTOMER")
-public class Customer {
+public class Customer implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -22,7 +22,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "REVISION")
 // tereticky by tu malo byt implement serializable len somto nechcel spustat ked
 // mi nesli testy
-public class Revision {
+public class Revision implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
