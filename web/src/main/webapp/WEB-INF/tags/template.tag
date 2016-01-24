@@ -65,7 +65,7 @@
                   <li><a href="<c:url value='/revision/find'/>"><fmt:message key="menu.revision.find"/></a></li>
                   </sec:authorize>
                   <sec:authorize access="hasAnyRole('ROLE_USER')"  >
-                  <li><a href="<c:url value='/revision/listUser'/>"></a></li>
+                  <li><a href="<c:url value='/revision/listUser'/>"><fmt:message key="menu.revision.list"/></a></li>
                   </sec:authorize>
 
    		       </ul>
